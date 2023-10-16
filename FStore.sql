@@ -1,5 +1,3 @@
-create database FStore;
------------------------------------
 
 create table [User](
 userID int primary key not null,
