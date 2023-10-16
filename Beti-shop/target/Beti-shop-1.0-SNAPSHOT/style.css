@@ -1,4 +1,4 @@
-a{
+#linkfooter{
     text-decoration: none;
     color: white;
 }
@@ -13,5 +13,11 @@ a{
 
 #logoimg{
     border-radius: 10px;
+}
+
+.category{
+    display: flex;
+    justify-content: space-around;
+    width: max-content;
 }
 
