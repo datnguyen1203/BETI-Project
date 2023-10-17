@@ -190,22 +190,22 @@
                             </h5>
                             <ul class="card-text">
                                 <li>
-                                    <a href="#">Trang chủ</a>
+                                    <a href="#" style="text-decoration: none; color: white" >Trang chủ</a>
                                 </li>
                                 <li>
-                                    <a href="#">Sản phẩm</a>
+                                    <a href="#" style="text-decoration: none; color: white" >Sản phẩm</a>
                                 </li>
                                 <li>
-                                    <a href="#">Phụ kiện</a>
+                                    <a href="#" style="text-decoration: none; color: white" >Phụ kiện</a>
                                 </li>
                                 <li>
-                                    <a href="#">Thương hiệu</a>
+                                    <a href="#" style="text-decoration: none; color: white" >Thương hiệu</a>
                                 </li>
                                 <li>
-                                    <a href="#">Giới thiệu</a>
+                                    <a href="#" style="text-decoration: none; color: white" >Giới thiệu</a>
                                 </li>
                                 <li>
-                                    <a href="#">F-Store OUTLET</a>
+                                    <a href="#" style="text-decoration: none; color: white" >F-Store OUTLET</a>
                                 </li>
                             </ul>
                         </div>
@@ -218,10 +218,10 @@
                             </h5>
                             <ul class="card-text">
                                 <li>
-                                    <a href="#">Sản phẩm bestseller</a>
+                                    <a href="#" style="text-decoration: none; color: white">Sản phẩm bestseller</a>
                                 </li>
                                 <li>
-                                    <a href="#">Sản phẩm khuyến mãi</a>
+                                    <a href="#" style="text-decoration: none; color: white">Sản phẩm khuyến mãi</a>
                                 </li>
                             </ul>
                         </div>
