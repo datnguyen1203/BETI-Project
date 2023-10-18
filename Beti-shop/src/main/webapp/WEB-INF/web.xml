@@ -4,9 +4,18 @@
         <servlet-name>ManagerControl</servlet-name>
         <servlet-class>Controller.ManagerControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowOrderControl</servlet-name>
+        <servlet-class>Controller.ShowOrderControl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowOrderControl</servlet-name>
+        <url-pattern>/showoerder/*</url-pattern>
+    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>ManagerControl</servlet-name>
-        <url-pattern>/ManagerControl</url-pattern>
+        <url-pattern>/manager/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
