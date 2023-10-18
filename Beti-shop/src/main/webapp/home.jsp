@@ -29,7 +29,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!--Search-->
-                    <form class="d-flex container " role="search" aria-label="Search">
+                    <form class="d-flex container" role="search" aria-label="Search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
@@ -122,7 +122,7 @@
                     aria-label="Slide 3"></button>
             </div>
             <!--Banner-->
-            <div id="banner">
+            <div id="banner" class="â">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000">
                         <img id="bannerimg" src="img/banner/banner1.jpg" class="d-block w-100" alt="banner1">
@@ -154,7 +154,7 @@
         </div>
     </div>
     <div class="container mt-5 mb-5">
-        <section class="bg-white p-5">
+        <section class="bg-white p-5 p">
             <div id="sort" class="row">
                 <div class="col-3">
                     <div class="form-floating row">
@@ -168,8 +168,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="product" role="button" class="container m-5 col-sm-2 col-lg-2" data-bs-toggle="modal"
-                        data-bs-target="#productDetail">
+                    <div id="product" role="button" class="container m-5 col-sm-5 col-md-5 col-lg-2"
+                        data-bs-toggle="modal" data-bs-target="#productDetail">
                         <div class="card" style="width: 15rem;">
                             <img src="img/product/product.jpg" class="card-img " alt="product1">
                             <div class="card-body">
@@ -178,15 +178,11 @@
                                         tiền:</span>
                                     500.000
                                     vnđ</p>
-                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-black p-1">Mô
-                                        tả:</span>
-                                    Toi yeu wyn nhu
-                                </p>
                             </div>
                         </div>
                     </div>
-                    <div id="product" role="button" class="container m-5 col-sm-2 col-lg-2" data-bs-toggle="modal"
-                        data-bs-target="#productDetail">
+                    <div id="product" role="button" class="container m-5 col-md-5 col-sm-5 col-lg-2"
+                        data-bs-toggle="modal" data-bs-target="#productDetail">
                         <div class="card" style="width: 15rem;">
                             <img src="img/product/product.jpg" class="card-img " alt="product1">
                             <div class="card-body">
@@ -195,10 +191,6 @@
                                         tiền:</span>
                                     500.000
                                     vnđ</p>
-                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-black p-1">Mô
-                                        tả:</span>
-                                    Toi yeu wyn nhu
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -212,10 +204,6 @@
                                         tiền:</span>
                                     500.000
                                     vnđ</p>
-                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-black p-1">Mô
-                                        tả:</span>
-                                    Toi yeu wyn nhu
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -229,10 +217,6 @@
                                         tiền:</span>
                                     500.000
                                     vnđ</p>
-                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-black p-1">Mô
-                                        tả:</span>
-                                    Toi yeu wyn nhu
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -268,32 +252,33 @@
 
 
     <!--Modal Product Detail-->
-    <div class="modal fade" id="productDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-lg-down modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-3" id="staticBackdropLabel">Chi tiết sản phẩm</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <img class="col-md-4" id="detailproductimg" src="img/product/product.jpg"
-                                alt="detailproductimg">
+    <form action="index.html">
+        <div class="modal fade" id="productDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen-lg-down modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Chi tiết sản phẩm</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <img class="col-md-4 rounded-5" id="detailproductimg" src="img/product/product.jpg"
+                                    alt="detailproductimg">
+                                <div class="col-md-4">
+                                    <section>
+                                        <h1 class="fs-2 pt-2 pb-3">Tên sản phẩm</h1>
+                                    </section>
+                                    <section>
+                                        <label class="fs-5 pb-2 fw-bold">Giá tiền:</label>
+                                        <p class="fs-4" style="color: rgb(216, 97, 50);">
+                                            500.000 vnđ
+                                        </p>
+                                    </section>
+                                    <section class="pb-2">
 
-                            <div class="col-md-4">
-                                <section>
-                                    <h1 class="fs-2 pt-2 pb-3">Tên sản phẩm</h1>
-                                </section>
-                                <section>
-                                    <p class="fs-4">
-                                        500.000 vnđ
-                                    </p>
-                                </section>
-                                <section class="pb-2">
-                                    <form action="index.html">
-                                        <label class="fs-5 pb-2">Size: </label>
+                                        <label class="fs-5 pb-2 fw-bold">Size: </label>
                                         <br>
                                         <input type="radio" class="btn-check" name="options-base" id="option1"
                                             autocomplete="off" checked value="S">
@@ -307,29 +292,39 @@
                                         <input type="radio" class="btn-check" name="options-base" id="option4"
                                             autocomplete="off" value="XL">
                                         <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option4">XL</label>
-                                    </form>
-                                </section>
-                                <section>
-                                    <label for="fs-4 pb-2">Số lượng: </label>
-                                    <br>
-                                    <div class="p-2 quantity">
-                                        <input type="number" id="quantity" value="1" step="1" min="1"
-                                            class="no-spinners fs-4 text-center w-25 rounded-3">
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
 
+                                    </section>
+                                    <section>
+                                        <div class="p-2 quantity">
+                                            <label class="fs-5 pb-2 me-2 fw-bold">Số lượng: </label>
+                                            <input type="number" id="quantity" value="1" step="1" min="1"
+                                                class="no-spinners fs-4 text-center w-25 rounded-3">
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="p-2">
+                                            <label class="fs-5 pb-2 fw-bold">Mô tả:</label>
+                                            <br>
+                                            <p>
+                                                <textarea class="form-control" style="width: 150%;" cols="30" readonly
+                                                    rows="5">Toi yeu Wyn Nhu</textarea>
+                                            </p>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ hàng</button>
+                        <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </form>
     <!--Footer-->
     <footer class="footer bg-dark">
         <div class="container">
