@@ -266,8 +266,11 @@
         
         %>
         <div class="container mt-4">
-            <div class ="row">
-                <div class="col-md-3"><jsp:include page="menuBar.jsp"/></div>
+            
+           
+            <div class="row">
+                <div class="col-md-3"> <jsp:include page="menuBar.jsp"/></div>
+                
                 <div class="col-md-9">
                     <h1 class="text-center">HOA DON</h1>
                     <table id="example">
@@ -283,16 +286,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:set var="stt" value="0"/>
-                            <c:forEach items="${listOr}" var="o"/>
-                            <c:set var="stt" value="${stt + 1}"/>
-                            <tr>
-                                
-                            </tr>
+                            <c:set var="stt" value="0" />
+                            <c:forEach items="${listOr}" var="o">
+                                <c:set var="stt" value="${stt + 1}" />
+                                <tr >
+                                    <th class="align-middle">${stt}</th>
+                                    <th class="align-middle">${o.order_id}</th>
+                                    <th class="align-middle">${o.account_id}</th>
+                                    <td class="align-middle"><p>${o.order_date}</p></td>
+                                    <td class="align-middle"><p>${o.customer_id}</p></td>
+                                    <td class="align-middle"><p>${o.order_total}</p></td>
+                                    <td class="align-middle"> <nav class="navbar navbar-expand-lg bg-light justify-content-center ">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item"><a class="nav-link" href="/PRJProject/manager/ShowOrder/Details/${o.order_id}">Info</a></li> 
+                                            </ul>
+                                        </nav></td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
+<!--                    <a href="/PRJProject/manager">
+                        <button type="button" class="btn btn-primary bg-primary">Back</button>
+                    </a>-->
                 </div>
             </div>
-        </div>
     </body>
 </html>

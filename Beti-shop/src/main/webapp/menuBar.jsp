@@ -163,10 +163,10 @@
         <!--sidebar start-->
         <div class="sidebar">
 
-            <a class="home" href=""><i class="fas fa-home"></i><span>Home</span></a>
+            <a class="home" href="/Beti-shop/home"><i class="fas fa-home"></i><span>Home</span></a>
             <ul class="list-group category_block">
                     <li class="list-group-item ${mana != null ? 'active' : 'inactive'}">
-                        <a href="">
+                        <a href="/Beti-shop/manager">
                             <i class="fas fa-home"></i>
                             <span>Manager</span>
                         </a>
@@ -178,7 +178,7 @@
                         </a>
                     </li>
                     <li class="list-group-item  ${ord != null ? 'active' : 'inactive'}">
-                        <a href="">
+                        <a href="/Beti-shop/manager/ShowOrder">
                             <i class="fas fa-cogs"></i>
                             <span>Quan Ly Hoa Don</span>
                         </a>

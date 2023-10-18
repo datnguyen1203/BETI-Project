@@ -13,6 +13,7 @@ import java.sql.Date;
 public class Order {
     private int orderID;
     private int productID;
+    private int userID;
     private int cartID;
     private float totalPrice;
     private Date purchaseDate;
@@ -20,9 +21,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(int orderID, int productID, int cartID, float totalPrice, Date purchaseDate) {
+    public Order(int orderID, int productID, int userID, int cartID, float totalPrice, Date purchaseDate) {
         this.orderID = orderID;
         this.productID = productID;
+        this.userID = userID;
         this.cartID = cartID;
         this.totalPrice = totalPrice;
         this.purchaseDate = purchaseDate;
@@ -42,6 +44,14 @@ public class Order {
 
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public int getCartID() {
@@ -67,7 +77,7 @@ public class Order {
     public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
-    
+
     
 }
 
