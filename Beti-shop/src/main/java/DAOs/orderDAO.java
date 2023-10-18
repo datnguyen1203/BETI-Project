@@ -7,6 +7,7 @@ package DAOs;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 
 /**
  *
@@ -20,5 +21,20 @@ public class orderDAO {
 
     public orderDAO() {
         conn = DBContext.DBContext.getConnection();
+    }
+    
+    //addOrder
+    public void addOrder(){
+        LocalDate curDate = LocalDate.now();
+        String date = curDate.toString();
+        try{
+            //Add Order
+            String sql = "insert into [order] values (?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, 0);
+        }
+        catch (Exception e){
+            
+        }
     }
 }
