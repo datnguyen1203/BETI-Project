@@ -1,3 +1,4 @@
+create database FStore;
 
 create table [User](
 userID int primary key not null,
@@ -36,12 +37,12 @@ productName nvarchar(500),
 productPrice money,
 productQuantity int,
 productImg nvarchar(500),
-productMaterial nvarchar(200),
-productType nvarchar(200)
+productCategory nvarchar(200)
 );
 
 create table Cart(
 cartID int primary key not null,
+userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null,
 quantity int,
 );
@@ -49,6 +50,7 @@ quantity int,
 create table [Order](
 orderID int primary key not null,
 productID int foreign key references [Product](productID) not null,
+userID int foreign key references [User](userID) not null,
 cartID int foreign key references [Cart](cartID) not null,
 totalPrice money,
 purchaseDate date,
@@ -58,5 +60,6 @@ create table ProductUser(
 userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null,
 );
+
 
 
