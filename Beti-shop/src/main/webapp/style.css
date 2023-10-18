@@ -45,8 +45,8 @@ body{
 }
 
 #pagingitem a:hover{   
-    background-color: rgb(147 117 80);
-    border: 1px solid rgb(129, 102, 69);;
+    background-color: rgb(75, 75, 75);
+    border: 1px solid black;
     color: white;
 }
 
@@ -56,8 +56,8 @@ body{
 }
 
 #pageprenext a:hover{
-    background-color: rgb(147 117 80);
-    border: 1px solid rgb(129, 102, 69);;
+    background-color: rgb(75, 75, 75);
+    border: 1px solid black;
     color: white;
 }
 
@@ -70,15 +70,10 @@ body{
     height: 500px;
 }
 
-#size:hover{
-    background-color: rgb(147 117 80);
-    border: 1px solid rgb(129, 102, 69);;
-    color: white;
-}
 
 input[type="radio"]:checked + label.size-label{
-    background-color: rgb(147 117 80);
-    border: 1px solid rgb(129, 102, 69);;
+    background-color: rgb(49, 49, 49);
+    border: 1px solid rgb(0, 0, 0);
     color: white;
 }
 
@@ -94,7 +89,29 @@ input[type="radio"]:checked + label.size-label{
 
 .quantity button:hover{
     background-color: rgb(147 117 80);
-    border: 1px solid rgb(129, 102, 69);;
+    border: 1px solid rgb(129, 102, 69);
     color: white;
 }
 
+#buttonThemvaogio{
+    background-color: rgb(60, 60, 60); 
+    color: white;
+}
+
+#buttonThemvaogio:active{
+    background-color: black; 
+}
+
+#buttonMuangay{
+  border: 1px solid;
+}
+
+#buttonMuangay:active{
+    background-color: black; 
+    color: white;
+}
+
+#linkfooter{
+text-decoration: none;
+color: white;
+}
