@@ -1,4 +1,14 @@
 D:\BETI\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Models\cart.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Models\Admin.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\UpdateProduct.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\Models\Order.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\cartDAO.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\ProductDAO.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Models\Product.java
