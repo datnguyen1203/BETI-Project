@@ -6,7 +6,7 @@
 package Controller;
 
 import DAOs.ProductDAO;
-import Models.Product;
+import Modals.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
