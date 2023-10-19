@@ -9,28 +9,44 @@
         <servlet-class>Controller.ShowOrderControl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CartControl</servlet-name>
-        <servlet-class>Controller.CartControl</servlet-class>
+        <servlet-name>ProductControl</servlet-name>
+        <servlet-class>Controller.ProductControl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CartController</servlet-name>
-        <servlet-class>Controller.CartController</servlet-class>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>Controller.DeleteProduct</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShowOrderControl</servlet-name>
         <url-pattern>/showoerder/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>Controller.ProductController<servlet-name>ProductController</servlet-name></servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProduct</servlet-name>
+        <servlet-class>Controller.UpdateProduct<servlet-name>UpdateProduct</servlet-name></servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/listProduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManagerControl</servlet-name>
         <url-pattern>/manager/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CartControl</servlet-name>
-        <url-pattern>/CartControl</url-pattern>
+        <servlet-name>ProductControl</servlet-name>
+        <url-pattern>/ProductControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CartController</servlet-name>
-        <url-pattern>/CartController</url-pattern>
+        <servlet-name>UpdateProduct</servlet-name>
+        <url-pattern>/updateproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/deleteProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
