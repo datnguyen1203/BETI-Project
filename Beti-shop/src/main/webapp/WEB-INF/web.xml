@@ -8,14 +8,29 @@
         <servlet-name>ShowOrderControl</servlet-name>
         <servlet-class>Controller.ShowOrderControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartControl</servlet-name>
+        <servlet-class>Controller.CartControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>Controller.CartController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShowOrderControl</servlet-name>
         <url-pattern>/showoerder/*</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ManagerControl</servlet-name>
         <url-pattern>/manager/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartControl</servlet-name>
+        <url-pattern>/CartControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/CartController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
