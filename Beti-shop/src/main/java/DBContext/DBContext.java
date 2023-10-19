@@ -16,18 +16,16 @@ import java.util.logging.Logger;
  */
 public class DBContext {
 
-    private static Connection conn = null;
+    private static Connection conn ;
 
     public static Connection getConnection() {
         try {
 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection("jdbc:sqlserver://"
-                    + "TUAN-KHUU2503\\SQLEXPRESS05:1433;"
+                    + "DESKTOP-0H5549E\\SQLEXPRESS:1433;"
                     + "databaseName=FStore;"
-                    + "user=sa;password=Vh250321;"
-                    + "encrypt=true;"
-                    + "trustServerCertificate=true;");
+                    +"user=sa;password=admin123;encrypt=true;trustServerCertificate=true; ");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -35,5 +33,10 @@ public class DBContext {
         }
         return conn;
 
+    }
+
+    public static void main(String[] args) {
+        DBContext context = new DBContext();
+        context.getConnection();
     }
 }
