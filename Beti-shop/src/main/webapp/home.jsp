@@ -122,7 +122,7 @@
                     aria-label="Slide 3"></button>
             </div>
             <!--Banner-->
-            <div id="banner" class="â">
+            <div id="banner">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000">
                         <img id="bannerimg" src="img/banner/banner1.jpg" class="d-block w-100" alt="banner1">
@@ -168,35 +168,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="product" role="button" class="container m-5 col-sm-5 col-md-5 col-lg-2"
-                        data-bs-toggle="modal" data-bs-target="#productDetail">
-                        <div class="card" style="width: 15rem;">
-                            <img src="img/product/product.jpg" class="card-img " alt="product1">
-                            <div class="card-body">
-                                <h5 class="card-title">Tên sản phẩm</h5>
-                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                        tiền:</span>
-                                    500.000
-                                    vnđ</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="product" role="button" class="container m-5 col-md-5 col-sm-5 col-lg-2"
-                        data-bs-toggle="modal" data-bs-target="#productDetail">
-                        <div class="card" style="width: 15rem;">
-                            <img src="img/product/product.jpg" class="card-img " alt="product1">
-                            <div class="card-body">
-                                <h5 class="card-title">Tên sản phẩm</h5>
-                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                        tiền:</span>
-                                    500.000
-                                    vnđ</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="product" role="button" class="container m-5 col-lg-2" data-bs-toggle="modal"
+                    <div id="product" role="button" class="m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
                         data-bs-target="#productDetail">
-                        <div class="card" style="width: 15rem;">
+                        <div class="card" style="width: 13rem;">
                             <img src="img/product/product.jpg" class="card-img " alt="product1">
                             <div class="card-body">
                                 <h5 class="card-title">Tên sản phẩm</h5>
@@ -207,9 +181,35 @@
                             </div>
                         </div>
                     </div>
-                    <div id="product" role="button" class="container m-5 col-lg-2" data-bs-toggle="modal"
+                    <div id="product" role="button" class=" m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
                         data-bs-target="#productDetail">
-                        <div class="card" style="width: 15rem;">
+                        <div class="card" style="width: 13rem;">
+                            <img src="img/product/product.jpg" class="card-img " alt="product1">
+                            <div class="card-body">
+                                <h5 class="card-title">Tên sản phẩm</h5>
+                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
+                                        tiền:</span>
+                                    500.000
+                                    vnđ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="product" role="button" class="container m-5 col-sm-12 col-md-4 col-lg-2"
+                        data-bs-toggle="modal" data-bs-target="#productDetail">
+                        <div class="card" style="width: 13rem;">
+                            <img src="img/product/product.jpg" class="card-img " alt="product1">
+                            <div class="card-body">
+                                <h5 class="card-title">Tên sản phẩm</h5>
+                                <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
+                                        tiền:</span>
+                                    500.000
+                                    vnđ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="product" role="button" class="container m-5 col-sm-12 col-md-4 col-lg-2"
+                        data-bs-toggle="modal" data-bs-target="#productDetail">
+                        <div class="card" style="width: 13rem;">
                             <img src="img/product/product.jpg" class="card-img " alt="product1">
                             <div class="card-body">
                                 <h5 class="card-title">Tên sản phẩm</h5>
@@ -232,22 +232,14 @@
                         <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">1</a>
                         </li>
                         <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">2</a></li>
-                        <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">...</a></li>
-                        <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">4</a></li>
-                        <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">5</a></li>
-                        <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">...</a></li>
-                        <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">7</a></li>
+                        <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">3</a></li>
                         <li id="pageprenext" class="page-item m-2 m-sm-0 ">
                             <a class="page-link" href="#">Next</a>
                         </li>
                     </ul>
                 </nav>
             </div>
-
-
         </section>
-
-
     </div>
 
 
@@ -255,7 +247,7 @@
     <form action="index.html">
         <div class="modal fade" id="productDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen-lg-down modal-dialog-centered modal-xl">
+            <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xxl-down">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Chi tiết sản phẩm</h1>
@@ -264,14 +256,14 @@
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row">
-                                <img class="col-md-4 rounded-5" id="detailproductimg" src="img/product/product.jpg"
-                                    alt="detailproductimg">
-                                <div class="col-md-4">
+                                <img class="col-md-2 col-sm-3 rounded-5" id="detailproductimg"
+                                     src="img/product/product.jpg" alt="detailproductimg">
+                                <div class="col-md-4 col-sm-3">
                                     <section>
-                                        <h1 class="fs-2 pt-2 pb-3">Tên sản phẩm</h1>
+                                        <h1 class="fs-2 pt-1 pb-2">Tên sản phẩm</h1>
                                     </section>
                                     <section>
-                                        <label class="fs-5 pb-2 fw-bold">Giá tiền:</label>
+                                        <label class="fs-5 pb-1 fw-bold">Giá tiền:</label>
                                         <p class="fs-4" style="color: rgb(216, 97, 50);">
                                             500.000 vnđ
                                         </p>
@@ -302,24 +294,23 @@
                                         </div>
                                     </section>
                                     <section>
-                                        <div class="p-2">
+                                        <div class="p-1">
                                             <label class="fs-5 pb-2 fw-bold">Mô tả:</label>
                                             <br>
                                             <p>
                                                 <textarea class="form-control" style="width: 150%;" cols="30" readonly
-                                                    rows="5">Toi yeu Wyn Nhu</textarea>
+                                                    rows="4">Toi yeu Wyn Nhu</textarea>
                                             </p>
+                                        </div>
+                                        <div class="">
+                                            <button type="button" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ
+                                                hàng</button>
+                                            <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
                                         </div>
                                     </section>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ hàng</button>
-                        <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
                     </div>
                 </div>
             </div>
@@ -431,6 +422,4 @@
     <script src="validate.js"></script>
     <script src="quantity.js"></script>
 </body>
-
-
 </html>
