@@ -37,7 +37,8 @@ productName nvarchar(500),
 productPrice money,
 productQuantity int,
 productImg nvarchar(500),
-productCategory nvarchar(200)
+productCategory nvarchar(200),
+productDis nvarchar(500)
 );
 
 create table Cart(
