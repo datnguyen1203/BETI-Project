@@ -1,14 +1,14 @@
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\UpdateProduct.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\Order.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DAOs\ProductDAO.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\Product.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\Admin.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DAOs\cartDAO.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\cart.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Models\cart.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\DAOs\cartDAO.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\DAOs\ProductDAO.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Models\Admin.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Controller\UpdateProduct.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Models\Product.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Models\Order.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
+C:\Users\Dell\OneDrive\Desktop\new\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
