@@ -5,7 +5,7 @@
 package DAOs;
 
 import DBContext.DBContext;
-import Models.User;
+import Modals.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

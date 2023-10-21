@@ -44,7 +44,8 @@ create table Cart(
 cartID int primary key not null,
 userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null,
-quantity int,
+size nvarchar(3),
+quantity int
 );
 
 create table [Order](
@@ -53,12 +54,12 @@ productID int foreign key references [Product](productID) not null,
 userID int foreign key references [User](userID) not null,
 cartID int foreign key references [Cart](cartID) not null,
 totalPrice money,
-purchaseDate date,
+purchaseDate date
 );
 
 create table ProductUser(
 userID int foreign key references [User](userID) not null,
-productID int foreign key references [Product](productID) not null,
+productID int foreign key references [Product](productID) not null
 );
 
 

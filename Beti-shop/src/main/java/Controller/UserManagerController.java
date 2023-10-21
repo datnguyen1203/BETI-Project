@@ -6,7 +6,7 @@
 package Controller;
 
 import DAOs.AccountDAO;
-import Models.User;
+import Modals.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
