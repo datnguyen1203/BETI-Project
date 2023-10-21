@@ -6,7 +6,7 @@
 package Controller;
 
 import DAOs.ProductDAO;
-import Models.Product;
+import Modals.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -57,7 +57,7 @@ public class ProductControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         ProductDAO productDAO=new ProductDAO();
-        List<Product> list=productDAO.getAllProducts();
+        List<Product> list=  productDAO.getAllProducts();
         request.setAttribute("list", list);
         request.getRequestDispatcher("listproduct.jsp").forward(request, response);
     } 

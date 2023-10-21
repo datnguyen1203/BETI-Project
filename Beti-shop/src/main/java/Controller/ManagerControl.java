@@ -5,7 +5,7 @@
 package Controller;
 
 import DAOs.orderDAO;
-import Models.Order;
+import Modals.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
