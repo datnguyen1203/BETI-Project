@@ -260,196 +260,390 @@
                 width: 90px;
                 height: 90px;
             }
+
+            /*For menu*/
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                position: fixed;
+                background: #22242A;
+                padding: 20px;
+                width: 100%;
+                height: 30px;
+            }
+
+            .left_area h3 {
+                color: #fff;
+                margin: 0;
+                text-transform: uppercase;
+                font-size: 22px;
+                font-weight: 900;
+            }
+
+            .left_area span {
+                color: #19B3D3;
+            }
+
+            .logout_btn {
+                padding: 5px;
+                background: #19B3D3;
+                text-decoration: none;
+                float: right;
+                margin-top: -30px;
+                margin-right: 40px;
+                border-radius: 2px;
+                font-size: 15px;
+                font-weight: 600;
+                color: #fff;
+                transition: 0.5s;
+                transition-property: background;
+            }
+
+            .logout_btn:hover {
+                background: #0B87A6;
+            }
+
+            .sidebar {
+                background: #2f323a;
+                padding-top: 30px;
+                position: fixed;
+                left: 0;
+                width: 240px;
+                height: 100%;
+                transition: 0.5s;
+                transition-property: left;
+            }
+
+            .sidebar .profile_image {
+                width: 100px;
+                height: 100px;
+                border-radius: 100px;
+                margin-bottom: 10px;
+                margin-right: 40px;
+            }
+
+            .sidebar h4 {
+                color: #ccc;
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+
+            .sidebar a {
+                color: #fff;
+                display: block;
+                width: 100%;
+                line-height: 60px;
+                text-decoration: none;
+                padding-left: 40px;
+                box-sizing: border-box;
+                transition: 0.5s;
+                transition-property: background;
+            }
+
+            .sidebar a:hover {
+                background: #19B3D3;
+            }
+
+            .sidebar i {
+                padding-right: 10px;
+            }
+
+            label #sidebar_btn {
+                z-index: 1;
+                color: #fff;
+                position: fixed;
+                cursor: pointer;
+                left: 300px;
+                font-size: 20px;
+                margin: 5px 0;
+                transition: 0.5s;
+                transition-property: color;
+            }
+
+            label #sidebar_btn:hover {
+                color: #19B3D3;
+            }
+
+            #check:checked~.sidebar {
+                left: -190px;
+            }
+
+            #check:checked~.sidebar a span {
+                display: none;
+            }
+
+            #check:checked~.sidebar a {
+                font-size: 20px;
+                margin-left: 170px;
+                width: 80px;
+            }
+
+            .content {
+                margin-left: 250px;
+                background: url(background.png) no-repeat;
+                background-position: center;
+                background-size: cover;
+                height: 100vh;
+                transition: 0.5s;
+            }
+
+            #check:checked~.content {
+                margin-left: 60px;
+            }
+
+            #check {
+                display: none;
+            }
+
+            .list-group {
+                list-style: none;
+                padding: 0;
+            }
+
+            .list-group-item.inactive {
+                background-color: #22242A;
+                border-color: transparent;
+                color: #ccc;
+            }
+
+            .list-group-item.active {
+                border-color: #fd7e14;
+                background-color: #fd7e14;
+                color: #ccc;
+            }
+            
+            .bodymain{
+            padding: 0;
+            margin: 0;
+            }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     </head>
     <body>
-        <div class="content">
-            <div class="table-wrapper">
-                <div class="main-content">
-                    <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal">
-                        <i class="material-icons">&#xE147;</i> 
-                        <span >Add New Product</span>
-                    </a>
-                    <table class="table table-striped table-hover">
-                        <span class="text-danger bg-danger fw-bold">${mes}</span>
-                        <thead>
-                            <tr>
-                                <th>Product ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Category</th>
-                                <th>Action</th>
+        <div class="row bodymain">
+            <!--Menu bar-->
+            <div class="sidebar">
+                <ul class="list-group category_block">
+                    <li class="list-group-item ${mana != null ? 'active' : 'inactive'} active">
+                        <a href="/Beti-shop/manager" class="active">
+                            <i class="fab fa-product-hunt fa-lg" style="color: #ffffff;"></i>
+                            <span>Quản lý sản phẩm</span> 
+                        </a>
+                    </li>
+                    <li class="list-group-item  ${ord != null ? 'active' : 'inactive'}">
+                        <a href="/Beti-shop/manager/ShowOrder">
+                            <i class="far fa-file-alt fa-lg"></i>
+                            <span>Quản lý hóa đơn</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item  ${ord != null ? 'active' : 'inactive'}">
+                        <a href="/Beti-shop/manager/ShowOrder">
+                            <i class="fas fa-sign-out-alt fa-lg" style="color: #ffffff;"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+                    <!--For admin-->
+                    <!-- <li class="list-group-item ${ac != null ? 'active' : 'inactive'}">
+                        <a href="">
+                            <i class="fas fa-table"></i>
+                            <span>Quan Ly Tai Khoan</span>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <div>
+                <div class="content">
+                    <div class="table-wrapper">
+                        <div class="main-content">
+                            <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal">
+                                <i class="material-icons">&#xE147;</i> 
+                                <span >Add New Product</span>
+                            </a>
+                            <table class="table table-striped table-hover">
+                                <span class="text-danger bg-danger fw-bold">${mes}</span>
+                                <thead>
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Category</th>
+                                        <th>Action</th>
 
-                            </tr>
-                        </thead>
+                                    </tr>
+                                </thead>
 
 
-                        <tbody id="data">
-                            <c:forEach items="${list}" var="c">
-                                <c:set var="id" value="${c.productID}"/>
-                                <tr>
-                                    <td>${id}</td>
-                                    <td><img src='${c.productImg}' alt="" width="50" height="50"></td>
-                                    <td>${c.productName}</td>
-                                    <td>${c.productPrice}</td>
-                                    <td>${c.productQuantity}</td>
-                                    <td>${c.productType}</td>
-                                    <td>
-                                        <button class="btn btn-success" onclick="readInfo()" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>
-                                        <form action="updateproduct" method="GET">
-                                            <input value="${c.productID}" name="id" hidden>
-                                            <button type="submit" class="btn btn-primary" >
+                                <tbody id="data">
+                                    <c:forEach items="${list}" var="c">
+                                        <c:set var="id" value="${c.productID}"/>
+                                        <tr>
+                                            <td>${id}</td>
+                                            <td><img src='${c.productImg}' alt="" width="50" height="50"></td>
+                                            <td>${c.productName}</td>
+                                            <td>${c.productPrice}</td>
+                                            <td>${c.productQuantity}</td>
+                                            <td>${c.productType}</td>
+                                            <td>
+                                                <button class="btn btn-success" onclick="readInfo()" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>
+                                                <form action="updateproduct" method="GET">
+                                                    <input value="${c.productID}" name="id" hidden>
+                                                    <button type="submit" class="btn btn-primary" >
 
-                                                <i class="bi bi-pencil-square"></i></button>
-                                        </form> 
-                                        <form action="deleteProduct">
-                                            <input value="${c.productID}" name="id" hidden>
-                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                        </form> 
+                                                        <i class="bi bi-pencil-square"></i></button>
+                                                </form> 
+                                                <form action="deleteProduct">
+                                                    <input value="${c.productID}" name="id" hidden>
+                                                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                </form> 
 
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                    <div class="clearfix">
-                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                            <div class="clearfix">
+                                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                                <ul class="pagination">
+                                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Edit Modal HTML -->
+                <div id="addEmployeeModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="addproduct" method="post">
+                                <div class="modal-header">						
+                                    <h4 class="modal-title">Add Product</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">					
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input name="name" type="text" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input name="img" type="text" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Price</label>
+                                        <input name="price" class="form-control" type="number" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Quantity</label>
+                                        <input name="quantity" class="form-control" type="number" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Marterial</label>
+                                        <input name="marterial" class="form-control" type="text" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <input name="type" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                    <input
+                                        type="submit"
+                                        value="Add"
+                                        class="btn-primary btn w-100 mx-auto"
+                                        />
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-
-        <!-- Edit Modal HTML -->
-        <div id="addEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="addproduct" method="post">
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Add Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <!-- Edit Modal HTML -->
+                <div id="editEmployeeModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="EditProduct" method="POST">
+                                <div class="modal-header">						
+                                    <h4 class="modal-title">Edit Product</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">					
+                                    <div class="form-group">
+                                        <label for="pro_name">Product Name: </label>
+                                        <input type="text" class="form-control" name="pro_name" id="pro_name" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pro_pic">Image: </label>
+                                        <input type="file"  name="pro_pic" class="form-control" id="pro_pic" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pro_quan">Color: </label>
+                                        <input type="text" name="pro_color" class="form-control" id="pro_color" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pro_price">Gia San Pham: </label>
+                                        <input type="number" name="pro_price" class="form-control" id="pro_price" />
+                                    </div>	
+                                    <div class="form-group">
+                                        <label for="pro_quan">So Luong: </label>
+                                        <input type="number" name="pro_quan" class="form-control" id="pro_quan" />
+                                    </div>	
+                                    <div class="form-group">
+                                        <label for="pro_des">Mo ta san pham: </label>
+                                        <input type="text" name="pro_des" class="form-control" id="pro_des"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select name="category" class="form-select" aria-label="Default select example">
+                                            <c:forEach items="${listC}" var="o">
+                                                <option value="${o.category_id}">${o.category_name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>	
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                    <input type="submit" class="btn btn-info" value="Save">
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input name="name" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Image</label>
-                                <input name="img" type="text" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Price</label>
-                                <input name="price" class="form-control" type="number" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Quantity</label>
-                                <input name="quantity" class="form-control" type="number" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Marterial</label>
-                                <input name="marterial" class="form-control" type="text" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Type</label>
-                                <input name="type" class="form-control" type="text" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input
-                                type="submit"
-                                value="Add"
-                                class="btn-primary btn w-100 mx-auto"
-                                />
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- Edit Modal HTML -->
-        <div id="editEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="EditProduct" method="POST">
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Edit Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <!-- Delete Modal HTML -->
+                <div id="deleteEmployeeModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="">
+                                <div class="modal-header">						
+                                    <h4 class="modal-title">Delete Product</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">					
+                                    <p>Are you sure you want to delete these Records?</p>
+                                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label for="pro_name">Product Name: </label>
-                                <input type="text" class="form-control" name="pro_name" id="pro_name" />
-                            </div>
-                            <div class="form-group">
-                                <label for="pro_pic">Image: </label>
-                                <input type="file"  name="pro_pic" class="form-control" id="pro_pic" />
-                            </div>
-                            <div class="form-group">
-                                <label for="pro_quan">Color: </label>
-                                <input type="text" name="pro_color" class="form-control" id="pro_color" />
-                            </div>
-                            <div class="form-group">
-                                <label for="pro_price">Gia San Pham: </label>
-                                <input type="number" name="pro_price" class="form-control" id="pro_price" />
-                            </div>	
-                            <div class="form-group">
-                                <label for="pro_quan">So Luong: </label>
-                                <input type="number" name="pro_quan" class="form-control" id="pro_quan" />
-                            </div>	
-                            <div class="form-group">
-                                <label for="pro_des">Mo ta san pham: </label>
-                                <input type="text" name="pro_des" class="form-control" id="pro_des"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
-                                    <c:forEach items="${listC}" var="o">
-                                        <option value="${o.category_id}">${o.category_name}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>	
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-info" value="Save">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Delete Modal HTML -->
-        <div id="deleteEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="">
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Delete Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">					
-                            <p>Are you sure you want to delete these Records?</p>
-                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
