@@ -36,7 +36,7 @@
                     <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row">
                         <!--Cart-->
                         <li class="nav-item col-sm-2">
-                            <a href="#" class="nav-link
+                            <a href="cart.jsp" class="nav-link
                                  active
                                  text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"
