@@ -4,6 +4,8 @@
  */
 package Modals;
 
+import java.sql.Date;
+
 /**
  *
  * @author nhviet171
@@ -13,11 +15,14 @@ public class User {
     private String userEmail;
     private String userPassword;
     private String userName;
-    private String userDayOfBirth;
+    private Date userDayOfBirth;
     private String userPhone;
     private String userAddress;
 
-    public User(int userID, String userEmail, String userPassword, String userName, String userDayOfBirth, String userPhone, String userAddress) {
+    public User() {
+    }
+
+    public User(int userID, String userEmail, String userPassword, String userName, Date userDayOfBirth, String userPhone, String userAddress) {
         this.userID = userID;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -26,14 +31,21 @@ public class User {
         this.userPhone = userPhone;
         this.userAddress = userAddress;
     }
+    
+//      public User(String userEmail, String userPassword, String userName, Date userDayOfBirth, String userPhone, String userAddress) {
+//        this.userEmail = userEmail;
+//        this.userPassword = userPassword;
+//        this.userName = userName;
+//        this.userDayOfBirth = userDayOfBirth;
+//        this.userPhone = userPhone;
+//        this.userAddress = userAddress;
+//    }
+//    
+//    
 
-    public User(String userEmail, String userPassword, String userName, String userDayOfBirth, String userPhone, String userAddress) {
+    public User(String userEmail, String userPassword) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
-        this.userName = userName;
-        this.userDayOfBirth = userDayOfBirth;
-        this.userPhone = userPhone;
-        this.userAddress = userAddress;
     }
 
     public int getUserID() {
@@ -68,11 +80,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserDayOfBirth() {
+    public Date getUserDayOfBirth() {
         return userDayOfBirth;
     }
 
-    public void setUserDayOfBirth(String userDayOfBirth) {
+    public void setUserDayOfBirth(Date userDayOfBirth) {
         this.userDayOfBirth = userDayOfBirth;
     }
 
