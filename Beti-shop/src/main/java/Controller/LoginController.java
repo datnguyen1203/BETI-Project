@@ -4,8 +4,10 @@
  */
 package Controller;
 
+import DAOs.AdminDAO;
 import DAOs.StaffDAO;
 import DAOs.UserDAO;
+import Modals.Admin;
 import Modals.Staff;
 import Modals.User;
 import java.io.IOException;
@@ -110,37 +112,60 @@ public class LoginController extends HttpServlet {
                         response.addCookie(c);
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/");
+                        break;
                       } else {
                         response.sendRedirect("/Beti-shop/Login");
                     }
                 case "staff":
                     Staff staff = new Staff(email, pass);
                     StaffDAO lgdao2 = new StaffDAO();
-                    Staff ac = lgdao2.GetStaff(email);
-                    boolean ketqua = false;
+                    Staff ac2 = lgdao2.GetStaff(email);
+                    boolean ketqua2 = false;
                     try {
-                        ketqua = lgdao2.Login(staff);
+                        ketqua2 = lgdao2.Login(staff);
                     } catch (SQLException ex) {
                         Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    if (ketqua) {
-                        Cookie c = new Cookie("staff", String.valueOf(ac.getStaffID()));
-                        Cookie cfull = new Cookie("nameStaff", URLEncoder.encode(ac.getStaffName(), "UTF-8"));
+                    if (ketqua2) {
+                        Cookie c = new Cookie("staff", String.valueOf(ac2.getStaffID()));
+                        Cookie cfull = new Cookie("nameStaff", URLEncoder.encode(ac2.getStaffName(), "UTF-8"));
                         c.setMaxAge(60 * 60);
                         cfull.setMaxAge(60 * 60);
                         response.addCookie(c);
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/manager");
-                        
                     break;
                     } else {
                         response.sendRedirect("/Beti-shop/Login");
                     }
+                case "admin":
+                     Admin admin = new Admin(email, pass);
+                   AdminDAO lgdao3 = new AdminDAO();
+                    Admin ac3 = lgdao3.GetAdmin(email);
+                    boolean ketqua3 = false;
+                    try {
+                        ketqua3 = lgdao3.Login(admin);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    if (ketqua3) {
+                        Cookie c = new Cookie("admin", String.valueOf(ac3.getAdminID()));
+                        Cookie cfull = new Cookie("nameAdmin", URLEncoder.encode(ac3.getAdminName(), "UTF-8"));
+                        c.setMaxAge(60 * 60);
+                        cfull.setMaxAge(60 * 60);
+                        response.addCookie(c);
+                        response.addCookie(cfull);
+                        response.sendRedirect("/Beti-shop/Admin");
+                    break;
+                    } else {
+                        response.sendRedirect("/Beti-shop/Login");
+                    }
+
                 default:
                     response.sendRedirect("/Beti-shop/Login");
                     break;
-
             }
 
         }

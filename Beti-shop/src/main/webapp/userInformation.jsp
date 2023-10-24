@@ -46,7 +46,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="#">F-Store</a>
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop">F-Store</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                         <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row">
                             <!--Cart-->
                             <li class="nav-item col-sm-2">
-                                <a href="#" class="nav-link
+                                <a href="/Beti-shop/Cart" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"
@@ -85,7 +85,7 @@
                             </li>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
-                                <a href="#" class="nav-link
+                                <a href="/Beti-shop/User" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
