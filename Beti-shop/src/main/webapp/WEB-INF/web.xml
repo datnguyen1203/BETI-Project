@@ -29,6 +29,14 @@
         <servlet-class>Controller.HomeController</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.gif</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ShowOrderControl</servlet-name>
         <url-pattern>/showoerder/*</url-pattern>
     </servlet-mapping>
@@ -39,6 +47,18 @@
     <servlet>
         <servlet-name>UpdateProduct</servlet-name>
         <servlet-class>Controller.UpdateProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>Controller.UserController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>Controller.CartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>Controller.AdminController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
@@ -71,6 +91,18 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/User</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/Cart/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
