@@ -21,6 +21,8 @@ import java.sql.PreparedStatement;
 public class ProductDAO {
 
     private DBContext con = new DBContext();
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
 
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
