@@ -78,4 +78,25 @@ public class UserDAO {
 
         return rs.next();
     }
+    
+    public int AddNew(User us) throws SQLException {
+        String sql = "insert into [User](userEmail,userPassword, userName, userDayOfBirth, userPhone, userAddress) values (?,?,?,?,?,?);";
+        String password = us.getUserPassword();
+        String hashPassword = hashPassword(password, "MD5");
+        int ketqua = 0;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, us.getUserEmail());
+            ps.setString(2, hashPassword.toUpperCase());
+            ps.setString(3, us.getUserName());
+            ps.setDate(4, us.getUserDOB());
+            ps.setString(5, us.getUserPhone());
+            ps.setString(6, us.getUserAddress());
+            ketqua = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return ketqua;
+    }
 }
