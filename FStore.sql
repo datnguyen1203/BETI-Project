@@ -1,7 +1,7 @@
 create database FStore;
 
 create table [User](
-userID int primary key not null,
+userID int primary key IDENTITY(1,1) not null,
 userEmail nvarchar(50) not null,
 userPassword nvarchar(50) not null,
 userName nvarchar(100),
@@ -11,7 +11,7 @@ userAddress nvarchar(500)
 );
 
 create table [Admin](
-adminID int primary key not null,
+adminID int primary key IDENTITY(1,1) not null,
 adminEmail nvarchar(50) not null,
 adminPassword nvarchar(50) not null,
 adminName nvarchar(100),
@@ -21,7 +21,7 @@ adminAddress nvarchar(500)
 );
 
 create table Staff (
-staffID int primary key not null,
+staffID int primary key IDENTITY(1,1) not null,
 staffEmail nvarchar(50) not null,
 staffPassword nvarchar(50) not null,
 staffName nvarchar(100),
@@ -32,7 +32,7 @@ staffAddress nvarchar(500)
 
 
 create table Product(
-productID int primary key not null,
+productID int primary key IDENTITY(1,1) not null,
 productName nvarchar(500),
 productPrice money,
 productQuantity int,
@@ -42,7 +42,7 @@ productDis nvarchar(500)
 );
 
 create table Cart(
-cartID int primary key not null,
+cartID int primary key IDENTITY(1,1) not null,
 userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null,
 size nvarchar(3),
@@ -50,7 +50,7 @@ quantity int
 );
 
 create table [Order](
-orderID int primary key not null,
+orderID int primary key IDENTITY(1,1) not null,
 productID int foreign key references [Product](productID) not null,
 userID int foreign key references [User](userID) not null,
 cartID int foreign key references [Cart](cartID) not null,
@@ -62,6 +62,9 @@ create table ProductUser(
 userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null
 );
+
+INSERT INTO [FStore].[dbo].[User] ( userEmail, userPassword, userName, userDayOfBirth, userPhone, userAddress)
+VALUES ( 'user2@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2003-03-12', '0312697274', 'An Giang');
 
 
 
