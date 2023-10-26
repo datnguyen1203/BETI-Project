@@ -5,7 +5,7 @@
 package Controller;
 
 import DAOs.orderDAO;
-import Models.Order;
+import Modals.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -63,7 +63,7 @@ public class ManagerControl extends HttpServlet {
         switch (path) {
             case "/Beti-shop/manager":
                 request.setAttribute("mana", "choose");
-                request.getRequestDispatcher("/managerProduct.jsp").forward(request, response);
+                request.getRequestDispatcher("/listproduct.jsp").forward(request, response);
                 break;
             case "/Beti-shop/manager/ShowOrder":
                 orderDAO order = new orderDAO();

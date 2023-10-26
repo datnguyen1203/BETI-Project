@@ -4,7 +4,7 @@
  */
 package DAOs;
 
-import Models.Order;
+import Modals.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

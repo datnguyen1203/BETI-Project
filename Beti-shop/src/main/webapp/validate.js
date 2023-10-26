@@ -23,7 +23,6 @@ function checkValidate() {
     checkBirthday();
     checkPhone();
     checkAddress();
-    event.preventDefault();
 }
 
 

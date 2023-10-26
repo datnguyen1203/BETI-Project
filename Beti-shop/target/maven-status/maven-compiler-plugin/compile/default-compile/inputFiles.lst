@@ -1,14 +1,32 @@
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\UpdateProduct.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\Order.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DAOs\ProductDAO.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\Product.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\Admin.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DAOs\cartDAO.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Models\cart.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
-C:\Users\LEGION\OneDrive\Máy tính\new\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Ultis\Common.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\DeleteUserAdminController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\Staff.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AddStaffServlet.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\Order.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\User.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\DeleteStaffAdminServlet.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AddUserServlet.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DAOs\ProductDAO.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AdminStaffServlet.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\Product.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DAOs\cartDAO.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\LoginController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\UserController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DAOs\AdminDAO.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AdminController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DAOs\UserDAO.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\HomeController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\UpdateProduct.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\StaffController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\cart.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DAOs\StaffDAO.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\UpdateUserServlet.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\RegisterController.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\Admin.java

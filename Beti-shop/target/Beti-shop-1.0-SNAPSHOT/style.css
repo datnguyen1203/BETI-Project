@@ -160,3 +160,27 @@ select {
     color: #fff;
 }
 
+
+/* css userinformation */
+
+#editbtn {
+    background-color: rgb(49, 49, 49);
+    border: 1px solid rgb(0, 0, 0);
+    color: white;
+}
+
+#editbtn:active {
+    background-color:white; 
+    color: black;
+}
+
+#changepassbtn {
+    background-color: rgb(49, 49, 49);
+    border: 1px solid rgb(0, 0, 0);
+    color: white;
+}
+
+#changepassbtn:active {
+    background-color:white; 
+    color: black;
+}
