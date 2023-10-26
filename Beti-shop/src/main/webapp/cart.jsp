@@ -10,16 +10,50 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cart</title>
+        <title>Giỏ Hàng</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css" />
+        <style>
+            #linkfooter{
+                text-decoration: none;
+                color: white;
+            }
+
+            .card-text > li{
+                padding-top: 5px;
+            }
+
+            #payment > li{
+                list-style-type: none;
+            }
+
+            #logoimg{
+                border-radius: 10px;
+            }
+            .category a{
+                text-decoration: none;
+                color: black;
+                font-size: large;
+                font-weight: bold;
+            }
+
+            body{
+                background-color: rgb(191, 191, 191);
+            }
+
+          
+            #linkfooter{
+                text-decoration: none;
+                color: white;
+            }
+
+        </style>
     </head><!-- comment -->
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="#">F-Store Cart</a>
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop">F-Store</a>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -59,7 +93,7 @@
                             </li>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
-                                <a href="#" class="nav-link
+                                <a href="/Beti-shop/User" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"

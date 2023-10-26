@@ -4,7 +4,11 @@
  */
 package DAOs;
 
+import Modals.Items;
 import Modals.Order;
+import Modals.Product;
+import Modals.User;
+import Modals.cart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,23 +34,72 @@ public class orderDAO {
     }
 
     //addOrder
-    public void addOrder() {
+    public void addOrder(User u, cart c, Product p) {
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();
         try {
             //Add Order
-            String sql = "insert into [order] values (?,?,?,?)";
+            String sql = "insert into [Order] values (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, 0);
+            ps.setInt(1, p.getProductID());
+            ps.setInt(2, c.getUserID());
+            ps.setInt(3, c.getCartID());
+            ps.setDouble(4, c.getTotalPrice());
+            ps.setString(5, date);
+            ps.executeUpdate();
+            //lay id order moi add
+            String sql1 = "select top 1 orderID from [Order] order by orderID desc";
+            PreparedStatement ps1 = conn.prepareStatement(sql1);
+            ResultSet rss = ps1.executeQuery();
+            //add orderDetails
+            if (rss.next()) {
+                int oid = rss.getInt("orderID");
+                for (Items i : c.getItems()) {
+                    String sql2 = "insert into [OrderDetail] values(?,?,?,?)";
+                    PreparedStatement ps2 = conn.prepareStatement(sql2);
+                    ps2.setInt(1, oid);
+                    ps2.setInt(2, i.getProduct().getProductID());
+                    ps2.setDouble(3, i.getPrice());
+                    ps2.setInt(4, i.getQuantity());
+                    ps2.executeUpdate();
+                }
+            }
+            //Update so luong san pham 
+            String sql3 = "update product set productQuantity = productQuantity-? where id=?";
+            PreparedStatement ps3 = conn.prepareStatement(sql3);
+            for (Items i : c.getItems()){
+                ps3.setInt(1, i.getQuantity());
+                ps3.setInt(2, i.getProduct().getProductQuantity());
+                ps3.executeUpdate();
+            }
         } catch (Exception e) {
 
         }
     }
 
+    //doanh thu theo thang
+    public List<Order> monthlyRevenue() {
+        List<Order> list = new ArrayList<>();
+        String sql = "SELECT MONTH(purchaseDate) AS month, SUM(totalPrice) AS revenue\n"
+                + "FROM [order]\n"
+                + "GROUP BY MONTH(purchaseDate) ORDER BY MONTH(purchaseDate) DESC";
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Order(rs.getInt(1),
+                        rs.getDouble(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(orderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
     //getall
     public List<Order> getAllOrder() {
         List<Order> list = new ArrayList<>();
-        String sql = "select * from [order]";
+        String sql = "select * from [Order]";
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -63,10 +116,11 @@ public class orderDAO {
         }
         return list;
     }
+
     //Delete Order
     public int DeleteOrder(int id) {
         int kq = 0;
-        String sql = "delete from [Order] where order_id=?";
+        String sql = "delete from [Order] where orderID = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -76,11 +130,12 @@ public class orderDAO {
         }
         return kq;
     }
+
     //get Order
     public int getOrderByAC(int id) {
         rs = null;
         int kq = 0;
-        String sql = "select order_id from [order] where account_id = ?";
+        String sql = "select order_id from [Order] where account_id = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);

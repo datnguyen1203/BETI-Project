@@ -6,9 +6,8 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register</title>
+        <title>Đăng nhập - Đăng ký</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="validate.js"></script>
         <link rel="stylesheet" href="style.css"/>
     </head>
 
@@ -41,31 +40,47 @@
         <div class="container">
             <div class="row justify-content-around">
                 <!--Form Login-->
-                <form method="" id="loginform" class="col-6 p-3 m-5 bg-body-tertiary rounded-5">
+                <form method="post" action="Login" id="loginform" class="col-6 p-3 m-5 bg-body-tertiary rounded-5">
                     <h1 class="text-center">Login</h1>
                     <div class="m-3">
                         <label class="form-label fw-bold">Email:</label>
-                        <input id="email" type="text" name="email" class="form-control" placeholder="Enter email">
+                        <input id="email" type="text" name="email1" class="form-control" placeholder="Enter email">
                         <p id="emailerror"></p>
                     </div>
                     <div class="m-3">
                         <label class="form-label fw-bold">Password:</label>
-                        <input id="password" type="password" name="password" class="form-control"
+                        <input id="password" type="password" name="password1" class="form-control"
                                placeholder="Enter password">
                         <p id="passerror"></p>
+                    </div>
+                    <div class="m-3">
+                        <label class="form-label fw-bold">You are:</label>
+                        <div class="row">
+                            <div class=" col-lg-4">
+                                <select id="role" name="role" class="form-control">
+                                    <option value="user">User</option>
+                                    <option value="staff">Staff</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-8"></div>
+                        </div>
+
+                        <p id="emailerror"></p>
                     </div>
                     <div class="text-center m-2">
                         <a class="link-dark" href="#" style="text-decoration: underline">Forgot password</a> <br>
                     </div>
                     <div class="text-center">
-                        <button type="submit" onclick="checkValidate()"
-                                class="btn btn-dark fw-bold rounded-5">Login</button>
+                        <button type="submit"
+                                class="btn btn-dark fw-bold rounded-5" name="btnLogin" onclick="checkLogin()" value="login">Login</button>
                         <button type="reset" onclick="checkReset()"
                                 class="btn btn-secondary fw-bold rounded-5">Reset</button>
                     </div>
                 </form>
                 <!--Form Register-->
-                <form style="display: none;" method="" id="registerform"
+                <form style="display: none;" method="post" id="registerform" action="Login"
                       class="col-6 p-3 m-5 bg-body-tertiary rounded-5">
                     <h1 class="text-center">Register</h1>
                     <div class="m-3">
@@ -112,7 +127,7 @@
                             Login</a> <br>
                     </div>
                     <div class="text-center">
-                        <button type="submit" onclick="checkValidate()"
+                        <button type="submit" name="btnRegis" value="Register" onclick="checkRegis()"
                                 class="btn btn-dark fw-bold rounded-5">Register</button>
                         <button type="reset" onclick="checkReset()"
                                 class="btn btn-secondary fw-bold rounded-5">Reset</button>
@@ -120,35 +135,7 @@
                 </form>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-        <script>
-                            // JavaScript function to show the Login form
-                            function showLoginForm() {
-                                document.getElementById("loginform").style.display = "block";
-                                document.getElementById("registerform").style.display = "none";
-                            }
-
-                            // JavaScript function to show the Registration form
-                            function showRegisterForm() {
-                                document.getElementById("loginform").style.display = "none";
-                                document.getElementById("registerform").style.display = "block";
-                            }
-
-                            // JavaScript function to switch to the Login form
-                            function switchToLoginForm() {
-                                document.getElementById("loginform").style.display = "block";
-                                document.getElementById("registerform").style.display = "none";
-                            }
-
-                            // Add event listeners to the buttons and link
-                            document.querySelector("#LoginButton").addEventListener("click", showLoginForm);
-                            document.querySelector("#RegisterButton").addEventListener("click", showRegisterForm);
-                            document.querySelector("#LoginLink").addEventListener("click", switchToLoginForm);
-        </script>
-    </body>
-    <!--Footer-->
+        <!--Footer-->
         <footer class="footer bg-dark">
             <div class="container">
                 <div class="row">
@@ -233,19 +220,57 @@
                             <h5 class="card-title">Phương thức thanh toán
                             </h5>
                             <div>
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/bank.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/bank.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/zalopay.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/zalopay.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/vnpay.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/vnpay.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/money.jpg" alt="img" width="50px">
-
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/money.jpg" alt="img" width="50px">
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+        <script>
+                            // JavaScript function to show the Login form
+                            function showLoginForm() {
+                                document.getElementById("loginform").style.display = "block";
+                                document.getElementById("registerform").style.display = "none";
+                            }
+
+                            // JavaScript function to show the Registration form
+                            function showRegisterForm() {
+                                document.getElementById("loginform").style.display = "none";
+                                document.getElementById("registerform").style.display = "block";
+                            }
+
+                            // JavaScript function to switch to the Login form
+                            function switchToLoginForm() {
+                                document.getElementById("loginform").style.display = "block";
+                                document.getElementById("registerform").style.display = "none";
+                            }
+
+                            // Add event listeners to the buttons and link
+                            document.querySelector("#LoginButton").addEventListener("click", showLoginForm);
+                            document.querySelector("#RegisterButton").addEventListener("click", showRegisterForm);
+                            document.querySelector("#LoginLink").addEventListener("click", switchToLoginForm);
+        </script>
+        <script src="validate.js"></script>
+
+        <%
+            String alertMess = (String) request.getAttribute("alertMess");
+            if (alertMess != null && !alertMess.isEmpty()) {
+        %>
+        <script>
+                            alert("<%= alertMess%>");
+        </script>
+        <%
+            }
+        %>
+    </body>
 </html>

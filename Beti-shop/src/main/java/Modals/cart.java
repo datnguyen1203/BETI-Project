@@ -4,99 +4,163 @@
  */
 package Modals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author admin
  */
 public class cart {
-        private int magiohang;
-    private int makhachhang;
-    private int masanpham;
-    private String tensanpham;
-    private int giatien;
-    private int soluong;
-    private String hinhanh;
+    private int cartID;
+    private int userID;
+    private String productID;
+    private double totalPrice;
+    private String size;
+    private int quantity;
 
     public cart() {
     }
 
-    public cart( int makhachhang, int masanpham, String tensanpham, int giatien, int soluong, String hinhanh) {
-        this.makhachhang = makhachhang;
-        this.masanpham = masanpham;
-        this.tensanpham = tensanpham;
-        this.giatien = giatien;
-        this.soluong = soluong;
-        this.hinhanh = hinhanh;
-    }
-    public cart(int magiohang, int makhachhang, int masanpham, String tensanpham, int giatien, int soluong, String hinhanh) {
-        this.magiohang = magiohang;
-        this.makhachhang = makhachhang;
-        this.masanpham = masanpham;
-        this.tensanpham = tensanpham;
-        this.giatien = giatien;
-        this.soluong = soluong;
-        this.hinhanh = hinhanh;
+    public cart(int cartID, int userID, String productID, double totalPrice, String size, int quantity) {
+        this.cartID = cartID;
+        this.userID = userID;
+        this.productID = productID;
+        this.totalPrice = totalPrice;
+        this.size = size;
+        this.quantity = quantity;
     }
 
-    public int getMakhachhang() {
-        return makhachhang;
+    public int getCartID() {
+        return cartID;
     }
 
-    public void setMakhachhang(int makhachhang) {
-        this.makhachhang = makhachhang;
+    public void setCartID(int cartID) {
+        this.cartID = cartID;
     }
 
-    public int getMasanpham() {
-        return masanpham;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setMasanpham(int masanpham) {
-        this.masanpham = masanpham;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
-    public String getTensanpham() {
-        return tensanpham;
+    public String getProductID() {
+        return productID;
     }
 
-    public void setTensanpham(String tensanpham) {
-        this.tensanpham = tensanpham;
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 
-    public int getGiatien() {
-        return giatien;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setGiatien(int giatien) {
-        this.giatien = giatien;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public int getSoluong() {
-        return soluong;
+    public String getSize() {
+        return size;
     }
 
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public int getMagiohang() {
-        return magiohang;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setMagiohang(int magiohang) {
-        this.magiohang = magiohang;
-    }
-
-    public String getHinhanh() {
-        return hinhanh;
-    }
-
-    public void setHinhanh(String hinhanh) {
-        this.hinhanh = hinhanh;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     
     
-                  
-   
+    private List<Items> items;
+    
+    public cart(List<Items> items){
+        this.items = items;
+    }
+    
+    public List<Items> getItems(){
+        return items;
+    }
+    
+    public void setItems(List<Items> items){
+        this.items = items;
+    }
+
+    //Get item by ID
+    private Items getItemsByID(int id){
+        for (Items o : items){
+            if(o.getProduct().getProductID() == id){
+                return o;
+            }
+        }
+        return null;
+    }
+    
+    //Get QuantityByID
+    public int getQuantityByID(int id){
+        return getItemsByID(id).getQuantity();// Lay quantity cua item
+    }
+    
+    //Add items
+    public void addItem(Items t){
+        if(getItemsByID(t.getProduct().getProductQuantity()) != null){
+            Items m = getItemsByID(t.getProduct().getProductQuantity());
+            m.setQuantity(m.getQuantity() + t.getQuantity()); // so luong cu + moi
+        }else{
+            items.add(t);
+        }
+    }
+    
+    //Remove items
+    public void removeItem(int id){
+        if(getItemsByID(id)!=null){
+            items.remove(getItemsByID(id));
+        }
+    }
+    
+    //Total price
+    public double gettotalPrice(){
+        double t = 0;
+        for(Items o : items){
+            t += (o.getQuantity() * o.getPrice());
+        }
+        return t;
+    }
+    
+    //getProductByID
+    private Product getProductByID(int id, List<Product> list){
+        for (Product o : list){
+            if(o.getProductID() == id){
+                return o;
+            }
+        }
+        return null;
+    }
+    
+    public cart(String txt , List<Product> list){
+        items = new ArrayList<>();
+        try{
+            if(txt != null && txt.length() != 0){
+                String [] s = txt.split(",");
+                for (String o : s){
+                    String [] n = o.split(":");
+                    int id = Integer.parseInt(n[0]);
+                    int quantity = Integer.parseInt(n[1]);
+                    Product p = getProductByID(id, list);
+                    Items t = new Items(p, quantity, totalPrice);
+                    addItem(t);
+                }
+            }
+        } catch (Exception e){           
+        }
+    }
 }
-
