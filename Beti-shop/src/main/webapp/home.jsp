@@ -1,145 +1,21 @@
-<%-- 
-    Document   : home.js
-    Created on : Oct 16, 2023, 1:20:08 PM
-    Author     : Dell
---%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Trang chủ</title>
+        <title>Register</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css" />
-        <style>
-            #linkfooter{
-                text-decoration: none;
-                color: white;
-            }
-
-            .card-text > li{
-                padding-top: 5px;
-            }
-
-            #payment > li{
-                list-style-type: none;
-            }
-
-            #logoimg{
-                border-radius: 10px;
-            }
-            .category a{
-                text-decoration: none;
-                color: black;
-                font-size: large;
-                font-weight: bold;
-            }
-
-            body{
-                background-color: rgb(191, 191, 191);
-            }
-
-            #product div:hover{
-                box-shadow: 5px 5px 5px gray;
-            }
-
-            .bannerimg{
-                width: 1900px;
-            }
-
-            .page-item{
-                padding: 5px;
-            }
-
-            #pagingitem a{
-                color: rgb(137, 137, 137);
-                border-radius: 100%;
-                padding-left: 14px;
-                padding-right: 14px;
-            }
-
-            #pagingitem a:hover{
-                background-color: rgb(75, 75, 75);
-                border: 1px solid black;
-                color: white;
-            }
-
-            #pageprenext a{
-                color: rgb(137, 137, 137);
-                border-radius: 50px;
-            }
-
-            #pageprenext a:hover{
-                background-color: rgb(75, 75, 75);
-                border: 1px solid black;
-                color: white;
-            }
-
-            #productDetail{
-                width: 1900px;
-            }
-
-            #detailproductimg{
-                width: 450px;
-                height: 500px;
-            }
-
-
-            input[type="radio"]:checked + label.size-label{
-                background-color: rgb(49, 49, 49);
-                border: 1px solid rgb(0, 0, 0);
-                color: white;
-            }
-
-            .quantity button{
-                border: 1px solid rgb(137, 137, 137) ;
-                color: rgb(106, 105, 105);
-                border-radius: 5px;
-                width: 40px;
-                text-align: center;
-                justify-content: center;
-
-            }
-
-            .quantity button:hover{
-                background-color: rgb(147 117 80);
-                border: 1px solid rgb(129, 102, 69);
-                color: white;
-            }
-
-            #buttonThemvaogio{
-                background-color: rgb(60, 60, 60);
-                color: white;
-            }
-
-            #buttonThemvaogio:active{
-                background-color: black;
-            }
-
-            #buttonMuangay{
-                border: 1px solid;
-            }
-
-            #buttonMuangay:active{
-                background-color: black;
-                color: white;
-            }
-
-            #linkfooter{
-                text-decoration: none;
-                color: white;
-            }
-
-        </style>
     </head>
 
     <body>
         <!--Navbar-->
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
                 <div class="container-fluid">
                     <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="#">F-Store</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -149,14 +25,16 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!--Search-->
-                        <form class="d-flex container" role="search" aria-label="Search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="d-flex container" role="search" aria-label="Search" action="Home?sort=${param['sort']}&search=${param['search']}">
+
+                            <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-light" type="submit">Search</button>
                         </form>
+
                         <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row">
                             <!--Cart-->
                             <li class="nav-item col-sm-2">
-                                <a href="/Beti-shop/Cart" class="nav-link
+                                <a href="cart.jsp" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"
@@ -168,7 +46,7 @@
                             </li>
                             <!--History-->
                             <li class="nav-item col-sm-2">
-                                <a href="#" class="nav-link
+                                <a href="home.jsp" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"
@@ -180,7 +58,7 @@
                             </li>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
-                                <a href="/Beti-shop/User" class="nav-link
+                                <a href="#" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
@@ -217,6 +95,7 @@
                         </ul>
                     </div>
                 </div>
+
             </nav>
         </header>
         <!--Body home page-->
@@ -276,94 +155,98 @@
         <div class="container mt-5 mb-5">
             <section class="bg-white p-5 p">
                 <div id="sort" class="row">
-                    <div class="col-3">
-                        <div class="form-floating row">
-                            <select class="form-select form-select-sm" id="floatingSelectGrid">
-                                <option selected>Lựa chọn</option>
-                                <option value="1">Theo tên A-Z</option>
-                                <option value="2">Giá tăng dần</option>
-                                <option value="3">Giá giảm dần</option>
-                            </select>
-                            <label for="floatingSelectGrid">Sắp xếp</label>
+                    <form action="Home?search=${param['seacrh']}&sort=${param['sort']}">
+                        <div class="col-3">
+                            <div class="form-floating row">
+                                <select class="form-select form-select-sm" id="floatingSelectGrid" name="sort" onchange="this.form.submit()">
+                                    <option selected value="0" ${param['sort']==0?"selected":""}>Lựa chọn</option>
+                                    <option value="1" ${param['sort']==1?"selected":""}>Theo tên A-Z</option>
+                                    <option value="2" ${param['sort']==2?"selected":""}>Giá tăng dần</option>
+                                    <option value="3" ${param['sort']==3?"selected":""}>Giá giảm dần</option>
+                                </select>
+                                <label for="floatingSelectGrid">Sắp xếp</label>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                     <div class="row">
-                        <div id="product" role="button" class="m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
-                             data-bs-target="#productDetail">
-                            <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
-                                    <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                            tiền:</span>
-                                        500.000
-                                        vnđ</p>
+                        <c:forEach var="o" items="${plist}">
+                            <div id="product" role="button" class="m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
+                                 data-bs-target="#productDetail" data-product-id="${o.productID}">
+                                <div class="card" style="width: 13rem;">
+                                    <img src="${o.productImg}" class="card-img" alt="product1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${o.productName}</h5>
+                                        <p class="card-text">
+                                            <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá tiền:</span>
+                                            ${o.productPrice} vnđ
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="product" role="button" class=" m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
-                             data-bs-target="#productDetail">
-                            <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
-                                    <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                            tiền:</span>
-                                        500.000
-                                        vnđ</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="product" role="button" class="container m-5 col-sm-12 col-md-4 col-lg-2"
-                             data-bs-toggle="modal" data-bs-target="#productDetail">
-                            <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
-                                    <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                            tiền:</span>
-                                        500.000
-                                        vnđ</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="product" role="button" class="container m-5 col-sm-12 col-md-4 col-lg-2"
-                             data-bs-toggle="modal" data-bs-target="#productDetail">
-                            <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
-                                    <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                            tiền:</span>
-                                        500.000
-                                        vnđ</p>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
+
                     </div>
                 </div>
 
-                <div class="shop-page-controller">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li id="pageprenext" class="page-item m-2 m-sm-0 disabled ">
-                                <a class="page-link">Previous</a>
+                <div class="flex-c-m flex-w w-full p-t-45">
+                    <div style="display: flex; justify-content: center;">
+                        <ul class="pagination">
+                            <li class="page-item next">
+                                <a href="Home?index=1&sort=${param['sort']}">
+                                    <i class="fa fa-angle-left" class="page-link" aria-hidden="true"></i>
+                                </a>
                             </li>
-                            <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">1</a>
-                            </li>
-                            <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">2</a></li>
-                            <li id="pagingitem" class="page-item m-2 m-sm-0"><a class="page-link" href="#">3</a></li>
-                            <li id="pageprenext" class="page-item m-2 m-sm-0 ">
-                                <a class="page-link" href="#">Next</a>
+                            <c:forEach var="i" begin="1" end="${numberPage}">
+                                <li class="${param['index']==i?'page-item active':'page-item'}">
+                                    <a href="Home?index=${i}&sort=${param['sort']}" class="page-link">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li class="page-item next">
+                                <a href="Home?index=${numberPage}&sort=${param['sort']}">
+                                    <i class="fa fa-angle-right" class="page-link" aria-hidden="true"></i>
+                                </a>
                             </li>
                         </ul>
-                    </nav>
+                    </div>
                 </div>
+
             </section>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const products = document.querySelectorAll('#product');
+                products.forEach(product => {
+                    product.addEventListener('click', function () {
+                        const productId = product.getAttribute('data-product-id');
+
+                        fetch('ProductDetail?id=' + productId)
+                                .then(response => response.json())
+                                .then(data => {
+                                    const modalElement = document.querySelector('#productDetail');
+                                    modalElement.querySelector('#detailproductimg').src = data.productImg;
+                                    modalElement.querySelector('#detailproductname').textContent = data.productName;
+                                    modalElement.querySelector('#detailproductprice').textContent = data.productPrice + ' vnđ';
+                                    modalElement.querySelector('#detailproductdis').textContent = data.productDis;
+                                    const modal = new bootstrap.Modal(modalElement);
+                                    modal.show();
+                                });
+                    });
+                });
+                const closeModalButton = document.getElementById('closeModal');
+                closeModalButton.addEventListener('click', function () {
+                    window.location.href = 'Home';
+                });
+            });
+
+        </script>
+
+
+
 
 
         <!--Modal Product Detail-->
+        <!-- Modal Product Detail -->
         <form action="index.html">
             <div class="modal fade" id="productDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -371,46 +254,36 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Chi tiết sản phẩm</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" id="closeModal" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <img class="col-md-2 col-sm-3 rounded-5" id="detailproductimg"
-                                         src="img/product/product.jpg" alt="detailproductimg">
+                                    <img class="col-md-2 col-sm-3 rounded-5" id="detailproductimg" alt="detailproductimg">
                                     <div class="col-md-4 col-sm-3">
                                         <section>
-                                            <h1 class="fs-2 pt-1 pb-2">Tên sản phẩm</h1>
+                                            <h1 class="fs-2 pt-1 pb-2" id="detailproductname"></h1>
                                         </section>
                                         <section>
                                             <label class="fs-5 pb-1 fw-bold">Giá tiền:</label>
-                                            <p class="fs-4" style="color: rgb(216, 97, 50);">
-                                                500.000 vnđ
-                                            </p>
+                                            <p class="fs-4" style="color: rgb(216, 97, 50);" id="detailproductprice"></p>
                                         </section>
                                         <section class="pb-2">
-
                                             <label class="fs-5 pb-2 fw-bold">Size: </label>
                                             <br>
-                                            <input type="radio" class="btn-check" name="options-base" id="option1"
-                                                   autocomplete="off" checked value="S">
+                                            <input type="radio" class="btn-check" name="options-base" id="option1" autocomplete="on" checked value="S">
                                             <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option1">S</label>
-                                            <input type="radio" class="btn-check" name="options-base" id="option2"
-                                                   autocomplete="off" value="M">
+                                            <input type="radio" class="btn-check" name="options-base" id="option2" autocomplete="off"  value="M">
                                             <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option2">M</label>
-                                            <input type="radio" class="btn-check" name="options-base" id="option3"
-                                                   autocomplete="off" value="L">
+                                            <input type="radio" class="btn-check" name="options-base" id="option3" autocomplete="off"  value="L">
                                             <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option3">L</label>
-                                            <input type="radio" class="btn-check" name="options-base" id="option4"
-                                                   autocomplete="off" value="XL">
+                                            <input type="radio" class="btn-check" name="options-base" id="option4" autocomplete="off"  value="XL">
                                             <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option4">XL</label>
-
                                         </section>
                                         <section>
                                             <div class="p-2 quantity">
                                                 <label class="fs-5 pb-2 me-2 fw-bold">Số lượng: </label>
-                                                <input type="number" id="quantity" value="1" step="1" min="1"
-                                                       class="no-spinners fs-4 text-center w-25 rounded-3">
+                                                <input type="number" id="quantity" value="1" step="1" min="1" class="no-spinners fs-4 text-center w-25 rounded-3">
                                             </div>
                                         </section>
                                         <section>
@@ -418,13 +291,11 @@
                                                 <label class="fs-5 pb-2 fw-bold">Mô tả:</label>
                                                 <br>
                                                 <p>
-                                                    <textarea class="form-control" style="width: 150%;" cols="30" readonly
-                                                              rows="4">Toi yeu Wyn Nhu</textarea>
+                                                    <textarea class="form-control" style="width: 150%;" cols="30" readonly rows="4" id="detailproductdis"></textarea>
                                                 </p>
                                             </div>
                                             <div class="">
-                                                <button type="button" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ
-                                                    hàng</button>
+                                                <button type="button" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ hàng</button>
                                                 <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
                                             </div>
                                         </section>
@@ -436,6 +307,8 @@
                 </div>
             </div>
         </form>
+
+
         <!--Footer-->
         <footer class="footer bg-dark">
             <div class="container">

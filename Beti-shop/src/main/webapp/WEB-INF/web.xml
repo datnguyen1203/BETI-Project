@@ -70,7 +70,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductControl</servlet-name>
-        <url-pattern>/Product/*</url-pattern>
+        <url-pattern>/ProductControl/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateProduct</servlet-name>
@@ -90,7 +90,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
@@ -103,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/Admin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductDetailController</servlet-name>
+        <servlet-class>Controller.ProductDetailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductDetailController</servlet-name>
+        <url-pattern>/ProductDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

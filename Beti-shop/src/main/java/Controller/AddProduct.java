@@ -8,17 +8,21 @@ import DAOs.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+import java.io.File;
 
 /**
  *
  * @author LEGION
  */
 @WebServlet(name = "AddProduct", urlPatterns = {"/addproduct"})
+@MultipartConfig
 public class AddProduct extends HttpServlet {
 
     /**
@@ -35,7 +39,7 @@ public class AddProduct extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-          
+
         }
     }
 
@@ -66,15 +70,35 @@ public class AddProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-          String productName = request.getParameter("name");
-            String productPrice = request.getParameter("price");
-            String productQuantity = request.getParameter("quantity");
-            String productImg = request.getParameter("img");
-            String productMarterial = request.getParameter("marterial");
-            String productType = request.getParameter("type");
-            ProductDAO dao = new ProductDAO();
-            dao.addProduct(productName, productPrice, productQuantity, productImg, productMarterial, productType);
-            response.sendRedirect("/Beti-shop/ProductControl");
+        String productName = request.getParameter("name");
+        String productPrice = request.getParameter("price");
+        String productQuantity = request.getParameter("quantity");
+        Part filePart = request.getPart("img");
+        String uploadPath = getServletContext().getRealPath("") + File.separator + "img\\product";
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
+
+        String fileName = getFileName(filePart);
+        String filePath = uploadPath  + File.separator + fileName;
+        filePart.write(filePath);
+        String productMarterial = request.getParameter("category");
+        String productType = request.getParameter("description");
+        ProductDAO dao = new ProductDAO();
+        dao.addProduct(productName, productPrice, productQuantity, "./img/product/"+ fileName, productMarterial, productType);
+        response.sendRedirect("/Beti-shop/ProductControl");
+    }
+
+    private String getFileName(Part part) {
+        String contentDisposition = part.getHeader("content-disposition");
+        String[] tokens = contentDisposition.split(";");
+        for (String token : tokens) {
+            if (token.trim().startsWith("filename")) {
+                return token.substring(token.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
     }
 
     /**

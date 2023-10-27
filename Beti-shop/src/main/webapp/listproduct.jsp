@@ -414,10 +414,10 @@
                 background-color: #fd7e14;
                 color: #ccc;
             }
-            
+
             .bodymain{
-            padding: 0;
-            margin: 0;
+                padding: 0;
+                margin: 0;
             }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -473,6 +473,7 @@
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Category</th>
+                                        <th>Description</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -488,7 +489,8 @@
                                             <td>${c.productName}</td>
                                             <td>${c.productPrice}</td>
                                             <td>${c.productQuantity}</td>
-                                            <td>${c.productType}</td>
+                                            <td>${c.getProductCategory()}</td>
+                                            <td>${c.productDis}</td>
                                             <td>
                                                 <button class="btn btn-success" onclick="readInfo()" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>
                                                 <form action="updateproduct" method="GET">
@@ -499,8 +501,17 @@
                                                 </form> 
                                                 <form action="deleteProduct">
                                                     <input value="${c.productID}" name="id" hidden>
-                                                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                                </form> 
+                                                    <button type="button" class="btn btn-danger" onclick="confirmDelete(${c.productID})"><i class="bi bi-trash"></i></button>
+                                                </form>
+                                                <script>
+
+                                                    function confirmDelete(productId) {
+                                                        if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                                                            window.location.href = "deleteProduct?id=" + productId;
+                                                        } else {
+                                                        }
+                                                    }
+                                                </script>
 
                                             </td>
                                         </tr>
@@ -528,7 +539,7 @@
                 <div id="addEmployeeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="addproduct" method="post">
+                            <form action="addproduct" method="post" enctype="multipart/form-data">
                                 <div class="modal-header">						
                                     <h4 class="modal-title">Add Product</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -540,7 +551,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input name="img" type="text" class="form-control" required>
+                                        <input name="img" type="file" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
@@ -553,12 +564,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Marterial</label>
-                                        <input name="marterial" class="form-control" type="text" required>
+                                        <label>Category</label>
+                                        <input name="category" class="form-control" type="text" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Type</label>
-                                        <input name="type" class="form-control" type="text" required>
+                                        <label>Description</label>
+                                        <input name="description" class="form-control" type="text" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

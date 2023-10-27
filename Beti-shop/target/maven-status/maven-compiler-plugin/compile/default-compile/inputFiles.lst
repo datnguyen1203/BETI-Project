@@ -1,25 +1,26 @@
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\UserController.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Modals\Product.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Modals\Order.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\UpdateProduct.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\StaffController.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\HomeController.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\StaffDAO.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\cartDAO.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\ProductDAO.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\UserDAO.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\RegisterController.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Modals\Staff.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\AdminDAO.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\AdminController.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Modals\Admin.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\LoginController.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Modals\cart.java
-D:\BETI\BETI-Project\Beti-shop\src\main\java\Modals\User.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\DAOs\StaffDAO.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Modals\Admin.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\ProductDetailController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\HomeController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\UserController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Modals\User.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Modals\Order.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Modals\Product.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\DAOs\AdminDAO.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\StaffController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Modals\cart.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\RegisterController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\AdminController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\LoginController.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\UpdateProduct.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\DAOs\cartDAO.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\DAOs\ProductDAO.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\DAOs\UserDAO.java
+C:\Users\LEGION\OneDrive\Máy tính\Origin\BETI-Project\Beti-shop\src\main\java\Modals\Staff.java

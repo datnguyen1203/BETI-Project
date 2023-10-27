@@ -36,8 +36,8 @@ public class ProductDAO {
                 double productPrice = resultSet.getDouble("productPrice");
                 int productQuantity = resultSet.getInt("productQuantity");
                 String productImg = resultSet.getString("productImg");
-                String productMaterial = resultSet.getString("productMaterial");
-                String productType = resultSet.getString("productType");
+                String productMaterial = resultSet.getString("productCategory");
+                String productType = resultSet.getString("productDis");
                 Product product = new Product(productID, productName, productPrice, productQuantity, productImg, productMaterial, productType);
                 products.add(product);
             }
@@ -48,6 +48,21 @@ public class ProductDAO {
 
         return products;
     }
+    
+    public int getNumberProduct( String search) {
+        ArrayList<Product> list = new ArrayList<>();
+        String sql = "  select count(*) from Product p where p.productname like ?";
+        try {
+            PreparedStatement ps = con.getConnection().prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 
     public void addProduct(String productName, String productPrice, String productQuantity, String productImg, String productMaterial, String productType) {
         String sql = "INSERT INTO [dbo].[Product]\n"
@@ -55,8 +70,8 @@ public class ProductDAO {
                 + ",[productPrice]\n"
                 + ",[productQuantity]\n"
                 + ",[productImg]\n"
-                + ",[productMaterial]\n"
-                + ",[productType])\n"
+                + ",[productCategory]\n"
+                + ",[productDis])\n"
                 + "VALUES\n"
                 + "(?, ?, ?, ?, ?, ?)";
 
@@ -89,8 +104,8 @@ public class ProductDAO {
                 + "      [productPrice] = ?,\n"
                 + "      [productQuantity] = ?,\n"
                 + "      [productImg] = ?,\n"
-                + "      [productMaterial] = ?,\n"
-                + "      [productType] = ?\n"
+                + "      [productCategory] = ?,\n"
+                + "      [productDis] = ?\n"
                 + " WHERE productID = ?";
 
         try {
@@ -132,8 +147,8 @@ public class ProductDAO {
                 double productPrice = resultSet.getDouble("productPrice");
                 int productQuantity = resultSet.getInt("productQuantity");
                 String productImg = resultSet.getString("productImg");
-                String productMaterial = resultSet.getString("productMaterial");
-                String productType = resultSet.getString("productType");
+                String productMaterial = resultSet.getString("productCategory");
+                String productType = resultSet.getString("productDis");
 
                 product = new Product(productID, productName, productPrice, productQuantity, productImg, productMaterial, productType);
             }
@@ -164,15 +179,57 @@ public class ProductDAO {
         }
     }
 
+    public ArrayList<Product> getProduct(String search, int index, String sort) {
+        String sortby = "";
+        switch (sort) {
+            case "1":
+                sortby = "order by p.productname asc";
+                break;
+            case "2":
+                sortby = "order by p.productprice asc";
+                break;
+            case "3":
+                sortby = "order by p.productprice desc";
+                break;
+            default:
+                sortby = "order by p.productname desc";
+                break;
+
+        }
+        ArrayList<Product> list = new ArrayList<>();
+        String sql = "  select * from [Product] p where p.productname like ?  "
+                + sortby
+                + "  OFFSET ? ROWS FETCH NEXT 8  ROWS ONLY";
+        try {
+            PreparedStatement ps = con.getConnection().prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ps.setInt(2, (index - 1) * 8);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                int productID = resultSet.getInt("productID");
+                String productName = resultSet.getString("productName");
+                double productPrice = resultSet.getDouble("productPrice");
+                int productQuantity = resultSet.getInt("productQuantity");
+                String productImg = resultSet.getString("productImg");
+                String productMaterial = resultSet.getString("productCategory");
+                String productType = resultSet.getString("productDis");
+                Product product = new Product(productID, productName, productPrice, productQuantity, productImg, productMaterial, productType);
+                list.add(product);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         ProductDAO d = new ProductDAO();
-//        List<Product> products = new ArrayList<>();
-//        products = d.getAllProducts();
-//        for (Product p : products) {
-//            System.out.println(p.toString());
-//        }
-//        System.out.println(d.getAllProducts().get(1).toString());
-        System.out.println(d.getProductById(1).toString());
+        List<Product> products = new ArrayList<>();
+        products = d.getAllProducts();
+        for (Product p : products) {
+            System.out.println(p.toString());
+        }
+        //System.out.println(d.getAllProducts().get(1).toString());
+       // System.out.println(d.getProductById(1).toString());
 //        String productName = "test";
 //            String productPrice =  "1";
 //            String productQuantity =  "1";

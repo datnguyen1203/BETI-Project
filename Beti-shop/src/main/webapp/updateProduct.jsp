@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Update Product</title>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -278,7 +278,7 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="updateproduct" method="post">
+                        <form action="updateproduct" method="post" enctype="multipart/form-data">
                             <div class="modal-header">						
                                 <h4 class="modal-title">Update Product</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -294,7 +294,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Img</label>
-                                    <input value="${data.productImg}" name="img" type="text" class="form-control" required>
+                                    <img src="${data.productImg}"/>
+                                    <input name="img" value="${data.productImg}"type="file" class="form-control" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
@@ -306,11 +307,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Catagory</label>
-                                    <textarea name="type" class="form-control" required>${data.productType}</textarea>
+                                    <textarea name="category" class="form-control" required>${data.productCategory}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Marterial</label>
-                                    <textarea name="marterial" class="form-control" required>${data.productMarterial}</textarea>
+                                    <label>Description</label>
+                                    <textarea name="description" class="form-control" required>${data.productDis}</textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -320,6 +321,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </body>
 </html>

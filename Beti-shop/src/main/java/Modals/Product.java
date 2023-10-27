@@ -9,15 +9,14 @@ package Modals;
  * @author uchih
  */
 public class Product {
+
     private int productID;
     private String productName;
     private double productPrice;
     private int productQuantity;
     private String productImg;
-        private String productCategory;
-
-    private String productMarterial;
-    private String productType;
+    private String productCategory;
+    private String productDis;
 
     public Product(int productID, String productName, double productPrice, int productQuantity, String productImg, String productCategory) {
         this.productID = productID;
@@ -37,8 +36,8 @@ public class Product {
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.productImg = productImg;
-        this.productMarterial = productMarterial;
-        this.productType = productType;
+        this.productCategory = productMarterial;
+        this.productDis = productType;
     }
 
     public Product(int productID, String productName, double productPrice, int productQuantity, String productImg, String productCategory, String productMarterial, String productType) {
@@ -48,28 +47,19 @@ public class Product {
         this.productQuantity = productQuantity;
         this.productImg = productImg;
         this.productCategory = productCategory;
-        this.productMarterial = productMarterial;
-        this.productType = productType;
-    }
-    
-
-    public String getProductMarterial() {
-        return productMarterial;
+        this.productDis = productType;
     }
 
-    public void setProductMarterial(String productMarterial) {
-        this.productMarterial = productMarterial;
+    public String getProductDis() {
+        return productDis;
     }
 
-    public String getProductType() {
-        return productType;
-    }
-
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public void setProductDis(String productDis) {
+        this.productDis = productDis;
     }
 
     
+
     public int getProductID() {
         return productID;
     }
@@ -120,6 +110,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "productID=" + productID + ", productName=" + productName + ", productPrice=" + productPrice + ", productQuantity=" + productQuantity + ", productImg=" + productImg + ", productCategory=" + productCategory + ", productMarterial=" + productMarterial + ", productType=" + productType + '}';
+        return "Product{" + "productID=" + productID + ", productName=" + productName + ", productPrice=" + productPrice + ", productQuantity=" + productQuantity + ", productImg=" + productImg + ", productCategory=" + productCategory + ", productDis=" + productDis + '}';
     }
+
+    
 }
