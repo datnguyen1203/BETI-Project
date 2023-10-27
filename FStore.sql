@@ -45,6 +45,7 @@ create table Cart(
 cartID int primary key IDENTITY(1,1) not null,
 userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null,
+totalPrice money,
 size nvarchar(3),
 quantity int
 );
@@ -54,7 +55,6 @@ orderID int primary key IDENTITY(1,1) not null,
 productID int foreign key references [Product](productID) not null,
 userID int foreign key references [User](userID) not null,
 cartID int foreign key references [Cart](cartID) not null,
-totalPrice money,
 purchaseDate date
 );
 
@@ -63,8 +63,16 @@ userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null
 );
 
+
+
 INSERT INTO [FStore].[dbo].[User] ( userEmail, userPassword, userName, userDayOfBirth, userPhone, userAddress)
-VALUES ( 'user2@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2003-03-12', '0312697274', 'An Giang');
+VALUES ( 'user@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2003-03-12', '0312697274', 'An Giang');
+
+INSERT INTO [FStore].[dbo].[Staff] ( staffEmail, staffPassword, staffName, staffDayOfBirth, staffPhone, staffAddress)
+VALUES ( 'staff@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2003-03-12', '0312697274', 'An Giang');
+
+INSERT INTO [FStore].[dbo].[Admin] ( adminEmail, adminPassword, adminName, adminDayOfBirth, adminPhone, adminAddress)
+VALUES ( 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2003-03-12', '0312697274', 'An Giang');
 
 
 
