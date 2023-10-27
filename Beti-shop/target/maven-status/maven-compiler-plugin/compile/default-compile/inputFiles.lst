@@ -17,6 +17,7 @@ D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\AdminDAO.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\DeleteProduct.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\AdminController.java
+D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\Logout.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\Modals\Admin.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\Controller\ProductControl.java
 D:\BETI\BETI-Project\Beti-shop\src\main\java\DAOs\orderDAO.java
