@@ -7,6 +7,11 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
+import DAOs.UserDAO;
+import Modals.User;
+import Ultis.Common;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -53,8 +58,19 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       String path = request.getRequestURI();
-        if (path.endsWith("/Beti-shop/Admin")) {
+        String path = request.getRequestURI();
+        if (path.endsWith("/Beti-shop/Admin/listuser")) {
+            String report = request.getParameter("report");
+            int pagenum = request.getParameter("pagenum") != null ? Integer.parseInt(request.getParameter("pagenum")) : 1;
+            UserDAO userDAO = new UserDAO();
+            List<User> list = userDAO.getAllUsers();
+            int totalPage = list.size() % 5 == 0 ? (list.size() / 5) : (list.size() / 5 + 1);
+            List<User> pagingList = Common.pagination(list,5,pagenum);
+            request.setAttribute("list",pagingList);
+            request.setAttribute("totalpage",totalPage);
+            request.setAttribute("pagenum",pagenum);
+            request.setAttribute("report",report);
+            request.setAttribute("mana",0);
             request.getRequestDispatcher("/AdminManager.jsp").forward(request, response);
         }
     } 
