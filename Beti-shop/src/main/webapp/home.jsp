@@ -152,7 +152,7 @@
                 }
             }
         %>
-        <!--Navbar-->
+        <!--Header-->
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
@@ -245,17 +245,7 @@
         </header>
         <!--Body home page-->
         <div class="bg-body-secondary">
-            <div class="banner">
-                <div class="container justify-content-center">
-                    <div class="category row p-3 justify-content-between">
-                        <a href="#" class="col-2">Áo</a>
-                        <a href="#" class="col-2">Quần</a>
-                        <a href="#" class="col-2">Phụ kiện</a>
-                        <a href="#" class="col-2">Thương hiệu</a>
-                        <a href="#" class="col-2">Outlet</a>
-                    </div>
-                </div>
-            </div>
+
             <div id="carouselExampleDark" class="carousel carousel-dark slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
@@ -317,8 +307,8 @@
                             ResultSet rs = dao.getAllProduct();
                             while (rs.next()) {
                         %>
-                        <div id="product" role="button" class="m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
-                             data-bs-target="#productDetail">
+                        <a id="product" href="/Beti-shop/Product/Detail/<%= rs.getString("productID")%>" class="m-5 col-sm-12 col-md-4 col-lg-2" style="text-decoration: none"
+                            >
                             <div class="card" style="width: 13rem;">
                                 <img src="<%= rs.getString("productImg")%>" class="card-img " alt="product1">
                                 <div class="card-body">
@@ -329,93 +319,14 @@
                                         vnđ</p>
                                 </div>
                             </div>
-                        </div>
-                        <!--Modal Product Detail-->
-                        <form action="Cart" method="post">
-                            <div class="modal fade" id="productDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xxl-down">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Chi tiết sản phẩm</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <%
-                                                        if (session.getAttribute("acc") != null) {
+                        </a>
 
-                                                    %>
-                                                    <img class="col-md-2 col-sm-3 rounded-5" id="detailproductimg"
-                                                         src="img/product/product.jpg" alt="detailproductimg">
-                                                    <div class="col-md-4 col-sm-3">
-                                                        <section>
-                                                            <h1 class="fs-2 pt-1 pb-2"><%= rs.getString("productName")%></h1>
-                                                            <input type="hidden" name="proID" value="<%= rs.getString("productID")%>">
-                                                            <input type="hidden" name="userID" value ="<%=session.getAttribute("id")%>">
-                                                        </section>
-                                                        <section>
-                                                            <label class="fs-5 pb-1 fw-bold">Giá tiền:</label>
-                                                            <p class="fs-4" style="color: rgb(216, 97, 50);">
-                                                                <%=  String.format("%,.0f", rs.getDouble("productPrice"))%> vnđ
-                                                            </p>
-                                                        </section>
-                                                        <section class="pb-2">
-
-                                                            <label class="fs-5 pb-2 fw-bold">Size: </label>
-                                                            <br>
-                                                            <input type="radio" class="btn-check" name="options-base" id="option1"
-                                                                   autocomplete="off" checked value="S">
-                                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option1">S</label>
-                                                            <input type="radio" class="btn-check" name="options-base" id="option2"
-                                                                   autocomplete="off" value="M">
-                                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option2">M</label>
-                                                            <input type="radio" class="btn-check" name="options-base" id="option3"
-                                                                   autocomplete="off" value="L">
-                                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option3">L</label>
-                                                            <input type="radio" class="btn-check" name="options-base" id="option4"
-                                                                   autocomplete="off" value="XL">
-                                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option4">XL</label>
-
-                                                        </section>
-                                                        <section>
-                                                            <div class="p-2 quantity">
-                                                                <label class="fs-5 pb-2 me-2 fw-bold">Số lượng: </label>
-                                                                <input type="number" name="quantity" id="quantity" value="1" step="1" min="1"
-                                                                       class="no-spinners fs-4 text-center w-25 rounded-3">
-                                                            </div>
-                                                        </section>
-                                                        <section>
-                                                            <div class="p-1">
-                                                                <label class="fs-5 pb-2 fw-bold">Mô tả:</label>
-                                                                <br>
-                                                                <p>
-                                                                    <textarea class="form-control" style="width: 150%;" cols="30" readonly
-                                                                              rows="4"><%= rs.getString("productDis")%></textarea>
-                                                                </p>
-                                                            </div>
-                                                            <div class="">
-                                                                <button type="submit" name="addNew" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ
-                                                                    hàng</button>
-                                                                <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
-                                                            </div>
-                                                        </section>
-                                                    </div>
-                                                    <%
-                                                        }
-                                                    %>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <%
-                            }
-                        %>
+                    <%
+                        }
+                    %>
                     </div>
+                   
+
                 </div>
 
                 <div class="shop-page-controller">
@@ -542,14 +453,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script src="validate.js"></script>
         <script src="quantity.js"></script>
-        <%
-            String alertMess = (String) request.getAttribute("alertMess");
+        <%            String alertMess = (String) request.getAttribute("alertMess");
             if (alertMess != null && !alertMess.isEmpty()) {
         %>
         <script>
-                            alert("<%= alertMess%>");
+            alert("<%= alertMess%>");
         </script>
         <%
             }

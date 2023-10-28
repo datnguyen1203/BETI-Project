@@ -58,11 +58,11 @@ public class UpdateProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
        // processRequest(request, response);
-       String id = request.getParameter("id");
-       ProductDAO dao = new ProductDAO();
-        Product p = dao.getProductById(Integer.parseInt(id));
-       request.setAttribute("data", p);
-       request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
+//       String id = request.getParameter("id");
+//       ProductDAO dao = new ProductDAO();
+//        Product p = dao.getProductById(Integer.parseInt(id));
+//       request.setAttribute("data", p);
+//       request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
        
     } 
 
