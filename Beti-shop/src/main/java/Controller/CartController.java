@@ -5,12 +5,15 @@
 
 package Controller;
 
+import DAOs.CartDAO;
+import Modals.Cart;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -69,7 +72,24 @@ public class CartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        if(request.getParameter("addNew")!=null){
+            int userID = Integer.parseInt(request.getParameter("userID"));
+            int proID = Integer.parseInt(request.getParameter("proID"));
+            String size = request.getParameter("options-base");
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            
+            Cart c = new Cart(userID, proID, size, quantity);
+            CartDAO dao = new CartDAO();
+            int kq = dao.AddNew(c);
+            HttpSession session = request.getSession();
+            if (kq != 0) {
+                session.setAttribute("alrtMess", "Thêm thành công");
+                response.sendRedirect("/Beti-shop/");
+            } else {
+                session.setAttribute("alrtMess", "Có lỗi xảy ra vui lòng thử lại");
+                response.sendRedirect("/Beti-shop/");
+            }
+        }
     }
 
     /** 

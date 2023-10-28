@@ -4,7 +4,6 @@
  */
 package DAOs;
 
-import DBContext.DBContext;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,7 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Modals.Product;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,13 +22,33 @@ import java.sql.PreparedStatement;
  */
 public class ProductDAO {
 
-    private DBContext con = new DBContext();
+    
+    private Connection con;
+    private PreparedStatement ps;
+    private ResultSet rs;
+
+    public ProductDAO() {
+        con = DBContext.DBContext.getConnection();
+    }
+
+    public ResultSet getAllProduct() {
+        String sql = "select*from Product";
+
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
 
         try (
-                 Statement statement = con.getConnection().createStatement()) {
+                 Statement statement = con.createStatement()) {
             String query = "SELECT * FROM Product";
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -61,7 +83,7 @@ public class ProductDAO {
                 + "(?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement = con.getConnection().prepareStatement(sql);
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             // Thiết lập các giá trị thay thế trong câu SQL
             preparedStatement.setString(1, productName);
@@ -94,7 +116,7 @@ public class ProductDAO {
                 + " WHERE productID = ?";
 
         try {
-            PreparedStatement preparedStatement = con.getConnection().prepareStatement(sql);
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, productName);
             preparedStatement.setString(2, productPrice);
@@ -121,7 +143,7 @@ public class ProductDAO {
 
         try {
             String query = "SELECT * FROM Product WHERE productId = ?";
-            PreparedStatement preparedStatement = con.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -148,7 +170,7 @@ public class ProductDAO {
         String sql = "DELETE FROM [dbo].[Product] WHERE productID = ?";
 
         try {
-            PreparedStatement preparedStatement = con.getConnection().prepareStatement(sql);
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, productId);
 
