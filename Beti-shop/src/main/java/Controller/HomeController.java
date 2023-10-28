@@ -61,10 +61,13 @@ public class HomeController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        String path = request.getRequestURI();
+        if (path.endsWith("/Beti-shop/")){
+            request.getRequestDispatcher("/home.jsp").forward(request, response);
+        }
+    } 
 
     /**
      * Handles the HTTP <code>POST</code> method.
