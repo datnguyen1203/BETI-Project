@@ -59,7 +59,7 @@ public class AdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String path = request.getRequestURI();
-        if (path.endsWith("/Beti-shop/Admin")) {
+        if (path.endsWith("/Beti-shop/Admin/listuser")) {
             String report = request.getParameter("report");
             int pagenum = request.getParameter("pagenum") != null ? Integer.parseInt(request.getParameter("pagenum")) : 1;
             UserDAO userDAO = new UserDAO();
@@ -71,7 +71,7 @@ public class AdminController extends HttpServlet {
             request.setAttribute("pagenum",pagenum);
             request.setAttribute("report",report);
             request.setAttribute("mana",0);
-            request.getRequestDispatcher("AdminManager.jsp").forward(request, response);
+            request.getRequestDispatcher("/AdminManager.jsp").forward(request, response);
         }
     } 
 

@@ -113,7 +113,7 @@ public class LoginController extends HttpServlet {
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/");
                         break;
-                      } else {
+                    } else {
                         response.sendRedirect("/Beti-shop/Login");
                     }
                 case "staff":
@@ -135,13 +135,13 @@ public class LoginController extends HttpServlet {
                         response.addCookie(c);
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/manager");
-                    break;
+                        break;
                     } else {
                         response.sendRedirect("/Beti-shop/Login");
                     }
                 case "admin":
-                     Admin admin = new Admin(email, pass);
-                   AdminDAO lgdao3 = new AdminDAO();
+                    Admin admin = new Admin(email, pass);
+                    AdminDAO lgdao3 = new AdminDAO();
                     Admin ac3 = lgdao3.GetAdmin(email);
                     boolean ketqua3 = false;
                     try {
@@ -157,12 +157,12 @@ public class LoginController extends HttpServlet {
                         cfull.setMaxAge(60 * 60);
                         response.addCookie(c);
                         response.addCookie(cfull);
-                        response.sendRedirect("/Beti-shop/Admin");
-                    break;
+                        response.sendRedirect("/Beti-shop/Admin/listuser");
+                        return;
                     } else {
                         response.sendRedirect("/Beti-shop/Login");
                     }
-
+                    break;
                 default:
                     response.sendRedirect("/Beti-shop/Login");
                     break;

@@ -22,10 +22,16 @@ public class DBContext {
         try {
 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://"
-                    + "DESKTOP-0H5549E\\SQLEXPRESS:1433;"
-                    + "databaseName=FStore;"
-                    +"user=sa;password=admin123;encrypt=true;trustServerCertificate=true; ");
+            conn = DriverManager.getConnection("jdbc:sqlserver://HOANGVIET:1433;"
+                            + "databaseName=FStore;"
+                            + "user=sa;password=123456;"
+                            + "encrypt=true;"
+                            + "trustServerCertificate=true;");
+            if (conn != null) {
+                System.out.println("ket noi thanh cong.");
+            } else {
+                System.out.println("Failed .");
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

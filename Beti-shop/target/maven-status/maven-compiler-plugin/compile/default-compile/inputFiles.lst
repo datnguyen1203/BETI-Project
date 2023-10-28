@@ -1,9 +1,11 @@
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\ResetpasswordServlet.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Ultis\Common.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\DeleteUserAdminController.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\Staff.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AddStaffServlet.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\Order.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\User.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Ultis\Helper.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\DeleteStaffAdminServlet.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AddUserServlet.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DBContext\DBContext.java
@@ -24,6 +26,7 @@ D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Co
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\StaffController.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Modals\cart.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\AddProduct.java
+D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\ChangePasswordServlet.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\CartController.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\DAOs\StaffDAO.java
 D:\SWP_project\BETI-Project\BETI-Project\BETI-Project\Beti-shop\src\main\java\Controller\ManagerControl.java

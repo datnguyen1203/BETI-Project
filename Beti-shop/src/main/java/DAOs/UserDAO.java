@@ -46,19 +46,21 @@ public class UserDAO {
     
     
     public User GetUser(String email) {
-        User user = new User();
+        
         try {
             ps = conn.prepareStatement("select * from [User] where userEmail=?");
             ps.setString(1, email);
             rs = ps.executeQuery();
             if (rs.next()) {
+                User user = new User();
                 user = new User(rs.getInt("userID"), rs.getString("userEmail"), rs.getString("userPassword"), rs.getString("userName"),
                         rs.getDate("userDayOfBirth"), rs.getString("userPhone"), rs.getString("userAddress"));
+                return user;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return user;
+        return null;
     }
 
     public List<User> getAllUsers() {
@@ -143,6 +145,17 @@ public class UserDAO {
             ps.setDate(4,date);
             ps.setString(5,phone);
             ps.setString(6,address);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void updatePassword(String email,String password){
+        try {
+            ps = conn.prepareStatement("update [User] set userPassword = ? where userEmail = ? ");
+            ps.setString(1,password);
+            ps.setString(2,email);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);

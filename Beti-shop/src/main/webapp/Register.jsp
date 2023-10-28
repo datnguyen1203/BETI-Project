@@ -71,7 +71,7 @@
                         <p id="emailerror"></p>
                     </div>
                     <div class="text-center m-2">
-                        <a class="link-dark" href="#" style="text-decoration: underline">Forgot password</a> <br>
+                        <a class="link-dark" href="${pageContext.request.contextPath}/resetpass" style="text-decoration: underline">Forgot password</a> <br>
                     </div>
                     <div class="text-center">
                         <button type="submit" onclick=""
