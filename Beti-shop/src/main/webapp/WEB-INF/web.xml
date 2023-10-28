@@ -30,11 +30,11 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ProductController</servlet-name>
-        <servlet-class>Controller.ProductController</servlet-class>
+        <servlet-class>Controller.ProductController<servlet-name>ProductController</servlet-name></servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateProduct</servlet-name>
-        <servlet-class>Controller.UpdateProduct</servlet-class>
+        <servlet-class>Controller.UpdateProduct<servlet-name>UpdateProduct</servlet-name></servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
