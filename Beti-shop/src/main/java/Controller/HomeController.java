@@ -8,6 +8,7 @@ package Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -57,6 +58,7 @@ public class HomeController extends HttpServlet {
         if (path.endsWith("/Beti-shop/")){
             request.getRequestDispatcher("/home.jsp").forward(request, response);
         }
+        
     } 
 
     /** 

@@ -17,6 +17,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.net.URLEncoder;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -76,7 +77,6 @@ public class LoginController extends HttpServlet {
             }
         }
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -106,6 +106,8 @@ public class LoginController extends HttpServlet {
                     }
 
                     if (ketqua1) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("acc", ac1);
                         Cookie c = new Cookie("user", String.valueOf(ac1.getUserID()));
                         Cookie cfull = new Cookie("nameUser", URLEncoder.encode(ac1.getUserName(), "UTF-8"));
                         c.setMaxAge(60 * 60);
@@ -113,7 +115,6 @@ public class LoginController extends HttpServlet {
                         response.addCookie(c);
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/");
-
                     } else {
                         response.sendRedirect("/Beti-shop/Login");
                     }
@@ -130,6 +131,8 @@ public class LoginController extends HttpServlet {
                     }
 
                     if (ketqua2) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("acc", ac2);
                         Cookie c = new Cookie("staff", String.valueOf(ac2.getStaffID()));
                         Cookie cfull = new Cookie("nameStaff", URLEncoder.encode(ac2.getStaffName(), "UTF-8"));
                         c.setMaxAge(60 * 60);
@@ -153,6 +156,8 @@ public class LoginController extends HttpServlet {
                     }
 
                     if (ketqua3) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("acc", ac3);
                         Cookie c = new Cookie("admin", String.valueOf(ac3.getAdminID()));
                         Cookie cfull = new Cookie("nameAdmin", URLEncoder.encode(ac3.getAdminName(), "UTF-8"));
                         c.setMaxAge(60 * 60);
@@ -209,6 +214,8 @@ public class LoginController extends HttpServlet {
             }
                     
         }
+        
+        
     }
 
     /**
