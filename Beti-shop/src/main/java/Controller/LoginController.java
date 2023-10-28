@@ -116,7 +116,8 @@ public class LoginController extends HttpServlet {
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/");
                     } else {
-                        response.sendRedirect("/Beti-shop/Login");
+                        request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
+                        request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
                     break;
                 case "staff":
@@ -141,7 +142,8 @@ public class LoginController extends HttpServlet {
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/manager");
                     } else {
-                        response.sendRedirect("/Beti-shop/Login");
+                        request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
+                        request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
                     break;
                 case "admin":
@@ -167,7 +169,8 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect("/Beti-shop/Admin");
 
                     } else {
-                        response.sendRedirect("/Beti-shop/Login");
+                        request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
+                        request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
                     break;
                 default:
@@ -209,13 +212,9 @@ public class LoginController extends HttpServlet {
                     alertMess = "Lỗi đăng ký, vui lòng thử lại!";
                     request.setAttribute("alertMess", alertMess);
                     request.getRequestDispatcher("Register.jsp").forward(request, response);
-                }
-                
-            }
-                    
-        }
-        
-        
+                } 
+            }                    
+        }        
     }
 
     /**

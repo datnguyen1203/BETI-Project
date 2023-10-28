@@ -68,8 +68,40 @@ function checkEmailRegister() {
     }
 }
 
+function checkEmailEdit() {
+    var email = document.getElementById('emailedit').value;
+    if (email == "") {
+//        document.getElementById('emailerror1').innerHTML = "Email cannot be empty";
+//        document.getElementById('emailerror1').style.color = "red";
+        return false;
+
+    } else {
+        if (!emailValidation1.test(email) && !emailValidation2.test(email)) {
+//            document.getElementById('emailerror1').innerHTML = "Email is invalid";
+//            document.getElementById('emailerror1').style.color = "red";
+            return false;
+        } else {
+//            document.getElementById('emailerror1').innerHTML = "";
+            return true;
+        }
+    }
+}
+
 function checkUsername() {
     var name = document.getElementById('username').value.trim();
+
+    if (name == "") {
+//        document.getElementById('usernameerror').innerHTML = "Username cannot be empty";
+//        document.getElementById('usernameerror').style.color = "red";
+        return false;
+    } else {
+//        document.getElementById('usernameerror').innerHTML = "";
+        return true;
+    }
+}
+
+function checkUsernameEdit() {
+    var name = document.getElementById('usernameedit').value.trim();
 
     if (name == "") {
 //        document.getElementById('usernameerror').innerHTML = "Username cannot be empty";
@@ -134,6 +166,20 @@ function checkBirthday() {
     }
 }
 
+function checkBirthdayEdit() {
+    var birthday = document.getElementById('birthdayedit').value;
+
+    if (birthday === "") {
+//        document.getElementById('birtherror').innerHTML = "Birthday cannot be empty";
+//        document.getElementById('birtherror').style.color = "red";
+        return false;
+
+    } else {
+//        document.getElementById('birtherror').innerHTML = "";
+        return true;
+    }
+}
+
 function checkPhone() {
     var phone = document.getElementById('phone').value;
 
@@ -148,8 +194,35 @@ function checkPhone() {
 
 }
 
+function checkPhoneEdit() {
+    var phone = document.getElementById('phoneedit').value;
+
+    if (!numberValidation.test(phone)) {
+//        document.getElementById('phoneerror').innerHTML = "Phone is invalid";
+//        document.getElementById('phoneerror').style.color = "red";
+        return false;
+    } else {
+//        document.getElementById('phoneerror').innerHTML = "";
+        return true;
+    }
+
+}
+
 function checkAddress() {
     var address = document.getElementById('address').value;
+    var address = address.replace(/\s/g, '');
+    if (address === "") {
+//        document.getElementById('addresserror').innerHTML = " You have to provide your address";
+//        document.getElementById('addresserror').style.color = "red";
+        return false;
+    } else {
+//        document.getElementById('addresserror').innerHTML = "";
+        return true;
+    }
+}
+
+function checkAddressEdit() {
+    var address = document.getElementById('addressedit').value;
     var address = address.replace(/\s/g, '');
     if (address === "") {
 //        document.getElementById('addresserror').innerHTML = " You have to provide your address";
@@ -204,7 +277,7 @@ function checkRegis() {
         check = false;
         emailerror.innerHTML = "Email is invalid";
         emailerror.style.color = "red";
-    }else {
+    } else {
         emailerror.innerHTML = "";
     }
 
@@ -215,7 +288,7 @@ function checkRegis() {
     } else {
         nameerror.innerHTML = "";
     }
-    
+
     if (!checkPasswordRegister()) {
         check = false;
         passerror.innerHTML = "Password must be between 6 and 20 characters";
@@ -259,5 +332,131 @@ function checkRegis() {
     }
 
 }
+
+//validate edit form
+function checkEdit() {
+    let emailerror = document.getElementById('emailediterror');
+    let nameerror = document.getElementById('usernameediterror');
+    let birtherror = document.getElementById('birthediterror');
+    let phoneerror = document.getElementById('phoneediterror');
+    let addresserror = document.getElementById('addressediterror');
+    let check = true;
+
+    if (!checkEmailEdit()) {
+        check = false;
+        emailerror.innerHTML = "Email is invalid";
+        emailerror.style.color = "red";
+    } else {
+        emailerror.innerHTML = "";
+    }
+
+    if (!checkUsernameEdit()) {
+        check = false;
+        nameerror.innerHTML = "Username cannot be empty";
+        nameerror.style.color = "red";
+    } else {
+        nameerror.innerHTML = "";
+    }
+
+    if (!checkBirthdayEdit()) {
+        check = false;
+        birtherror.innerHTML = "Birthday cannot be empty";
+        birtherror.style.color = "red";
+    } else {
+        birtherror.innerHTML = "";
+    }
+    if (!checkPhoneEdit()) {
+        check = false;
+        phoneerror.innerHTML = "Phone is invalid";
+        phoneerror.style.color = "red";
+    } else {
+        phoneerror.innerHTML = "";
+    }
+    if (!checkAddressEdit()) {
+        check = false;
+        addresserror.innerHTML = "You have to provide your address";
+        addresserror.style.color = "red";
+    } else {
+        addresserror.innerHTML = "";
+    }
+
+    if (!check) {
+        event.preventDefault();
+    } else {
+        window.location.href = "User";
+    }
+}
+
+function checkoldpass() {
+    var oldpass1 = document.getElementById('oldpass').value;
+    var oldpass2 = document.getElementById('oldpasscheck').value;
+
+    if (oldpass1 === oldpass2) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkNewpass() {
+    var newpass = document.getElementById('newpass').value;
+
+    if (newpass.length < 6 || newpass.length > 20 || newpass == "") {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function checkReNewpass() {
+    var newpass1 = document.getElementById('newpass').value;
+    var newpass2 = document.getElementById('renewpass').value;
+    if (newpass1 !== newpass2) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+//validate change password
+function checkEdit() {
+    let oldpasserror = document.getElementById('oldpasserror');
+    let newpasserror = document.getElementById('newpasserror');
+    let renewpasserror = document.getElementById('renewpasserror');
+    let check = true;
+
+    if (!checkoldpass()) {
+        check = false;
+        oldpasserror.innerHTML = "Oldpass is not correct";
+        oldpasserror.style.color = "red";
+    } else {
+        oldpasserror.innerHTML = "";
+    }
+    
+    if(!checkNewpass()){
+        check = false;
+        newpasserror.innerHTML = "Password must be between 6 and 20 characters";
+        newpasserror.style.color = "red";
+    } else {
+        newpasserror.innerHTML = "";
+    }
+    
+    if(!checkReNewpass()){
+        check = false;
+        renewpasserror.innerHTML = "Password does not match";
+        renewpasserror.style.color = "red";
+    } else {
+        renewpasserror.innerHTML = "";
+    }
+   
+
+    if (!check) {
+        event.preventDefault();
+    } else {
+        window.location.href = "User";
+    }
+}
+
 
 
