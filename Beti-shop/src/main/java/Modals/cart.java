@@ -8,34 +8,39 @@ package Modals;
  *
  * @author admin
  */
-public class cart {
-        private int magiohang;
+public class Cart {
+
+    private int magiohang;
     private int makhachhang;
     private int masanpham;
-    private String tensanpham;
-    private int giatien;
+    private String kichthuocsanpham;
     private int soluong;
-    private String hinhanh;
 
-    public cart() {
+    public Cart() {
     }
 
-    public cart( int makhachhang, int masanpham, String tensanpham, int giatien, int soluong, String hinhanh) {
-        this.makhachhang = makhachhang;
-        this.masanpham = masanpham;
-        this.tensanpham = tensanpham;
-        this.giatien = giatien;
-        this.soluong = soluong;
-        this.hinhanh = hinhanh;
-    }
-    public cart(int magiohang, int makhachhang, int masanpham, String tensanpham, int giatien, int soluong, String hinhanh) {
+    public Cart(int magiohang, int makhachhang, int masanpham, String kichthuocsanpham, int soluong) {
         this.magiohang = magiohang;
         this.makhachhang = makhachhang;
         this.masanpham = masanpham;
-        this.tensanpham = tensanpham;
-        this.giatien = giatien;
+        this.kichthuocsanpham = kichthuocsanpham;
         this.soluong = soluong;
-        this.hinhanh = hinhanh;
+    }
+
+    public Cart(int makhachhang, int masanpham, String kichthuocsanpham, int soluong) {
+        this.magiohang = magiohang;
+        this.makhachhang = makhachhang;
+        this.masanpham = masanpham;
+        this.kichthuocsanpham = kichthuocsanpham;
+        this.soluong = soluong;
+    }
+
+    public int getMagiohang() {
+        return magiohang;
+    }
+
+    public void setMagiohang(int magiohang) {
+        this.magiohang = magiohang;
     }
 
     public int getMakhachhang() {
@@ -54,20 +59,12 @@ public class cart {
         this.masanpham = masanpham;
     }
 
-    public String getTensanpham() {
-        return tensanpham;
+    public String getKichthuocsanpham() {
+        return kichthuocsanpham;
     }
 
-    public void setTensanpham(String tensanpham) {
-        this.tensanpham = tensanpham;
-    }
-
-    public int getGiatien() {
-        return giatien;
-    }
-
-    public void setGiatien(int giatien) {
-        this.giatien = giatien;
+    public void setKichthuocsanpham(String kichthuocsanpham) {
+        this.kichthuocsanpham = kichthuocsanpham;
     }
 
     public int getSoluong() {
@@ -77,26 +74,7 @@ public class cart {
     public void setSoluong(int soluong) {
         this.soluong = soluong;
     }
-
-    public int getMagiohang() {
-        return magiohang;
-    }
-
-    public void setMagiohang(int magiohang) {
-        this.magiohang = magiohang;
-    }
-
-    public String getHinhanh() {
-        return hinhanh;
-    }
-
-    public void setHinhanh(String hinhanh) {
-        this.hinhanh = hinhanh;
-    }
     
     
     
-                  
-   
 }
-

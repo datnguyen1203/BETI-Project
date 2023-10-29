@@ -4,6 +4,7 @@
     Author     : Dell
 --%>
 
+<%@page import="Modals.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,25 @@
         <title>Thông tin cá nhân</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css"/>
+
+        <script src="/Beti-shop/validate.js"></script>
         <style>
+            #linkfooter{
+                text-decoration: none;
+                color: white;
+            }
+
+            .card-text > li{
+                padding-top: 5px;
+            }
+
+            #payment > li{
+                list-style-type: none;
+            }
+
+            #logoimg{
+                border-radius: 10px;
+            }
 
             #editbtn {
                 background-color: rgb(49, 49, 49);
@@ -42,11 +60,15 @@
     </head>
 
     <body>
+        <%
+            User u = (User) session.getAttribute("thongtinnguoidung");
+
+        %>
         <!--Navbar-->
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop">F-Store</a>
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop/">F-Store</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +107,7 @@
                             </li>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
-                                <a href="/Beti-shop/User" class="nav-link
+                                <a href="#" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
@@ -97,7 +119,7 @@
                             </li>
                             <!--Logout-->
                             <li class="nav-item col-sm-2">
-                                <a href="#" class="nav-link
+                                <a href="/Beti-shop/Logout" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"
@@ -115,136 +137,102 @@
         <!--Body home page-->
         <div class="container p-5">
             <div class="user-detail bg-white p-5">
-                <h3>Hồ sơ của tôi</h3>
-                <hr>
-                <div class="container-lg">
+                <div class="container">
                     <div class="row">
-                        <span class="fs-4 col-lg-3 col-sm-5 fw-bold">Username:</span>
-                        <p class="fs-4 col-lg-4">Nguyễn Phạm Tiến Đạt</p>
-                    </div>
-                    <div class="row">
-                        <span class="fs-4 col-lg-3 col-sm-5 fw-bold">Email:</span>
-                        <p class="fs-4 col-lg-4 ">nguyenphamtiendat1232003@gmail.com</p>
-                    </div>
-                    <div class="row">
-                        <span class="fs-4 col-lg-3 col-sm-5 fw-bold">Phone number:</span>
-                        <p class="fs-4 col-lg-4">0376817186</p>
-                    </div>
-                    <div class="row">
-                        <span class="fs-4 col-lg-3 col-sm-5 fw-bold">Day of birth:</span>
-                        <p class="fs-4 col-lg-4">12 - 03 - 2003</p>
-                    </div>
-                    <div class="row">
-                        <span class="fs-4 col-lg-3 col-sm-5 fw-bold">Address:</span>
-                        <p class="fs-4 col-lg-4">An Giang</p>
-                    </div>
-                    <div class="row pt-4">
-                        <div class="col-lg-3 col-sm-2">
-                        </div>
-                        <button data-bs-toggle="modal" data-bs-target="#editUser" id="editbtn"
-                                class="fs-4 rounded-5 col-lg-2 col-sm-3">Chỉnh sửa</button>
-                        <button data-bs-toggle="modal" data-bs-target="#changePass" id="changepassbtn"
-                                class="fs-4 rounded-5 col-lg-3 ms-2 col-sm-5">Đổi mật khẩu</button>
+                        <form action="User" method="post" id="editUser"  class="container p-3 bg-body-tertiary rounded-5">
+                            <h3 class="m-3">Hồ sơ của tôi</h3>
+                            <div class="m-3">
+                                <label class="form-label fw-bold">Email:</label>
+                                <input id="email" type="text" name="emailedit" class="form-control"
+                                       placeholder="Enter email" value="<%= u.getUserEmail()%>">
+                                <input type="hidden" name="id" value="<%= u.getUserID()%>">
+                                <p id="emailediterror"></p>
+                            </div>
+                            <div class="m-3">
+                                <label class="form-label fw-bold">Username:</label>
+                                <input id="username" type="text" name="usernameedit" class="form-control"
+                                       placeholder="Enter username" value="<%= u.getUserName()%>">
+                                <p id="usernameediterror"></p>
+                            </div>
+                            <div class="m-3">
+                                <label class="form-label fw-bold">Day of birth:</label>
+                                <input id="birthday" type="date" name="birthdayedit" class="form-control"
+                                       value="<%= u.getUserDOB()%>">
+                                <p id="birthediterror"></p>
+                            </div>
+                            <div class="m-3">
+                                <label class="form-label fw-bold">Phone number:</label>
+                                <input id="phone" type="text" name="phoneedit" class="form-control"
+                                       placeholder="Enter phone number" value="<%= u.getUserPhone()%>">
+                                <p id="phoneediterror"></p>
+                            </div>
+                            <div class="m-3">
+                                <label class="form-label fw-bold">Address:</label>
+                                <textarea id="address" name="addressedit"
+                                          class="form-control" placeholder="Enter address"><%= u.getUserAddress()%></textarea>
+                                <p id="addressediterror"></p>
+                            </div>
+                            <%
+                                if (request.getAttribute("thongBaoCapNhat") != null) {
+                            %>
+                            <p style="color: crimson; text-align: center; font-size: 1rem;"><%=request.getAttribute("thongBaoCapNhat")%></p>
+                            <%
+                                }
+                            %>
+                            <div class="m-3" align="center">
+                                <button type="submit" onclick="checkEdit()" class="fs-4 rounded-5 ps-3 pe-3" id="editbtn" name="editbtn" value="edit" >Chỉnh sửa</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+                <div class="pt-4" align="center">
+                    <button data-bs-toggle="modal" data-bs-target="#changePass" id="changepassbtn"
+                            class="fs-4 rounded-5 ps-3 pe-3">Đổi mật khẩu</button>
+                </div>
             </div>
-
-            <!--Modal edit-->
+        </div>
+        <!--modal change password-->
+        <div>
             <div class="container">
-                <div class="modal fade" id="editUser" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade" id="changePass" data-bs-backdrop="static" data-bs-keyboard="false"
                      aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xxl-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Chỉnh sửa thông tin</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Đổi mật khẩu</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <form method="" id="editUser" class="container p-3 bg-body-tertiary rounded-5">
+                                        <form method="post" action="User"  class="container p-3 bg-body-tertiary rounded-5">
+<!--                                            <div class="m-3">
+                                                <label class="form-label fw-bold">Old password:</label>
+                                                <input id="oldpass" type="password" name="oldpass" class="form-control"
+                                                       placeholder="Enter old password">
+                                                <input type="hidden" name="id" value="">
+                                                <input type="hi">
+                                                <p id="oldpasserror"></p>
+                                            </div>-->
                                             <div class="m-3">
-                                                <label class="form-label fw-bold">Email:</label>
-                                                <input id="email" type="text" name="email" class="form-control"
-                                                       placeholder="Enter email">
-                                                <p id="emailerror"></p>
+                                                <label class="form-label fw-bold">New password:</label>
+                                                <input id="newpass" type="password" name="newpass" class="form-control"
+                                                       placeholder="Enter new password">
+                                                <input type="hidden" name="id" value="<%= u.getUserID() %>">
+                                                <p id="newpasserror"></p>
                                             </div>
-                                            <div class="m-3">
-                                                <label class="form-label fw-bold">Username:</label>
-                                                <input id="username" type="text" name="username" class="form-control"
-                                                       placeholder="Enter username">
-                                                <p id="usernameerror"></p>
-                                            </div>
-                                            <div class="m-3">
-                                                <label class="form-label fw-bold">Day of birth:</label>
-                                                <input id="birthday" type="date" name="birthday" class="form-control"
-                                                       placeholder="Enter your email" value="12-03-2003">
-                                                <p id="birtherror"></p>
-                                            </div>
-                                            <div class="m-3">
-                                                <label class="form-label fw-bold">Phone number:</label>
-                                                <input id="phone" type="text" name="phone" class="form-control"
-                                                       placeholder="Enter phone number">
-                                                <p id="phoneerror"></p>
-                                            </div>
-                                            <div class="m-3">
-                                                <label class="form-label fw-bold">Address:</label>
-                                                <textarea id="address" name="address" cols="30" rows="5"
-                                                          class="form-control" placeholder="Enter address"></textarea>
-                                                <p id="addresserror"></p>
-                                            </div>
+<!--                                            <div class="m-3">
+                                                <label class="form-label fw-bold">Confirm new password:</label>
+                                                <input id="renewpass" type="password" name="renewpass" class="form-control"
+                                                       placeholder="Enter new password again">
+                                                <p id="renewpasserror"></p>
+                                            </div>-->
                                             <div class="text-center">
-                                                <button type="submit" onclick="checkValidate()"
-                                                        class="btn btn-dark fw-bold rounded-5">Chỉnh sửa</button>
+                                                <button type="submit" name="changepassbtn"
+                                                        class="btn btn-dark fw-bold rounded-5">Đổi mật khẩu</button>
                                             </div>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--modal change password-->
-            <div>
-                <div class="container">
-                    <div class="modal fade" id="changePass" data-bs-backdrop="static" data-bs-keyboard="false"
-                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xxl-down">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Đổi mật khẩu</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <form method="" id="editUser" class="container p-3 bg-body-tertiary rounded-5">
-                                                <div class="m-3">
-                                                    <label class="form-label fw-bold">Old password:</label>
-                                                    <input id="oldpass" type="password" name="oldpass" class="form-control"
-                                                           placeholder="Enter old password">
-                                                    <p id="oldpasserror"></p>
-                                                </div>
-                                                <div class="m-3">
-                                                    <label class="form-label fw-bold">New password:</label>
-                                                    <input id="newpass" type="password" name="email" class="form-control"
-                                                           placeholder="Enter new password">
-                                                    <p id="newpasserror"></p>
-                                                </div>
-                                                <div class="m-3">
-                                                    <label class="form-label fw-bold">Confirm new password:</label>
-                                                    <input id="renewpass" type="password" name="email" class="form-control"
-                                                           placeholder="Enter new password again">
-                                                    <p id="renewpasserror"></p>
-                                                </div>
-                                                <div class="text-center">
-                                                    <button type="submit" onclick="checkPass()"
-                                                            class="btn btn-dark fw-bold rounded-5">Đổi mật khẩu</button>
-                                                </div>
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -314,7 +302,6 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                     <!--Chính sách-->
                     <div class="col-lg-3 col-sm-3 card bg-dark border-0" style="color: white;">
@@ -330,7 +317,6 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                     <!--Phương thức thanh toán-->
                     <div class="col-lg-4 col-sm-3 card bg-dark border-0" style="color: white;">
@@ -338,17 +324,15 @@
                             <h5 class="card-title">Phương thức thanh toán
                             </h5>
                             <div>
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/bank.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/bank.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/zalopay.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/zalopay.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/vnpay.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/vnpay.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/money.jpg" alt="img" width="50px">
-
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/money.jpg" alt="img" width="50px">
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -356,129 +340,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-
-        <script>
-                                                        var emailValidation1 = /^[A-z]+[^\@\s]+\@[^\s]+\.[^\s]{2,}$/;
-                                                        var emailValidation2 = /^[A-z]+\@[^\s]+\.[^\s]{2,}$/;
-                                                        var numberValidation = /^0+[0-9]{9,10}$/;
-
-                                                        function checkValidate() {
-                                                            event.preventDefault();
-                                                            checkEmail();
-                                                            checkUsername();
-                                                            checkBirthday();
-                                                            checkPhone();
-                                                            checkAddress();
-                                                        }
-
-                                                        function checkPass() {
-                                                            event.preventDefault();
-                                                            checkOldPassword();
-                                                            checkNewPassword();
-                                                        }
-                                                        function checkEmail() {
-                                                            var email = document.getElementById('email').value;
-                                                            if (email == "") {
-                                                                document.getElementById('emailerror').innerHTML = "Email cannot be empty";
-                                                                document.getElementById('emailerror').style.color = "red";
-
-                                                            } else {
-                                                                if (!emailValidation1.test(email) && !emailValidation2.test(email)) {
-                                                                    document.getElementById('emailerror').innerHTML = "Email is invalid";
-                                                                    document.getElementById('emailerror').style.color = "red";
-                                                                } else {
-                                                                    document.getElementById('emailerror').innerHTML = "";
-                                                                }
-                                                            }
-                                                        }
-
-                                                        function checkUsername() {
-                                                            var name = document.getElementById('username').value.trim();
-
-                                                            if (name == "") {
-                                                                document.getElementById('usernameerror').innerHTML = "Username cannot be empty";
-                                                                document.getElementById('usernameerror').style.color = "red";
-
-                                                            } else {
-                                                                document.getElementById('usernameerror').innerHTML = "";
-                                                            }
-                                                        }
-
-                                                        function checkBirthday() {
-                                                            var birthday = document.getElementById('birthday').value;
-
-                                                            if (birthday === "") {
-                                                                document.getElementById('birtherror').innerHTML = "Birthday cannot be empty";
-                                                                document.getElementById('birtherror').style.color = "red";
-
-                                                            } else {
-                                                                document.getElementById('birtherror').innerHTML = "";
-                                                            }
-                                                        }
-
-                                                        function checkPhone() {
-                                                            var phone = document.getElementById('phone').value.trim();
-
-                                                            if (phone == "") {
-
-                                                                document.getElementById('phoneerror').innerHTML = "Phone can not be empty";
-                                                                document.getElementById('phoneerror').style.color = "red";
-                                                            } else {
-                                                                if (!numberValidation.test(phone)) {
-                                                                    document.getElementById('phoneerror').innerHTML = "Phone is invalid";
-                                                                    document.getElementById('phoneerror').style.color = "red";
-                                                                } else {
-                                                                    document.getElementById('phoneerror').innerHTML = "";
-                                                                }
-                                                            }
-                                                        }
-
-                                                        function checkAddress() {
-                                                            var address = document.getElementById('address').value;
-                                                            var address = address.replace(/\s/g, '');
-                                                            if (address === "") {
-                                                                document.getElementById('addresserror').innerHTML = " You have to provide your address";
-                                                                document.getElementById('addresserror').style.color = "red";
-                                                            } else {
-                                                                document.getElementById('addresserror').innerHTML = "";
-                                                            }
-
-                                                        }
-
-                                                        function checkOldPassword() {
-                                                            var oldpassword = document.getElementById('oldpass').value;
-
-                                                            if (oldpassword.length < 6 || oldpassword.length > 20 || oldpassword == "") {
-                                                                document.getElementById('oldpasserror').innerHTML = "Password must be between 6 and 20 characters";
-                                                                document.getElementById('oldpasserror').style.color = "red";
-                                                            } else {
-                                                                document.getElementById('oldpasserror').innerHTML = "";
-                                                            }
-                                                        }
-
-                                                        function checkNewPassword() {
-                                                            var newpassword = document.getElementById('newpass').value;
-                                                            var renewpassword = document.getElementById('renewpass').value;
-
-                                                            if (newpassword.length < 6 || newpassword.length > 20 || newpassword == "") {
-                                                                document.getElementById('newpasserror').innerHTML = "Password must be between 6 and 20 characters";
-                                                                document.getElementById('newpasserror').style.color = "red";
-                                                            } else {
-                                                                document.getElementById('newpasserror').innerHTML = "";
-                                                            }
-
-                                                            if (renewpassword != newpassword) {
-                                                                document.getElementById('renewpasserror').innerHTML = "Password does not match";
-                                                                document.getElementById('renewpasserror').style.color = "red";
-                                                            } else {
-                                                                document.getElementById('renewpasserror').innerHTML = "";
-                                                            }
-
-                                                        }
-
-
-        </script>
     </body>
-
-
 </html>

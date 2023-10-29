@@ -114,7 +114,8 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect("/Beti-shop/");
                         break;
                     } else {
-                        response.sendRedirect("/Beti-shop/Login");
+                        request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
+                        request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
                 case "staff":
                     Staff staff = new Staff(email, pass);
@@ -137,7 +138,8 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect("/Beti-shop/manager");
                         break;
                     } else {
-                        response.sendRedirect("/Beti-shop/Login");
+                        request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
+                        request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
                 case "admin":
                     Admin admin = new Admin(email, pass);
@@ -160,7 +162,8 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect("/Beti-shop/Admin/listuser");
                         return;
                     } else {
-                        response.sendRedirect("/Beti-shop/Login");
+                        request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
+                        request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
                     break;
                 default:
@@ -169,6 +172,44 @@ public class LoginController extends HttpServlet {
             }
 
         }
+
+        
+        if(request.getParameter("btnRegis")!=null){
+            String email = request.getParameter("email");
+            String name = request.getParameter("username");
+            String pass = request.getParameter("password");
+            Date DOB = Date.valueOf(request.getParameter("birthday"));
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            
+            User us = new User(email, pass, name, DOB, phone, address);
+            UserDAO usdao = new UserDAO();
+            User ac = usdao.GetUser(email);
+            
+            if (ac.getUserEmail() != null) {
+                request.setAttribute("alertMess", "Email đã tồn tại, vui lòng sử dụng email khác");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+            } else {
+                int kq = 0;
+                String alertMess = "";
+                try {
+                    kq = usdao.AddNew(us);
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                 if (kq != 0) {
+                    alertMess = "Đăng ký thành công, mời bạn đăng nhập!";
+                    request.setAttribute("alertMess", alertMess);
+                    request.getRequestDispatcher("Register.jsp").forward(request, response);
+                } else {
+                    alertMess = "Lỗi đăng ký, vui lòng thử lại!";
+                    request.setAttribute("alertMess", alertMess);
+                    request.getRequestDispatcher("Register.jsp").forward(request, response);
+                } 
+            }                    
+        }        
+
     }
 
     /**

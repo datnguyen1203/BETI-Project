@@ -4,6 +4,8 @@
     Author     : Dell
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="DAOs.ProductDAO"%>
 <%@page import="java.nio.charset.StandardCharsets"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -139,11 +141,22 @@
     </head>
 
     <body>
-        <!--Navbar-->
+        <%
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("user") && !cookie.getValue().equals("")) {
+                        session.setAttribute("id", cookie.getValue());
+                        break;
+                    }
+                }
+            }
+        %>
+        <!--Header-->
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="#">F-Store</a>
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop">F-Store</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -182,10 +195,11 @@
                             </li>
                             <%
                                 if (session.getAttribute("acc") != null) {
+
                             %>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
-                                <a href="/Beti-shop/User" class="nav-link
+                                <a href="/Beti-shop/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
@@ -208,10 +222,10 @@
                                 </a>
                             </li>
                             <%
-                                } else {
+                            } else {
                             %>
                             <!--Login-->
-                               <li class="nav-item col-sm-2">
+                            <li class="nav-item col-sm-2">
                                 <a href="/Beti-shop/Login" class="nav-link
                                    active
                                    text-white">
@@ -222,20 +236,8 @@
                                 </a>
                             </li>
                             <%
-                            }
+                                }
                             %>
-                            <!--                        Manage Page
-                                                    <li class="nav-item col-sm-2">
-                                                        <a href="/Beti-shop/manager" class="nav-link
-                                                             active
-                                                             text-white">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"
-                                                                style="fill: #ffffff;">
-                                                                <path
-                                                                    d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
-                                                            </svg>
-                                                        </a>
-                                                    </li>-->
                         </ul>
                     </div>
                 </div>
@@ -243,17 +245,7 @@
         </header>
         <!--Body home page-->
         <div class="bg-body-secondary">
-            <div class="banner">
-                <div class="container justify-content-center">
-                    <div class="category row p-3 justify-content-between">
-                        <a href="#" class="col-2">Áo</a>
-                        <a href="#" class="col-2">Quần</a>
-                        <a href="#" class="col-2">Phụ kiện</a>
-                        <a href="#" class="col-2">Thương hiệu</a>
-                        <a href="#" class="col-2">Outlet</a>
-                    </div>
-                </div>
-            </div>
+
             <div id="carouselExampleDark" class="carousel carousel-dark slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
@@ -310,59 +302,31 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div id="product" role="button" class="m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
-                             data-bs-target="#productDetail">
+                        <%
+                            ProductDAO dao = new ProductDAO();
+                            ResultSet rs = dao.getAllProduct();
+                            while (rs.next()) {
+                        %>
+                        <a id="product" href="/Beti-shop/Product/Detail/<%= rs.getString("productID")%>" class="m-5 col-sm-12 col-md-4 col-lg-2" style="text-decoration: none"
+                            >
                             <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
+                                <img src="<%= rs.getString("productImg")%>" class="card-img " alt="product1">
                                 <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
+                                    <h5 class="card-title"> <%= rs.getString("productName")%> </h5>
                                     <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
                                             tiền:</span>
-                                        500.000
+                                            <%=  String.format("%,.0f", rs.getDouble("productPrice"))%>
                                         vnđ</p>
                                 </div>
                             </div>
-                        </div>
-                        <div id="product" role="button" class=" m-5 col-sm-12 col-md-4 col-lg-2" data-bs-toggle="modal"
-                             data-bs-target="#productDetail">
-                            <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
-                                    <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                            tiền:</span>
-                                        500.000
-                                        vnđ</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="product" role="button" class="container m-5 col-sm-12 col-md-4 col-lg-2"
-                             data-bs-toggle="modal" data-bs-target="#productDetail">
-                            <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
-                                    <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                            tiền:</span>
-                                        500.000
-                                        vnđ</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="product" role="button" class="container m-5 col-sm-12 col-md-4 col-lg-2"
-                             data-bs-toggle="modal" data-bs-target="#productDetail">
-                            <div class="card" style="width: 13rem;">
-                                <img src="img/product/product.jpg" class="card-img " alt="product1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Tên sản phẩm</h5>
-                                    <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
-                                            tiền:</span>
-                                        500.000
-                                        vnđ</p>
-                                </div>
-                            </div>
-                        </div>
+                        </a>
+
+                    <%
+                        }
+                    %>
                     </div>
+                   
+
                 </div>
 
                 <div class="shop-page-controller">
@@ -385,79 +349,7 @@
         </div>
 
 
-        <!--Modal Product Detail-->
-        <form action="index.html">
-            <div class="modal fade" id="productDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xxl-down">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-3 ms-3" id="staticBackdropLabel">Chi tiết sản phẩm</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <img class="col-md-2 col-sm-3 rounded-5" id="detailproductimg"
-                                         src="img/product/product.jpg" alt="detailproductimg">
-                                    <div class="col-md-4 col-sm-3">
-                                        <section>
-                                            <h1 class="fs-2 pt-1 pb-2">Tên sản phẩm</h1>
-                                        </section>
-                                        <section>
-                                            <label class="fs-5 pb-1 fw-bold">Giá tiền:</label>
-                                            <p class="fs-4" style="color: rgb(216, 97, 50);">
-                                                500.000 vnđ
-                                            </p>
-                                        </section>
-                                        <section class="pb-2">
 
-                                            <label class="fs-5 pb-2 fw-bold">Size: </label>
-                                            <br>
-                                            <input type="radio" class="btn-check" name="options-base" id="option1"
-                                                   autocomplete="off" checked value="S">
-                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option1">S</label>
-                                            <input type="radio" class="btn-check" name="options-base" id="option2"
-                                                   autocomplete="off" value="M">
-                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option2">M</label>
-                                            <input type="radio" class="btn-check" name="options-base" id="option3"
-                                                   autocomplete="off" value="L">
-                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option3">L</label>
-                                            <input type="radio" class="btn-check" name="options-base" id="option4"
-                                                   autocomplete="off" value="XL">
-                                            <label class="size-label btn m-1 ps-4 pe-4 fs-4" for="option4">XL</label>
-
-                                        </section>
-                                        <section>
-                                            <div class="p-2 quantity">
-                                                <label class="fs-5 pb-2 me-2 fw-bold">Số lượng: </label>
-                                                <input type="number" id="quantity" value="1" step="1" min="1"
-                                                       class="no-spinners fs-4 text-center w-25 rounded-3">
-                                            </div>
-                                        </section>
-                                        <section>
-                                            <div class="p-1">
-                                                <label class="fs-5 pb-2 fw-bold">Mô tả:</label>
-                                                <br>
-                                                <p>
-                                                    <textarea class="form-control" style="width: 150%;" cols="30" readonly
-                                                              rows="4">Toi yeu Wyn Nhu</textarea>
-                                                </p>
-                                            </div>
-                                            <div class="">
-                                                <button type="button" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ
-                                                    hàng</button>
-                                                <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
-                                            </div>
-                                        </section>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
         <!--Footer-->
         <footer class="footer bg-dark">
             <div class="container">
@@ -561,7 +453,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script src="validate.js"></script>
         <script src="quantity.js"></script>
+        <%            String alertMess = (String) request.getAttribute("alertMess");
+            if (alertMess != null && !alertMess.isEmpty()) {
+        %>
+        <script>
+            alert("<%= alertMess%>");
+        </script>
+        <%
+            }
+        %>
     </body>
 </html>

@@ -11,6 +11,7 @@ import java.sql.Date;
  * @author Dell
  */
 public class User {
+
     private int userID;
     private String userEmail;
     private String userPassword;
@@ -31,7 +32,7 @@ public class User {
         this.userPhone = userPhone;
         this.userAddress = userAddress;
     }
-    
+
     public User(String userEmail, String userPassword, String userName, Date userDOB, String userPhone, String userAddress) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -40,6 +41,21 @@ public class User {
         this.userPhone = userPhone;
         this.userAddress = userAddress;
     }
+
+    public User(int userID, String userEmail, String userName, Date userDOB, String userPhone, String userAddress) {
+        this.userID = userID;
+        this.userEmail = userEmail;
+        this.userName = userName;
+        this.userDOB = userDOB;
+        this.userPhone = userPhone;
+        this.userAddress = userAddress;
+    }
+    
+    public User(int userID, String userPassword) {
+        this.userID = userID;
+        this.userPassword = userPassword;
+    }
+   
     
     public User(String userEmail, String userPassword) {
         this.userEmail = userEmail;
@@ -101,9 +117,5 @@ public class User {
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
-    
-    
-   
-    
-    
+
 }

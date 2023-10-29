@@ -26,7 +26,7 @@ public class UserDAO {
     public UserDAO() {
         conn = DBContext.DBContext.getConnection();
     }
-    
+
     public String hashPassword(String password, String algorithm) {
         try {
             MessageDigest digest = MessageDigest.getInstance(algorithm);
@@ -43,8 +43,24 @@ public class UserDAO {
         }
         return null;
     }
-    
-    
+
+    public User GetUserId(String id) {
+        User u = new User();
+        try {
+            ps = conn.prepareStatement("select * from [User] where userID=?");
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                u = new User(rs.getInt("userID"), rs.getString("userEmail"), rs.getString("userPassword"), rs.getString("userName"),
+                        rs.getDate("userDayOfBirth"), rs.getString("userPhone"), rs.getString("userAddress"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
+    }
+
     public User GetUser(String email) {
         
         try {
@@ -78,7 +94,7 @@ public class UserDAO {
         }
         return list;
     }
-    
+
     public boolean Login(User user) throws SQLException {
         ResultSet rs = null;
         String sql = "Select * from [User] where userEmail = ? and userPassword=?";
@@ -96,6 +112,7 @@ public class UserDAO {
         return rs.next();
     }
 
+
     public void deleteUser(int id){
         try {
             ps = conn.prepareStatement("DELETE FROM [dbo].[User]\n" +
@@ -108,6 +125,13 @@ public class UserDAO {
     }
 
     public void updateUser(int id, String email, String name, String phone, String address, Date date) {
+
+    public int AddNew(User us) throws SQLException {
+        String sql = "insert into [User](userEmail,userPassword, userName, userDayOfBirth, userPhone, userAddress) values (?,?,?,?,?,?);";
+        String password = us.getUserPassword();
+        String hashPassword = hashPassword(password, "MD5");
+        int ketqua = 0;
+
         try {
             ps = conn.prepareStatement("UPDATE [dbo].[User]\n" +
                     "   SET [userEmail] = ?\n" +
@@ -160,5 +184,39 @@ public class UserDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public int Update(User u) {
+        String sql = "update [User] set userEmail=?, userName=?, userDayOfBirth=?, userPhone=?, userAddress=? where userID=?";
+        int ketqua = 0;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getUserEmail());
+            ps.setString(2, u.getUserName());
+            ps.setDate(3, u.getUserDOB());
+            ps.setString(4, u.getUserPhone());
+            ps.setString(5, u.getUserAddress());
+            ps.setInt(6, u.getUserID());
+            ketqua = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ketqua;
+    }
+    
+    public int UpdatePassword(User u) {
+        String password = u.getUserPassword();
+        String hashPassword = hashPassword(password, "MD5");
+        String sql = "update [User] set userPassword=? where userID=?";
+        int ketqua = 0;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, hashPassword.toUpperCase());
+            ps.setInt(2, u.getUserID());
+            ketqua = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ketqua;
     }
 }
