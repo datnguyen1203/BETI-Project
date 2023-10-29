@@ -17,9 +17,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.net.URLEncoder;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,6 +75,7 @@ public class LoginController extends HttpServlet {
             }
         }
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -106,8 +105,6 @@ public class LoginController extends HttpServlet {
                     }
 
                     if (ketqua1) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("acc", ac1);
                         Cookie c = new Cookie("user", String.valueOf(ac1.getUserID()));
                         Cookie cfull = new Cookie("nameUser", URLEncoder.encode(ac1.getUserName(), "UTF-8"));
                         c.setMaxAge(60 * 60);
@@ -115,11 +112,11 @@ public class LoginController extends HttpServlet {
                         response.addCookie(c);
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/");
+                        break;
                     } else {
                         request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
                         request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
-                    break;
                 case "staff":
                     Staff staff = new Staff(email, pass);
                     StaffDAO lgdao2 = new StaffDAO();
@@ -132,8 +129,6 @@ public class LoginController extends HttpServlet {
                     }
 
                     if (ketqua2) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("acc", ac2);
                         Cookie c = new Cookie("staff", String.valueOf(ac2.getStaffID()));
                         Cookie cfull = new Cookie("nameStaff", URLEncoder.encode(ac2.getStaffName(), "UTF-8"));
                         c.setMaxAge(60 * 60);
@@ -141,11 +136,11 @@ public class LoginController extends HttpServlet {
                         response.addCookie(c);
                         response.addCookie(cfull);
                         response.sendRedirect("/Beti-shop/manager");
+                        break;
                     } else {
                         request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
                         request.getRequestDispatcher("Register.jsp").forward(request, response);
                     }
-                    break;
                 case "admin":
                     Admin admin = new Admin(email, pass);
                     AdminDAO lgdao3 = new AdminDAO();
@@ -158,16 +153,14 @@ public class LoginController extends HttpServlet {
                     }
 
                     if (ketqua3) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("acc", ac3);
                         Cookie c = new Cookie("admin", String.valueOf(ac3.getAdminID()));
                         Cookie cfull = new Cookie("nameAdmin", URLEncoder.encode(ac3.getAdminName(), "UTF-8"));
                         c.setMaxAge(60 * 60);
                         cfull.setMaxAge(60 * 60);
                         response.addCookie(c);
                         response.addCookie(cfull);
-                        response.sendRedirect("/Beti-shop/Admin");
-
+                        response.sendRedirect("/Beti-shop/Admin/listuser");
+                        return;
                     } else {
                         request.setAttribute("alertMess", "Đăng nhập thất bại, sai tài khoản hoặc mật khẩu!");
                         request.getRequestDispatcher("Register.jsp").forward(request, response);
@@ -179,6 +172,7 @@ public class LoginController extends HttpServlet {
             }
 
         }
+
         
         if(request.getParameter("btnRegis")!=null){
             String email = request.getParameter("email");
@@ -215,6 +209,7 @@ public class LoginController extends HttpServlet {
                 } 
             }                    
         }        
+
     }
 
     /**

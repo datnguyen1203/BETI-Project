@@ -6,19 +6,19 @@ package Controller;
 
 import DAOs.UserDAO;
 import Modals.User;
+import Ultis.Helper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author Dell
+ * @author nhvie
  */
-public class HomeController extends HttpServlet {
+public class ResetpasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +33,7 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HomeController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            request.getRequestDispatcher("ForgotPassword.jsp").forward(request, response);
         }
     }
 
@@ -58,11 +49,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String path = request.getRequestURI();
-        if (path.endsWith("/Beti-shop/")) {
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
-        } 
-
+        processRequest(request, response);
     }
 
     /**
@@ -76,7 +63,20 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String email = request.getParameter("email").trim();
+        UserDAO udao = new UserDAO();
+        User user = udao.GetUser(email);
+        if (user != null) {
+            String newpass = Helper.getAlphaNumericString(8);
+            Helper.send(email, "Reset Password", "New Password for your account is " + newpass);
+            String hashPassword = Helper.hashPassword(newpass, "MD5");
+            udao.updatePassword(email, hashPassword);
+            request.setAttribute("report", "New Password is sent to email. Please check email to receive new password");
+        } else {
+            request.setAttribute("email", email);
+            request.setAttribute("error", "Email not registered");
+        }
+        doGet(request, response);
     }
 
     /**
