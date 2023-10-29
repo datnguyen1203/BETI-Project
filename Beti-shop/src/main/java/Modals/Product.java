@@ -57,34 +57,6 @@ public class Product {
     public void setProductDis(String productDis) {
         this.productDis = productDis;
     }
-
-    public int getProductID() {
-        return productID;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public double getProductPrice() {
-        return productPrice;
-    }
-
-    public int getProductQuantity() {
-        return productQuantity;
-    }
-
-    public String getProductImg() {
-        return productImg;
-    }
-
-    public String getProductCategory() {
-        return productCategory;
-    }
-
-    public String getProductDis() {
-        return productDis;
-    }
     
     
 }
