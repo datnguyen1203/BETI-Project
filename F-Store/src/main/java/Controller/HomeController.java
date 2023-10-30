@@ -9,7 +9,6 @@ import Modals.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -60,6 +59,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getRequestURI();
+<<<<<<< HEAD:F-Store/src/main/java/Controller/HomeController.java
         if (path.endsWith("/F-Store/")) {
             request.getRequestDispatcher("/home.jsp").forward(request, response);
         } else {
@@ -67,6 +67,12 @@ public class HomeController extends HttpServlet {
 
         }
 
+=======
+        if (path.endsWith("/Beti-shop/")) {
+            request.getRequestDispatcher("/home.jsp").forward(request, response);
+        } 
+
+>>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/HomeController.java
     }
 
     /**

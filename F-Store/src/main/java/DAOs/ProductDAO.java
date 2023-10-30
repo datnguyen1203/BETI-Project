@@ -30,6 +30,7 @@ public class ProductDAO {
 
     public ProductDAO() {
         con = DBContext.DBContext.getConnection();
+<<<<<<< HEAD:F-Store/src/main/java/DAOs/ProductDAO.java
     }
 
      public Product getProductById(int id) {
@@ -85,11 +86,19 @@ public class ProductDAO {
         }
 
         return products;
+=======
+>>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/DAOs/ProductDAO.java
     }
     
     public ResultSet getAllProduct() {
         String sql = "select*from Product";
 
+<<<<<<< HEAD:F-Store/src/main/java/DAOs/ProductDAO.java
+=======
+    public ResultSet getAllProduct() {
+        String sql = "select*from Product";
+
+>>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/DAOs/ProductDAO.java
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -101,7 +110,11 @@ public class ProductDAO {
     }
 
 
+<<<<<<< HEAD:F-Store/src/main/java/DAOs/ProductDAO.java
     public void addProduct(String productName, String productPrice, String productQuantity, String productImg, String productCategory, String productDiscription) {
+=======
+    public void addProduct(String productName, String productPrice, String productQuantity, String productImg, String productMaterial, String productType) {
+>>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/DAOs/ProductDAO.java
         String sql = "INSERT INTO [dbo].[Product]\n"
                 + "([productName]\n"
                 + ",[productPrice]\n"
