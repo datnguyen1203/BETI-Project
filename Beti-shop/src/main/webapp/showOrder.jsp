@@ -475,7 +475,6 @@
                                 <th class="align-middle">Account</th>
                                 <th class="align-middle">Date</th>
                                 <th class="align-middle">Total</th>
-                                <th class="align-middle">Option</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -488,11 +487,6 @@
                                     <td class="align-middle"><p>${o.userID}</p></td>
                                     <td class="align-middle"><p>${o.purchaseDate}</p></td>
                                     <td class="align-middle"><p>${o.totalPrice}</p></td>
-                                    <td class="align-middle"> <nav class="navbar navbar-expand-lg bg-light justify-content-center ">
-                                            <ul class="navbar-nav">
-                                                <li class="nav-item"><a class="nav-link" href="/PRJProject/manager/ShowOrder/Details/${o.orderID}">Info</a></li> 
-                                            </ul>
-                                        </nav></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

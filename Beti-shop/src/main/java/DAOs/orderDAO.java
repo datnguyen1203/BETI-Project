@@ -67,7 +67,7 @@ public class orderDAO {
             //Update so luong san pham 
             String sql3 = "update product set productQuantity = productQuantity-? where id=?";
             PreparedStatement ps3 = conn.prepareStatement(sql3);
-            for (Items i : c.getItems()){
+            for (Items i : c.getItems()) {
                 ps3.setInt(1, i.getQuantity());
                 ps3.setInt(2, i.getProduct().getProductQuantity());
                 ps3.executeUpdate();
@@ -80,9 +80,11 @@ public class orderDAO {
     //doanh thu theo thang
     public List<Order> monthlyRevenue() {
         List<Order> list = new ArrayList<>();
-        String sql = "SELECT MONTH(purchaseDate) AS month, SUM(totalPrice) AS revenue\n"
-                + "FROM [order]\n"
-                + "GROUP BY MONTH(purchaseDate) ORDER BY MONTH(purchaseDate) DESC";
+        String sql = "SELECT MONTH(purchaseDate) AS month, SUM(C.totalPrice) AS revenue\n"
+                + "FROM [Order] AS O\n"
+                + "INNER JOIN Cart AS C ON O.cartID = C.cartID\n"
+                + "GROUP BY MONTH(O.purchaseDate)\n"
+                + "ORDER BY MONTH(O.purchaseDate) DESC;";
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -99,7 +101,9 @@ public class orderDAO {
     //getall
     public List<Order> getAllOrder() {
         List<Order> list = new ArrayList<>();
-        String sql = "select * from [Order]";
+        String sql = "SELECT O.orderID, O.userID, O.productID, O.cartID, C.totalPrice, O.purchaseDate\n"
+                + "FROM [Order] AS O\n"
+                + "INNER JOIN Cart AS C ON O.cartID = C.cartID;";
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();

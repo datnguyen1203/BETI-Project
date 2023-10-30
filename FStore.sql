@@ -55,6 +55,7 @@ orderID int primary key IDENTITY(1,1) not null,
 productID int foreign key references [Product](productID) not null,
 userID int foreign key references [User](userID) not null,
 cartID int foreign key references [Cart](cartID) not null,
+totalPrice money,
 purchaseDate date
 );
 

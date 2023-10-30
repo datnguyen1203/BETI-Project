@@ -4,14 +4,19 @@
  */
 package Controller;
 
+import DAOs.ProductDAO;
 import DAOs.orderDAO;
 import Modals.Order;
+import Modals.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -79,8 +84,11 @@ public class ManagerControl extends HttpServlet {
                 request.setAttribute("listRevenue", listRevenue);
                 request.getRequestDispatcher("/MonthRevenue.jsp").forward(request, response);
                 break;
-            
+
         }
+        String[] s = path.split("/");
+        String action = s[s.length - 2];
+        String pro_id = URLDecoder.decode(s[s.length - 1], "UTF-8");
     }
 
     /**
