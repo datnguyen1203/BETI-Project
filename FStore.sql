@@ -1,4 +1,4 @@
-create database FStore;
+﻿create database FStore;
 
 create table [User](
 userID int primary key IDENTITY(1,1) not null,
@@ -45,7 +45,6 @@ create table Cart(
 cartID int primary key IDENTITY(1,1) not null,
 userID int foreign key references [User](userID) not null,
 productID int foreign key references [Product](productID) not null,
-totalPrice money,
 size nvarchar(3),
 quantity int
 );
@@ -55,6 +54,7 @@ orderID int primary key IDENTITY(1,1) not null,
 productID int foreign key references [Product](productID) not null,
 userID int foreign key references [User](userID) not null,
 cartID int foreign key references [Cart](cartID) not null,
+totalPrice money,
 purchaseDate date
 );
 
@@ -74,5 +74,17 @@ VALUES ( 'staff@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2
 INSERT INTO [FStore].[dbo].[Admin] ( adminEmail, adminPassword, adminName, adminDayOfBirth, adminPhone, adminAddress)
 VALUES ( 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2003-03-12', '0312697274', 'An Giang');
 
+-- Chèn dữ liệu cho sản phẩm vào bảng Product
+INSERT INTO Product (productName, productPrice, productQuantity, productImg, productCategory, productDis)
+VALUES (N'Sản phẩm 1', 200000, 100, 'img/product/hoodiefognau.png', N'Áo', N'Mô tả sản phẩm 1'),
+       (N'Sản phẩm 2', 250000, 75, 'img/product/hoodienikeden.png', N'Áo', N'Mô tả sản phẩm 2'),
+       (N'Sản phẩm 3', 350000, 50, 'img/product/hoodienikedodo.png', N'Áo', N'Mô tả sản phẩm 3'),
+       (N'Sản phẩm 4', 500000, 120, 'img/product/shortnikexam.png', N'Quần', N'Mô tả sản phẩm 4'),
+	   (N'Sản phẩm 5', 450000, 30, 'img/product/joggernikeden.png', N'Quần', N'Mô tả sản phẩm 5'),
+	   (N'Sản phẩm 6', 300000, 70, 'img/product/shortne.png', N'Quần', N'Mô tả sản phẩm 6'),
+	   (N'Sản phẩm 7', 400000, 60, 'img/product/swtmlbmonob.png', N'Áo', N'Mô tả sản phẩm 7'),
+	   (N'Sản phẩm 8', 750000, 50, 'img/product/polonenau.png', N'Áo', N'Mô tả sản phẩm 8'),
+	   (N'Sản phẩm 9', 600000, 60, 'img/product/shortfog.png', N'Quần', N'Mô tả sản phẩm 9'),
+	   (N'Sản phẩm 10', 950000, 50, 'img/product/polotrangbasic.png', N'Áo', N'Mô tả sản phẩm 10');
 
 
