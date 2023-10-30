@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+
 package Controller;
 
 import DAOs.CartDAO;
@@ -15,52 +16,58 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ProductController.java
-=======
+
 import java.util.List;
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/ProductControl.java
+
+
 
 /**
  *
  * @author Dell
  */
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ProductController.java
+
 public class ProductController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-=======
+
 public class ProductControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/ProductControl.java
+
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ProductController.java
+
             out.println("<title>Servlet ProductController</title>");  
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProductController at " + request.getContextPath () + "</h1>");
-=======
+
             out.println("<title>Servlet ProductControl</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProductControl at " + request.getContextPath() + "</h1>");
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/ProductControl.java
+
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,6 +77,16 @@ public class ProductControl extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
+
+            out.println("</body>");
+            out.println("</html>");
+        }
+    } 
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /** 
+     * Handles the HTTP <code>GET</code> method.
+
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -77,7 +94,7 @@ public class ProductControl extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ProductController.java
+
     throws ServletException, IOException {
         String path = request.getRequestURI();
         if(path.startsWith("/F-Store/Product/Detail/")){
@@ -94,7 +111,7 @@ public class ProductControl extends HttpServlet {
             }
         }
     } 
-=======
+
             throws ServletException, IOException {
 //        ProductDAO productDAO=new ProductDAO();
 //        List<Product> list=  productDAO.getAllProducts();
@@ -106,7 +123,7 @@ public class ProductControl extends HttpServlet {
             String id = s[s.length - 1];
             ProductDAO dao = new ProductDAO();
             Product p = dao.GetProductId(id);
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/ProductControl.java
+
 
             if (p == null) {
                 response.sendRedirect("/Beti-shop/");
@@ -121,6 +138,11 @@ public class ProductControl extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
+
+
+    /** 
+     * Handles the HTTP <code>POST</code> method.
+
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -128,13 +150,17 @@ public class ProductControl extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ProductController.java
+
     throws ServletException, IOException {
            if (request.getParameter("addNew") != null) {
-=======
+
             throws ServletException, IOException {
         if (request.getParameter("addNew") != null) {
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/ProductControl.java
+
+
+    throws ServletException, IOException {
+           if (request.getParameter("addNew") != null) {
+
             int userID = Integer.parseInt(request.getParameter("userID"));
             int proID = Integer.parseInt(request.getParameter("proID"));
             String size = request.getParameter("options-base");
@@ -145,19 +171,19 @@ public class ProductControl extends HttpServlet {
             int kq = dao.AddNew(c);
             HttpSession session = request.getSession();
             if (kq != 0) {
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ProductController.java
+
                 session.setAttribute("alrtMessdetailpro", "Thêm thành công");
                 response.sendRedirect("/F-Store/");
             } else {
                 session.setAttribute("alrtMessdetailpro", "Có lỗi xảy ra vui lòng thử lại");
                 response.sendRedirect("/F-Store/");
-=======
+
                 session.setAttribute("alrtMess", "Thêm thành công");
                 response.sendRedirect("/Beti-shop/");
             } else {
                 session.setAttribute("alrtMess", "Có lỗi xảy ra vui lòng thử lại");
                 response.sendRedirect("/Beti-shop/");
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/ProductControl.java
+
             }
         }
     }
@@ -165,6 +191,14 @@ public class ProductControl extends HttpServlet {
     /**
      * Returns a short description of the servlet.
      *
+
+            }
+        }
+    }
+
+    /** 
+     * Returns a short description of the servlet.
+
      * @return a String containing servlet description
      */
     @Override

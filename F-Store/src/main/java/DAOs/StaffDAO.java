@@ -5,6 +5,7 @@
 package DAOs;
 
 import Modals.Staff;
+
 import Modals.User;
 
 import java.security.MessageDigest;
@@ -12,6 +13,14 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -80,6 +89,7 @@ public class StaffDAO {
         return rs.next();
     }
 
+
     public List<Staff> getAllUsers() {
         List<Staff> list = new ArrayList<>();
         try {
@@ -129,4 +139,5 @@ public class StaffDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

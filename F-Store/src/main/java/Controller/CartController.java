@@ -72,11 +72,7 @@ public class CartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-<<<<<<< HEAD:F-Store/src/main/java/Controller/CartController.java
-  
-=======
-     
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/CartController.java
+
     }
 
     /** 

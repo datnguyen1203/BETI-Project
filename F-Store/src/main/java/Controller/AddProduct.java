@@ -54,11 +54,12 @@ public class AddProduct extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-<<<<<<< HEAD:F-Store/src/main/java/Controller/AddProduct.java
+
+
             throws ServletException, IOException {
         processRequest(request, response);
     }
-=======
+
     throws ServletException, IOException {
        // processRequest(request, response);
 //       String id = request.getParameter("id");
@@ -68,7 +69,11 @@ public class AddProduct extends HttpServlet {
 //       request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
        
     } 
->>>>>>> d48a67e6cf14d14948dc1c4d1c92b60f01ea8a5f:Beti-shop/src/main/java/Controller/UpdateProduct.java
+
+
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
