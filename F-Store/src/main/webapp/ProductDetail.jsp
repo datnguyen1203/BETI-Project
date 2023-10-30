@@ -14,11 +14,19 @@
         <title>Chi tiết sản phẩm</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
         <link rel="stylesheet" href="/F-Store/style.css" />
+
+        <link rel="stylesheet" href="/Beti-shop/style.css" />
+
+<link rel="stylesheet" href="/F-Store/style.css" />
+
     </head>
     <body>
         <%
             Cookie[] cookies = request.getCookies();
+
             if (session.getAttribute("acc") == null) {
                 boolean flag = false;
                 if (cookies != null) {
@@ -47,13 +55,30 @@
 //                if (!flag) {
 //                    response.sendRedirect("/F-Store/Login");
 //                }
+
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("user") && !cookie.getValue().equals("")) {
+                        session.setAttribute("id", cookie.getValue());
+                        break;
+                    }
+                }
+
+
             }
         %>
         <!--Header-->
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
+
+<
                     <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store">F-Store</a>
+
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop">F-Store</a>
+
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store">F-Store</a>
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +93,13 @@
                         <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row">
                             <!--Cart-->
                             <li class="nav-item col-sm-2">
+
                                 <a href="/F-Store/Cart" class="nav-link
+
+                                <a href="/Beti-shop/Cart" class="nav-link
+
+                                <a href="/F-Store/Cart" class="nav-link
+
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"
@@ -91,12 +122,24 @@
                                 </a>
                             </li>
                             <%
+
                                 if (session.getAttribute("id") != null) {
+
+                                if (session.getAttribute("acc") != null) {
+
+                                if (session.getAttribute("id") != null) {
+
 
                             %>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
+
                                 <a href="/F-Store/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
+
+                                <a href="/Beti-shop/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
+
+                                <a href="/F-Store/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
+
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
@@ -108,7 +151,13 @@
                             </li>
                             <!--Logout-->
                             <li class="nav-item col-sm-2">
+
                                 <a href="/F-Store/Logout" class="nav-link
+
+                                <a href="/Beti-shop/Logout" class="nav-link
+
+                                <a href="/F-Store/Logout" class="nav-link
+
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"
@@ -123,7 +172,13 @@
                             %>
                             <!--Login-->
                             <li class="nav-item col-sm-2">
+
                                 <a href="/F-Store/Login" class="nav-link
+
+                                <a href="/Beti-shop/Login" class="nav-link
+
+                                <a href="/F-Store/Login" class="nav-link
+
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"
@@ -149,7 +204,15 @@
         <%
             Product p = (Product) session.getAttribute("thongtinsanpham");
 
+
         %>
+
+
+        %>
+
+
+        %>
+
 
         <div class="container">
             <form action="Product" method="post" class="bg-white p-5 m-5 rounded-3">
@@ -161,19 +224,35 @@
                         <div class="row">
 
                             <img class="col-md-2 col-sm-3 rounded-5" id="detailproductimg"
+
                                  src="/F-Store/<%= p.getProductImg()%>" alt="detailproductimg">
+
+                                 src="/Beti-shop/<%= p.getProductImg()%>" alt="detailproductimg">
+
+                                 src="/F-Store/<%= p.getProductImg()%>" alt="detailproductimg">
+
                             <div class="col-md-4 col-sm-3">
                                 <section>
                                     <h1 class="fs-2 pt-1 pb-2"><%= p.getProductName()%></h1>
                                     <input type="hidden" name="proID" value="<%= p.getProductID()%>">
                                     <%
+
                                         if (session.getAttribute("id") != null) {
+
+                                        if (session.getAttribute("acc") != null) {
+
+                                        if (session.getAttribute("id") != null) {
+
 
                                     %>
                                     <input type="hidden" name="userID" value ="<%=session.getAttribute("id")%>">
 
                                     <%
                                         }
+
+
+
+
                                     %>
                                 </section>
                                 <section>
@@ -203,8 +282,16 @@
                                 <section>
                                     <div class="p-2 quantity">
                                         <label class="fs-5 pb-2 me-2 fw-bold">Số lượng: </label>
+
                                         <input type="number" name="quantity" id="quantity" value="1" min="1" max="<%= p.getProductQuantity()%>"
                                                class="no-spinners fs-4 text-center w-25 rounded-3 ">
+
+                                        <input type="number" name="quantity" id="quantity" value="1" step="1" min="1"
+                                               class="no-spinners fs-4 text-center w-25 rounded-3">
+
+                                        <input type="number" name="quantity" id="quantity" value="1" min="1" max="<%= p.getProductQuantity()%>"
+                                               class="no-spinners fs-4 text-center w-25 rounded-3 ">
+
                                     </div>
                                 </section>
                                 <section>
@@ -217,6 +304,7 @@
                                         </p>
                                     </div>
                                     <div class="">
+
                                         <%
                                             if (session.getAttribute("id") != null) {
 
@@ -232,6 +320,11 @@
                                         <%
                                             }
                                         %>
+
+
+                                        <button type="submit" name="addNew" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ
+                                            hàng</button>
+                                        <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
 
                                     </div>
                                 </section>
@@ -333,6 +426,7 @@
                             <h5 class="card-title">Phương thức thanh toán
                             </h5>
                             <div>
+
                                 <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/bank.png" alt="img" width="50px">
 
                                 <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/zalopay.png" alt="img" width="50px">
@@ -340,6 +434,15 @@
                                 <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/vnpay.png" alt="img" width="50px">
 
                                 <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/money.jpg" alt="img" width="50px">
+
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/bank.png" alt="img" width="50px">
+
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/zalopay.png" alt="img" width="50px">
+
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/vnpay.png" alt="img" width="50px">
+
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="/Beti-shop/img/logo/money.jpg" alt="img" width="50px">
+
 
                             </div>
                         </div>
@@ -351,7 +454,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
         <%            String alertMess = (String) request.getAttribute("alrtMessdetailpro");
+
+        <script src="quantity.js"></script>
+        <%            String alertMess = (String) request.getAttribute("alertMess");
+
+        <%            String alertMess = (String) request.getAttribute("alrtMessdetailpro");
+
             if (alertMess != null && !alertMess.isEmpty()) {
         %>
         <script>

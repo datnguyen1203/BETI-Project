@@ -30,6 +30,7 @@ public class ProductDAO {
 
     public ProductDAO() {
         con = DBContext.DBContext.getConnection();
+
     }
 
      public Product getProductById(int id) {
@@ -85,8 +86,14 @@ public class ProductDAO {
         }
 
         return products;
+
     }
     
+    public ResultSet getAllProduct() {
+        String sql = "select*from Product";
+
+
+
     public ResultSet getAllProduct() {
         String sql = "select*from Product";
 
@@ -102,6 +109,12 @@ public class ProductDAO {
 
 
     public void addProduct(String productName, String productPrice, String productQuantity, String productImg, String productCategory, String productDiscription) {
+
+    public void addProduct(String productName, String productPrice, String productQuantity, String productImg, String productMaterial, String productType) {
+
+
+    public void addProduct(String productName, String productPrice, String productQuantity, String productImg, String productCategory, String productDiscription) {
+
         String sql = "INSERT INTO [dbo].[Product]\n"
                 + "([productName]\n"
                 + ",[productPrice]\n"

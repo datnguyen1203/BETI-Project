@@ -143,6 +143,7 @@
     <body>
         <%
             Cookie[] cookies = request.getCookies();
+
             if (session.getAttribute("acc") == null) {
                 boolean flag = false;
                 if (cookies != null) {
@@ -171,13 +172,28 @@
 //                if (!flag) {
 //                    response.sendRedirect("/F-Store/Login");
 //                }
+
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("user") && !cookie.getValue().equals("")) {
+                        session.setAttribute("id", cookie.getValue());
+                        break;
+                    }
+                }
+
             }
         %>
         <!--Header-->
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
+
                     <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store">F-Store</a>
+
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop">F-Store</a>
+
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store">F-Store</a>
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -219,9 +235,18 @@
                                 </a>
                             </li>
 
+
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
                                 <a href="/F-Store/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
+                   <%
+                                if (session.getAttribute("acc") != null) {
+
+                            %>
+                            <!--User Information-->
+                            <li class="nav-item col-sm-2">
+                                <a href="/Beti-shop/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
+
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
@@ -248,7 +273,13 @@
                             %>
                             <!--Login-->
                             <li class="nav-item col-sm-2">
+
                                 <a href="/F-Store/Login" class="nav-link
+
+                                <a href="/Beti-shop/Login" class="nav-link
+
+                                <a href="/F-Store/Login" class="nav-link
+
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"
@@ -329,9 +360,18 @@
                             ResultSet rs = dao.getAllProduct();
                             while (rs.next()) {
                         %>
+
                         <a id="product" href="/F-Store/Product/Detail/<%= rs.getString("productID")%>" class="m-5 col-sm-12 col-md-4 col-lg-2" style="text-decoration: none"
                            >
                             <div class="card h-100" style="width: 13rem;">
+
+                        <a id="product" href="/Beti-shop/Product/Detail/<%= rs.getString("productID")%>" class="m-5 col-sm-12 col-md-4 col-lg-2" style="text-decoration: none"
+                            >
+                            <div class="card" style="width: 13rem;">
+               <a id="product" href="/F-Store/Product/Detail/<%= rs.getString("productID")%>" class="m-5 col-sm-12 col-md-4 col-lg-2" style="text-decoration: none"
+                           >
+                            <div class="card h-100" style="width: 13rem;">
+
                                 <img src="<%= rs.getString("productImg")%>" class="card-img " alt="product1">
                                 <div class="card-body">
                                     <h5 class="card-title"> <%= rs.getString("productName")%> </h5>
@@ -343,10 +383,23 @@
                             </div>
                         </a>
 
+
                         <%
                             }
                         %>
+
+                    <%
+                        }
+                    %>
+
                     </div>
+                   
+
+               <%
+                            }
+                        %>
+                    </div>
+
                 </div>
                 <div class="shop-page-controller">
                     <nav aria-label="Page navigation example">

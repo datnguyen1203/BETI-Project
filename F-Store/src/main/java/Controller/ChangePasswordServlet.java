@@ -6,23 +6,19 @@ package Controller;
 
 import DAOs.UserDAO;
 import Modals.User;
+import Ultis.Helper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-
-
-import jakarta.servlet.http.Cookie;
-
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author Dell
+ * @author nhvie
  */
-public class HomeController extends HttpServlet {
+public class ChangePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,16 +33,7 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HomeController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
         }
     }
 
@@ -62,21 +49,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String path = request.getRequestURI();
-
-        if (path.endsWith("/F-Store/")) {
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
-        } else {
-               
-
-        }
-
-
-        if (path.endsWith("/Beti-shop/")) {
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
-        } 
-
-
+        processRequest(request, response);
     }
 
     /**
@@ -90,7 +63,36 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String email = request.getParameter("email");
+        String oldpass = request.getParameter("oldpass");
+        String newpass = request.getParameter("newpass");
+        String confirmPass = request.getParameter("confirmpass");
+        UserDAO udao = new UserDAO();
+        User user = udao.GetUser(email);
+        if (user == null) {
+            request.setAttribute("error", "Email not registered");
+            request.setAttribute("email", email);
+            request.setAttribute("oldpass", oldpass);
+            request.setAttribute("newpass", newpass);
+            request.setAttribute("confirmPass", confirmPass);
+        } else if (!user.getUserPassword().equals(oldpass)) {
+            request.setAttribute("error", "Password wrong!");
+            request.setAttribute("email", email);
+            request.setAttribute("oldpass", oldpass);
+            request.setAttribute("newpass", newpass);
+            request.setAttribute("confirmPass", confirmPass);
+        } else if(!newpass.equals(confirmPass)){
+            request.setAttribute("error", "Password Confirm not match!");
+            request.setAttribute("email", email);
+            request.setAttribute("oldpass", oldpass);
+            request.setAttribute("newpass", newpass);
+            request.setAttribute("confirmPass", confirmPass);
+        } else {
+            String hashPassword = Helper.hashPassword(newpass, "MD5");
+            udao.updatePassword(email, hashPassword);
+            request.setAttribute("report", "Change Password successful!");
+        }
+        doGet(request, response);
     }
 
     /**
