@@ -8,7 +8,7 @@ import Modals.Items;
 import Modals.Order;
 import Modals.Product;
 import Modals.User;
-import Modals.cart;
+import Modals.Cart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +34,7 @@ public class orderDAO {
     }
 
     //addOrder
-    public void addOrder(User u, cart c, Product p) {
+    public void addOrder(User u, Cart c, Product p) {
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();
         try {
@@ -42,36 +42,36 @@ public class orderDAO {
             String sql = "insert into [Order] values (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, p.getProductID());
-            ps.setInt(2, c.getUserID());
-            ps.setInt(3, c.getCartID());
-            ps.setDouble(4, c.getTotalPrice());
+            ps.setInt(2, c.getMakhachhang());
+            ps.setInt(3, c.getMagiohang());
+            ps.setDouble(4, c.getTongtien());
             ps.setString(5, date);
             ps.executeUpdate();
             //lay id order moi add
             String sql1 = "select top 1 orderID from [Order] order by orderID desc";
             PreparedStatement ps1 = conn.prepareStatement(sql1);
             ResultSet rss = ps1.executeQuery();
-            //add orderDetails
-            if (rss.next()) {
-                int oid = rss.getInt("orderID");
-                for (Items i : c.getItems()) {
-                    String sql2 = "insert into [OrderDetail] values(?,?,?,?)";
-                    PreparedStatement ps2 = conn.prepareStatement(sql2);
-                    ps2.setInt(1, oid);
-                    ps2.setInt(2, i.getProduct().getProductID());
-                    ps2.setDouble(3, i.getPrice());
-                    ps2.setInt(4, i.getQuantity());
-                    ps2.executeUpdate();
-                }
-            }
-            //Update so luong san pham 
-            String sql3 = "update product set productQuantity = productQuantity-? where id=?";
-            PreparedStatement ps3 = conn.prepareStatement(sql3);
-            for (Items i : c.getItems()) {
-                ps3.setInt(1, i.getQuantity());
-                ps3.setInt(2, i.getProduct().getProductQuantity());
-                ps3.executeUpdate();
-            }
+//            //add orderDetails
+//            if (rss.next()) {
+//                int oid = rss.getInt("orderID");
+//                for (Items i : c.()) {
+//                    String sql2 = "insert into [OrderDetail] values(?,?,?,?)";
+//                    PreparedStatement ps2 = conn.prepareStatement(sql2);
+//                    ps2.setInt(1, oid);
+//                    ps2.setInt(2, i.getProduct().getProductID());
+//                    ps2.setDouble(3, i.getPrice());
+//                    ps2.setInt(4, i.getQuantity());
+//                    ps2.executeUpdate();
+//                }
+//            }
+//            //Update so luong san pham 
+//            String sql3 = "update product set productQuantity = productQuantity-? where id=?";
+//            PreparedStatement ps3 = conn.prepareStatement(sql3);
+//            for (Items i : c.getItems()) {
+//                ps3.setInt(1, i.getQuantity());
+//                ps3.setInt(2, i.getProduct().getProductQuantity());
+//                ps3.executeUpdate();
+//            }
         } catch (Exception e) {
 
         }

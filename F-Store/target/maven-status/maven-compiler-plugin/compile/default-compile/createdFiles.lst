@@ -1,9 +1,11 @@
 Controller\RegisterController.class
+Controller\AddProduct.class
 Controller\LogoutController.class
 DBContext\DBContext.class
 DAOs\AdminDAO.class
 Controller\HomeController.class
 Controller\StaffController.class
+Modals\Items.class
 Modals\Order.class
 DAOs\CartDAO.class
 DAOs\orderDAO.class
@@ -19,5 +21,6 @@ Modals\Product.class
 Controller\ManagerControl.class
 DAOs\ProductDAO.class
 Controller\UserController.class
+Controller\ProductController.class
 Modals\User.class
 Controller\LoginController.class

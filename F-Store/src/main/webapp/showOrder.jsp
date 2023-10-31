@@ -424,9 +424,6 @@
 
         %>
         <div class="container">
-<<<<<<< HEAD:Beti-shop/src/main/webapp/showOrder.jsp
-
-=======
             <!--Menu bar-->
             <div class="sidebar">
                 <ul class="list-group category_block">
@@ -457,26 +454,25 @@
                     </li> -->
                 </ul>
             </div>
->>>>>>> newUpStream/main:F-Store/src/main/webapp/showOrder.jsp
             <div class="row">
                 <div class="col-md-3">
                     <!--Menu bar-->
                     <div class="sidebar">
                         <ul class="list-group category_block">
                             <li class="list-group-item ${mana != null ? 'active' : 'inactive'}">
-                                <a href="/Beti-shop/manager">
+                                <a href="/F-Store/Manager/manageProduct">
                                     <i class="fab fa-product-hunt fa-lg" style="color: #ffffff;"></i>
                                     <span>Quản lý sản phẩm</span> 
                                 </a>
                             </li>
                             <li class="list-group-item  ${ord != null ? 'active' : 'inactive'} active">
-                                <a href="/Beti-shop/manager/ShowOrder" class="active">
+                                <a href="/F-Store/Manager/ShowOrder" class="active">
                                     <i class="far fa-file-alt fa-lg"></i>
                                     <span>Quản lý hóa đơn</span>
                                 </a>
                             </li>
                             <li class="list-group-item  ${mth != null ? 'active' : 'inactive'}">
-                                <a href="/Beti-shop/manager/monthRevenue">
+                                <a href="/F-Store/Manager/monthRevenue">
                                     <i class="far fa-file-alt fa-lg"></i>
                                     <span>Quản lý doanh thu </span>
                                 </a>

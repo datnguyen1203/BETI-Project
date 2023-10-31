@@ -473,19 +473,15 @@
                             <span>Quản lý hóa đơn</span>
                         </a>
                     </li>
-<<<<<<< HEAD:Beti-shop/src/main/webapp/listproduct.jsp
                     <li class="list-group-item  ${mth != null ? 'active' : 'inactive'}">
-                        <a href="/Beti-shop/manager/monthRevenue">
+                        <a href="/F-Store/Manager/monthRevenue">
                             <i class="far fa-file-alt fa-lg"></i>
                             <span>Quản lý doanh thu </span>
                         </a>
                     </li>
-                    <li class="list-group-item  ${ord != null ? 'active' : 'inactive'}">
-                        <a href="/Beti-shop/manager/ShowOrder">
-=======
                     <li class="list-group-item  ${logout != null ? 'active' : 'inactive'}">
                         <a href="/F-Store/Logout">
->>>>>>> newUpStream/main:F-Store/src/main/webapp/productManagement.jsp
+
                             <i class="fas fa-sign-out-alt fa-lg" style="color: #ffffff;"></i>
                             <span>Đăng xuất</span>
                         </a>

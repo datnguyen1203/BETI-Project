@@ -23,16 +23,10 @@ import java.util.logging.Logger;
  */
 public class ProductDAO {
 
-<<<<<<< HEAD:Beti-shop/src/main/java/DAOs/ProductDAO.java
-    private DBContext con = new DBContext();
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
-=======
     
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
->>>>>>> newUpStream/main:F-Store/src/main/java/DAOs/ProductDAO.java
 
     public ProductDAO() {
         con = DBContext.DBContext.getConnection();

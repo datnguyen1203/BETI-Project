@@ -6,7 +6,6 @@ package Controller;
 
 import DAOs.ProductDAO;
 import DAOs.orderDAO;
-import static DBContext.DBContext.main;
 import Modals.Order;
 import Modals.Product;
 import java.io.IOException;
@@ -15,9 +14,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.net.URLDecoder;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,35 +70,21 @@ public class ManagerControl extends HttpServlet {
                 request.setAttribute("list", list);
                 request.getRequestDispatcher("/productManagement.jsp").forward(request, response);
                 break;
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ManagerControl.java
-            case "/Beti-shop/manager/ShowOrder":
-                orderDAO ordao = new orderDAO();
-                List<Order> orderList = ordao.getAllOrder();
-=======
             case "/F-Store/Manager/ShowOrder":
                 orderDAO order = new orderDAO();
                 List<Order> orderList = order.getAllOrder();
->>>>>>> newUpStream/main:F-Store/src/main/java/Controller/ManagerControl.java
                 request.setAttribute("ord", "choose");
                 request.setAttribute("listOr", orderList);
                 request.getRequestDispatcher("/showOrder.jsp").forward(request, response);
                 break;
-<<<<<<< HEAD:F-Store/src/main/java/Controller/ManagerControl.java
-            case "/Beti-shop/manager/monthRevenue":
+         case "/F-Store/Manager/monthRevenue":
                 orderDAO or = new orderDAO();
                 List<Order> listRevenue = or.monthlyRevenue();
                 request.setAttribute("mth", "choose");
                 request.setAttribute("listRevenue", listRevenue);
                 request.getRequestDispatcher("/MonthRevenue.jsp").forward(request, response);
                 break;
-
-=======
-         
->>>>>>> newUpStream/main:F-Store/src/main/java/Controller/ManagerControl.java
         }
-        String[] s = path.split("/");
-        String action = s[s.length - 2];
-        String pro_id = URLDecoder.decode(s[s.length - 1], "UTF-8");
     }
 
     /**
