@@ -65,7 +65,11 @@
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-light" type="submit">Search</button>
                         </form>
-                        <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row">
+                        <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row me-5">
+                                <%
+                                if (session.getAttribute("id") != null) {
+
+                            %>
                             <!--Cart-->
                             <li class="nav-item col-sm-2">
                                 <a href="/F-Store/Cart" class="nav-link
@@ -90,10 +94,7 @@
                                     </svg>
                                 </a>
                             </li>
-                            <%
-                                if (session.getAttribute("id") != null) {
-
-                            %>
+                        
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
                                 <a href="/F-Store/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
@@ -148,11 +149,10 @@
 
         <%
             Product p = (Product) session.getAttribute("thongtinsanpham");
-
         %>
 
         <div class="container">
-            <form action="Product" method="post" class="bg-white p-5 m-5 rounded-3">
+            <form action="Cart" method="post" class="bg-white p-5 m-5 rounded-3">
                 <div class="mb-5">
                     <h1>Chi tiết sản phẩm</h1>
                 </div>

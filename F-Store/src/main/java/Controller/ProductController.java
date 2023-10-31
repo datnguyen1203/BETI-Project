@@ -63,7 +63,7 @@ public class ProductController extends HttpServlet {
              String[] s = path.split("/");
             String id = s[s.length - 1];
             ProductDAO dao = new ProductDAO();
-            Product p = dao.GetProductId(id);
+            Product p = dao.GetProductId(Integer.parseInt(id));
             if (p == null) {
                 response.sendRedirect("/F-Store/");
             } else {
@@ -93,7 +93,9 @@ public class ProductController extends HttpServlet {
             Cart c = new Cart(userID, proID, size, quantity);
             CartDAO dao = new CartDAO();
             int kq = dao.AddNew(c);
+            
             HttpSession session = request.getSession();
+            session.setAttribute("thongtingiohang", c);
             if (kq != 0) {
                 session.setAttribute("alrtMessdetailpro", "Thêm thành công");
                 response.sendRedirect("/F-Store/");

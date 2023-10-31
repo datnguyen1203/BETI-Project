@@ -17,28 +17,62 @@ import java.util.logging.Logger;
  * @author admin
  */
 public class CartDAO {
-       private Connection conn = null;
+
+    private Connection conn = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
 
     public CartDAO() {
         //conn = DBContext.DBContext.getConnection();
-        conn= DBContext.DBContext.getConnection();
+        conn = DBContext.DBContext.getConnection();
     }
-    
-     public int AddNew(Cart c) {
+
+    public int AddNew(Cart c) {
         String sql = "insert into Cart values(?,?,?,?)";
         int ketqua = 0;
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, c.getMakhachhang());
-            ps.setInt(2, c.getMasanpham());
-            ps.setString(3, c.getKichthuocsanpham());
-            ps.setInt(4, c.getSoluong());
+            ps.setInt(1, c.getUserID());
+            ps.setInt(2, c.getProductID());
+            ps.setString(3, c.getSize());
+            ps.setInt(4, c.getQuantity());
             ketqua = ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ketqua;
     }
+
+    public int update(Cart cart) {
+        String sql = "UPDATE Cart SET UserID = ?, ProductID = ?, Size = ?, Quantity = ? WHERE CartID = ?";
+        int ketqua = 0;
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, cart.getUserID());
+            ps.setInt(2, cart.getProductID());
+            ps.setString(3, cart.getSize());
+            ps.setInt(4, cart.getQuantity());
+            ps.setInt(5, cart.getCartID()); // Cập nhật cho cartID được truyền vào
+
+            ketqua = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ketqua;
+    }
+
+    public ResultSet getAll(int userID) {
+        String sql = "SELECT * FROM Cart WHERE UserID = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, userID);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }
