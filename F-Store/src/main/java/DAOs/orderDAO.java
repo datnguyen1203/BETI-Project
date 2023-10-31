@@ -34,7 +34,7 @@ public class orderDAO {
     }
 
     //addOrder
-    public void addOrder(User u, Cart c, Product p) {
+    public void addOrder(User u, Cart c, Product p, Order o) {
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();
         try {
@@ -44,7 +44,7 @@ public class orderDAO {
             ps.setInt(1, p.getProductID());
             ps.setInt(2, c.getMakhachhang());
             ps.setInt(3, c.getMagiohang());
-            ps.setDouble(4, c.getTongtien());
+            ps.setDouble(4, o.getTotalPrice());
             ps.setString(5, date);
             ps.executeUpdate();
             //lay id order moi add

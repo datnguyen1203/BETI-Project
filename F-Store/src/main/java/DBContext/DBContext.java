@@ -23,7 +23,7 @@ public class DBContext {
 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection("jdbc:sqlserver://TUAN-KHUU2503\\SQLEXPRESS05:1433;"
-                            + "databaseName=FStore;"
+                            + "databaseName=F-StoreV2;"
                             + "user=sa;password=Vh250321;"
                             + "encrypt=true;"
                             + "trustServerCertificate=true;");
