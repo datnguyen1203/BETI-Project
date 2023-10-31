@@ -21,6 +21,7 @@ public class Cart {
     private int quantity;
    
 
+
     public Cart() {
     }
    
@@ -82,6 +83,7 @@ public class Cart {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
 
     public Product getProduct() {
         return product;

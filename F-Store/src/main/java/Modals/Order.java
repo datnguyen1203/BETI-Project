@@ -17,6 +17,8 @@ public class Order {
     private int cartID;
     private float totalPrice;
     private Date purchaseDate;
+    private int monthRevenue;
+    private double totalRevenue;
 
     public Order() {
     }
@@ -28,6 +30,11 @@ public class Order {
         this.cartID = cartID;
         this.totalPrice = totalPrice;
         this.purchaseDate = purchaseDate;
+    }
+
+    public Order(int monthRevenue, double totalRevenue) {
+        this.monthRevenue = monthRevenue;
+        this.totalRevenue = totalRevenue;
     }
 
     public int getOrderID() {
@@ -78,6 +85,21 @@ public class Order {
         this.purchaseDate = purchaseDate;
     }
 
+    public int getMonthRevenue(){
+        return monthRevenue;
+    }
+    
+    public void setMonthRevenue (int monthRevenue){
+        this.monthRevenue = monthRevenue;
+    }
+    
+    public double getTotalRevenue(){
+        return totalRevenue;
+    }
+    
+    public void setTotalRevenue(double totalRevenue){
+        this.totalRevenue = totalRevenue;
+    }
     
 }
 
