@@ -42,8 +42,8 @@ public class orderDAO {
             String sql = "insert into [Order] values (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, p.getProductID());
-            ps.setInt(2, c.getMakhachhang());
-            ps.setInt(3, c.getMagiohang());
+            ps.setInt(2, c.getUserID());
+            ps.setInt(3, c.getCartID());
             ps.setDouble(4, o.getTotalPrice());
             ps.setString(5, date);
             ps.executeUpdate();
@@ -80,7 +80,7 @@ public class orderDAO {
     //doanh thu theo thang
     public List<Order> monthlyRevenue() {
         List<Order> list = new ArrayList<>();
-        String sql = "SELECT MONTH(purchaseDate) AS month, SUM(C.totalPrice) AS revenue\n"
+        String sql = "SELECT MONTH(purchaseDate) AS month, SUM(O.totalPrice) AS revenue\n"
                 + "FROM [Order] AS O\n"
                 + "INNER JOIN Cart AS C ON O.cartID = C.cartID\n"
                 + "GROUP BY MONTH(O.purchaseDate)\n"
@@ -89,8 +89,7 @@ public class orderDAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Order(rs.getInt(1),
-                        rs.getDouble(2)));
+                list.add(new Order(rs.getInt(1), rs.getDouble(2)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(orderDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,7 +100,7 @@ public class orderDAO {
     //getall
     public List<Order> getAllOrder() {
         List<Order> list = new ArrayList<>();
-        String sql = "SELECT O.orderID, O.userID, O.productID, O.cartID, C.totalPrice, O.purchaseDate\n"
+        String sql = "SELECT O.orderID, O.userID, O.productID, O.cartID, O.totalPrice, O.purchaseDate\n"
                 + "FROM [Order] AS O\n"
                 + "INNER JOIN Cart AS C ON O.cartID = C.cartID;";
         try {

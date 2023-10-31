@@ -6,7 +6,9 @@
 package Controller;
 
 import DAOs.CartDAO;
+import DAOs.UserDAO;
 import Modals.Cart;
+import Modals.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -58,7 +60,15 @@ public class CartController extends HttpServlet {
     throws ServletException, IOException {
         String path = request.getRequestURI();
         if (path.startsWith("/F-Store/Cart/")) {
-            request.getRequestDispatcher("/cart.jsp").forward(request, response);
+            String[] s = path.split("/");
+            String id = s[s.length - 1];
+            UserDAO dao = new UserDAO();
+            User u = dao.GetUserId(id);
+            HttpSession session = request.getSession();
+            if(u != null){
+                session.setAttribute("userIn4", u);
+                request.getRequestDispatcher("/cart.jsp").forward(request, response);
+            } 
         }
     } 
 

@@ -4,6 +4,8 @@
     Author     : admin
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -515,7 +517,7 @@
                                     <td class="align-middle"><p>${o.orderID}</p></td>
                                     <td class="align-middle"><p>${o.userID}</p></td>
                                     <td class="align-middle"><p>${o.purchaseDate}</p></td>
-                                    <td class="align-middle"><p>${o.totalPrice}</p></td>
+                                    <td class="align-middle"><p><fmt:formatNumber value="${o.totalPrice}" type="number" pattern="###,### vnđ" /></p></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

@@ -4,74 +4,98 @@
  */
 package Modals;
 
+import DAOs.ProductDAO;
+import java.util.List;
+
 /**
  *
  * @author admin
  */
 public class Cart {
 
-    private int magiohang;
-    private int makhachhang;
-    private int masanpham;
-    private String kichthuocsanpham;
-    private int soluong;
-    
+    private Product product;
+    private int cartID;
+    private int userID;
+    private int productID;
+    private String size;
+    private int quantity;
+   
+
+
     public Cart() {
     }
-
-    public Cart(int magiohang, int makhachhang, int masanpham, String kichthuocsanpham, int soluong) {
-        this.magiohang = magiohang;
-        this.makhachhang = makhachhang;
-        this.masanpham = masanpham;
-        this.kichthuocsanpham = kichthuocsanpham;
-        this.soluong = soluong;
+   
+    public Cart(int cartID, int userID, int productID, String size, int quantity) {
+        this.cartID = cartID;
+        this.userID = userID;
+        this.productID = productID;
+        this.size = size;
+        this.quantity = quantity;
+        ProductDAO dao = new ProductDAO();
+        this.product = dao.GetProductId(productID);
     }
 
-    public Cart(int makhachhang, int masanpham, String kichthuocsanpham, int soluong) {
-        this.magiohang = magiohang;
-        this.makhachhang = makhachhang;
-        this.masanpham = masanpham;
-        this.kichthuocsanpham = kichthuocsanpham;
-        this.soluong = soluong;
+    public Cart(int userID, int productID, String size, int quantity) {
+        this.userID = userID;
+        this.productID = productID;
+        this.size = size;
+        this.quantity = quantity;
+        ProductDAO dao = new ProductDAO();
+        this.product = dao.GetProductId(productID);
     }
 
-    public int getMagiohang() {
-        return magiohang;
+    public int getCartID() {
+        return cartID;
     }
 
-    public void setMagiohang(int magiohang) {
-        this.magiohang = magiohang;
+    public void setCartID(int cartID) {
+        this.cartID = cartID;
     }
 
-    public int getMakhachhang() {
-        return makhachhang;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setMakhachhang(int makhachhang) {
-        this.makhachhang = makhachhang;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
-    public int getMasanpham() {
-        return masanpham;
+    public int getProductID() {
+        return productID;
     }
 
-    public void setMasanpham(int masanpham) {
-        this.masanpham = masanpham;
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
-    public String getKichthuocsanpham() {
-        return kichthuocsanpham;
+    public String getSize() {
+        return size;
     }
 
-    public void setKichthuocsanpham(String kichthuocsanpham) {
-        this.kichthuocsanpham = kichthuocsanpham;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public int getSoluong() {
-        return soluong;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
+
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" + "product=" + product + ", cartID=" + cartID + ", userID=" + userID + ", productID=" + productID + ", size=" + size + ", quantity=" + quantity + '}';
+    }
+
 }

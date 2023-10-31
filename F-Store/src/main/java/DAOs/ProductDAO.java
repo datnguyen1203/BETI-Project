@@ -168,11 +168,11 @@ public class ProductDAO {
     }
 
     
-    public Product GetProductId(String id) {
+    public Product GetProductId(int id) {
         Product p = new Product();
         try {
             ps = con.prepareStatement("select * from [Product] where productID=?");
-            ps.setString(1, id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             if (rs.next()) {
                 p = new Product(rs.getInt("productID"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getInt("productQuantity"),
@@ -206,4 +206,6 @@ public class ProductDAO {
     }
 
     
+
 }
+

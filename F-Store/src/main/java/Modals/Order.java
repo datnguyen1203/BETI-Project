@@ -31,8 +31,8 @@ public class Order {
         this.totalPrice = totalPrice;
         this.purchaseDate = purchaseDate;
     }
-    
-    public Order(int monthRevenue, double totalRevenue){
+
+    public Order(int monthRevenue, double totalRevenue) {
         this.monthRevenue = monthRevenue;
         this.totalRevenue = totalRevenue;
     }

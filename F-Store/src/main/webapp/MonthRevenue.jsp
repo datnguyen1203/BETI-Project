@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -260,7 +261,7 @@
                 width: 90px;
                 height: 90px;
             }
-                        body{
+            body{
                 margin: 0;
                 padding: 0;
                 font-family: "Roboto", sans-serif;
@@ -466,15 +467,15 @@
 
                             </tr>
                         </thead>
-                         <tbody>
-                         <c:forEach items="${listRevenue}" var="o">
-                                    <tr >
-                                        <th class="align-middle">${o.monthRevenue}</th>
-                                        <th class="align-middle">${o.totalRevenue}</th>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
+                        <tbody>
+                            <c:forEach items="${listRevenue}" var="o">
+                                <tr >
+                                    <th class="align-middle">${o.monthRevenue}</th>
+                                    <th class="align-middle"><fmt:formatNumber value="${o.totalRevenue}" type="number" pattern="###,### vnđ" /></th>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                     <!--                        <a href="/PRJProject/manager">
                                                 <button type="button" class="btn btn-primary bg-primary">Back</button>
                                             </a>-->
