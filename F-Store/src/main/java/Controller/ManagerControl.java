@@ -77,7 +77,13 @@ public class ManagerControl extends HttpServlet {
                 request.setAttribute("listOr", orderList);
                 request.getRequestDispatcher("/showOrder.jsp").forward(request, response);
                 break;
-         
+         case "/F-Store/Manager/monthRevenue":
+                orderDAO or = new orderDAO();
+                List<Order> listRevenue = or.monthlyRevenue();
+                request.setAttribute("mth", "choose");
+                request.setAttribute("listRevenue", listRevenue);
+                request.getRequestDispatcher("/MonthRevenue.jsp").forward(request, response);
+                break;
         }
     }
 

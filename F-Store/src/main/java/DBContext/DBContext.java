@@ -22,9 +22,9 @@ public class DBContext {
         try {
 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-3SV4P5S\\MDATNGUYEN1203:1433;"
+            conn = DriverManager.getConnection("jdbc:sqlserver://TUAN-KHUU2503\\SQLEXPRESS05:1433;"
                             + "databaseName=FStore;"
-                            + "user=sa;password=datnguyen12032003;"
+                            + "user=sa;password=Vh250321;"
                             + "encrypt=true;"
                             + "trustServerCertificate=true;");
         } catch (ClassNotFoundException ex) {

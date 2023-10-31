@@ -15,24 +15,27 @@ public class Cart {
     private int masanpham;
     private String kichthuocsanpham;
     private int soluong;
-
+    private double tongtien;
+    
     public Cart() {
     }
 
-    public Cart(int magiohang, int makhachhang, int masanpham, String kichthuocsanpham, int soluong) {
+    public Cart(int magiohang, int makhachhang, int masanpham, String kichthuocsanpham, int soluong, double tongtien) {
         this.magiohang = magiohang;
         this.makhachhang = makhachhang;
         this.masanpham = masanpham;
         this.kichthuocsanpham = kichthuocsanpham;
         this.soluong = soluong;
+        this.tongtien = tongtien;
     }
 
-    public Cart(int makhachhang, int masanpham, String kichthuocsanpham, int soluong) {
+    public Cart(int makhachhang, int masanpham, String kichthuocsanpham, int soluong, double tongtien) {
         this.magiohang = magiohang;
         this.makhachhang = makhachhang;
         this.masanpham = masanpham;
         this.kichthuocsanpham = kichthuocsanpham;
         this.soluong = soluong;
+        this.tongtien = tongtien;
     }
 
     public int getMagiohang() {
@@ -73,6 +76,14 @@ public class Cart {
 
     public void setSoluong(int soluong) {
         this.soluong = soluong;
+    }
+
+    public double getTongtien() {
+        return tongtien;
+    }
+
+    public void setTongtien(double tongtien) {
+        this.tongtien = tongtien;
     }
     
     

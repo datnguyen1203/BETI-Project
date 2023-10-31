@@ -473,8 +473,15 @@
                             <span>Quản lý hóa đơn</span>
                         </a>
                     </li>
+                    <li class="list-group-item  ${mth != null ? 'active' : 'inactive'}">
+                        <a href="/F-Store/Manager/monthRevenue">
+                            <i class="far fa-file-alt fa-lg"></i>
+                            <span>Quản lý doanh thu </span>
+                        </a>
+                    </li>
                     <li class="list-group-item  ${logout != null ? 'active' : 'inactive'}">
                         <a href="/F-Store/Logout">
+
                             <i class="fas fa-sign-out-alt fa-lg" style="color: #ffffff;"></i>
                             <span>Đăng xuất</span>
                         </a>
