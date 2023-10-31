@@ -90,7 +90,7 @@ public class ProductController extends HttpServlet {
             String size = request.getParameter("options-base");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-            Cart c = new Cart(proID, quantity, quantity, size, proID, quantity);
+            Cart c = new Cart(userID, proID, size, quantity);
             CartDAO dao = new CartDAO();
             int kq = dao.AddNew(c);
             HttpSession session = request.getSession();
