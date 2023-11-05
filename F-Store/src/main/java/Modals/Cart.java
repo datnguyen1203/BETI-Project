@@ -13,32 +13,35 @@ import java.util.List;
  */
 public class Cart {
 
+    private Product product;
     private int cartID;
     private int userID;
     private int productID;
     private String size;
     private int quantity;
+   
 
-    private List<Item> items;
 
     public Cart() {
     }
-
+   
     public Cart(int cartID, int userID, int productID, String size, int quantity) {
         this.cartID = cartID;
         this.userID = userID;
         this.productID = productID;
         this.size = size;
         this.quantity = quantity;
+        ProductDAO dao = new ProductDAO();
+        this.product = dao.GetProductId(productID);
     }
-    
-    
 
     public Cart(int userID, int productID, String size, int quantity) {
         this.userID = userID;
         this.productID = productID;
         this.size = size;
         this.quantity = quantity;
+        ProductDAO dao = new ProductDAO();
+        this.product = dao.GetProductId(productID);
     }
 
     public int getCartID() {
@@ -48,8 +51,6 @@ public class Cart {
     public void setCartID(int cartID) {
         this.cartID = cartID;
     }
-
-  
 
     public int getUserID() {
         return userID;
@@ -83,20 +84,18 @@ public class Cart {
         this.quantity = quantity;
     }
 
-   
 
-    //Totalprice
-    public double getTotalPrice() {
-        double t = 0;
-        for (Item o : items) {
-            t += (o.getProductQuantity() * o.getPrice());
-        }
-        return t;
+    public Product getProduct() {
+        return product;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Cart{" + "product=" + product + ", cartID=" + cartID + ", userID=" + userID + ", productID=" + productID + ", size=" + size + ", quantity=" + quantity + '}';
-//    }
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" + "product=" + product + ", cartID=" + cartID + ", userID=" + userID + ", productID=" + productID + ", size=" + size + ", quantity=" + quantity + '}';
+    }
 
 }

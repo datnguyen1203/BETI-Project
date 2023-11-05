@@ -4,26 +4,21 @@
  */
 package Controller;
 
-import DAOs.ProductDAO;
+import DAOs.UserDAO;
+import Modals.User;
+import Ultis.Helper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.Part;
-import java.io.File;
 
 /**
  *
- * @author LEGION
+ * @author nhvie
  */
-@WebServlet(name = "AddProduct", urlPatterns = {"/addproduct"})
-@MultipartConfig
-public class AddProduct extends HttpServlet {
+public class ResetpasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,8 +33,7 @@ public class AddProduct extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-
+            request.getRequestDispatcher("ForgotPassword.jsp").forward(request, response);
         }
     }
 
@@ -69,36 +63,20 @@ public class AddProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String productName = request.getParameter("name");
-        String productPrice = request.getParameter("price");
-        String productQuantity = request.getParameter("quantity");
-        Part filePart = request.getPart("img");
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "img\\product";
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
+        String email = request.getParameter("email").trim();
+        UserDAO udao = new UserDAO();
+        User user = udao.GetUser(email);
+        if (user != null) {
+            String newpass = Helper.getAlphaNumericString(8);
+            Helper.send(email, "Reset Password", "New Password for your account is " + newpass);
+            String hashPassword = Helper.hashPassword(newpass, "MD5");
+            udao.updatePassword(email, hashPassword);
+            request.setAttribute("report", "New Password is sent to email. Please check email to receive new password");
+        } else {
+            request.setAttribute("email", email);
+            request.setAttribute("error", "Email not registered");
         }
-
-        String fileName = getFileName(filePart);
-        String filePath = uploadPath  + File.separator + fileName;
-        filePart.write(filePath);
-        String productMarterial = request.getParameter("category");
-        String productType = request.getParameter("description");
-        ProductDAO dao = new ProductDAO();
-        dao.addProduct(productName, productPrice, productQuantity, "./img/product/"+ fileName, productMarterial, productType);
-        response.sendRedirect("/F-Store/ProductControl");
-    }
-
-    private String getFileName(Part part) {
-        String contentDisposition = part.getHeader("content-disposition");
-        String[] tokens = contentDisposition.split(";");
-        for (String token : tokens) {
-            if (token.trim().startsWith("filename")) {
-                return token.substring(token.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
+        doGet(request, response);
     }
 
     /**

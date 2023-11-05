@@ -1,4 +1,3 @@
-
 <%-- 
     Document   : home.js
     Created on : Oct 16, 2023, 1:20:08 PM
@@ -6,7 +5,6 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DAOs.ProductDAO"%>
 <%@page import="java.nio.charset.StandardCharsets"%>
@@ -180,7 +178,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store/Home">F-Store</a>
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store/">F-Store</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -200,7 +198,7 @@
                             %>
                             <!--Cart-->
                             <li class="nav-item col-sm-2">
-                                <a href="/F-Store/Cart/<%=session.getAttribute("id")%>" class="nav-link
+                                <a href="/F-Store/Cart" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"
@@ -343,8 +341,8 @@
                                         <h5 class="card-title"> ${o.productName} </h5>
                                         <p class="card-text"> <span class="fw-bold rounded-2 text-white bg-danger p-1">Giá
                                                 tiền:</span>
-                                            <fmt:formatNumber pattern="###,###" value="${o.productPrice}"/> vnđ
-                                            </p>
+                                                ${o.productPrice}
+                                            vnđ</p>
                                     </div>
                                 </div>
                             </a>

@@ -4,7 +4,7 @@
  */
 package DAOs;
 
-import Modals.Item;
+import Modals.Items;
 import Modals.Order;
 import Modals.Product;
 import Modals.User;

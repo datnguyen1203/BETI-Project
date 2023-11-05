@@ -31,21 +31,32 @@ public class ProductDAO {
         con = DBContext.DBContext.getConnection();
     }
 
-    public Product GetProductId(int id) {
-        Product p = new Product();
-        try {
-            ps = con.prepareStatement("select * from [Product] where productID=?");
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                p = new Product(rs.getInt("productID"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getInt("productQuantity"),
-                        rs.getString("productImg"), rs.getString("productCategory"), rs.getString("productDis"));
-            }
+    public Product getProductById(int id) {
+        Product product = null;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            String query = "SELECT * FROM Product WHERE productID = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int productID = resultSet.getInt("productID");
+                String productName = resultSet.getString("productName");
+                double productPrice = resultSet.getDouble("productPrice");
+                int productQuantity = resultSet.getInt("productQuantity");
+                String productImg = resultSet.getString("productImg");
+                String productCategory = resultSet.getString("productCategory");
+                String productDis = resultSet.getString("productDis");
+
+                product = new Product(productID, productName, productPrice, productQuantity, productImg, productCategory, productDis);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return p;
+
+        return product;
     }
 
     public ArrayList<Product> getProduct(String search, int index, String sort) {
@@ -89,7 +100,7 @@ public class ProductDAO {
         }
         return list;
     }
-
+    
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
 
@@ -116,31 +127,6 @@ public class ProductDAO {
         }
 
         return products;
-    }
-
-    public Product getAll() {
-        Product p = null;
-        try (
-                 Statement statement = con.createStatement()) {
-            String query = "SELECT * FROM Product";
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while (resultSet.next()) {
-                int productID = resultSet.getInt("productID");
-                String productName = resultSet.getString("productName");
-                double productPrice = resultSet.getDouble("productPrice");
-                int productQuantity = resultSet.getInt("productQuantity");
-                String productImg = resultSet.getString("productImg");
-                String productCategory = resultSet.getString("productCategory");
-                String productDis = resultSet.getString("productDis");
-                p = new Product(productID, productName, productPrice, productQuantity, productImg, productCategory, productDis);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle any potential database errors here
-        }
-
-        return p;
     }
 
     public List<Product> searchProduct(String name, String typeSort) {
@@ -179,7 +165,7 @@ public class ProductDAO {
         }
         return null;
     }
-
+    
     public int getNumberProduct(String search) {
         ArrayList<Product> list = new ArrayList<>();
         String sql = "  select count(*) from Product p where p.productName like ?";
@@ -272,6 +258,23 @@ public class ProductDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Product GetProductId(int id) {
+        Product p = new Product();
+        try {
+            ps = con.prepareStatement("select * from [Product] where productID=?");
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                p = new Product(rs.getInt("productID"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getInt("productQuantity"),
+                        rs.getString("productImg"), rs.getString("productCategory"), rs.getString("productDis"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
     }
 
     public void deleteProduct(String productId) {
