@@ -5,7 +5,8 @@
 
 package Controller;
 
-import DAOs.ProductDAO;
+import DAOs.StaffDAO;
+import Ultis.Common;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,9 +16,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author LEGION
+ * @author nhvie
  */
-public class DeleteProduct extends HttpServlet {
+public class UpdateStaff extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,9 +29,19 @@ public class DeleteProduct extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        ProductDAO dao = new ProductDAO();
-        dao.deleteProduct(request.getParameter("id"));
-        response.sendRedirect("/F-Store/ProductControl");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String id = request.getParameter("id");
+            String email = request.getParameter("email");
+            String name = request.getParameter("name");
+            String password = request.getParameter("password");
+            String dob = request.getParameter("dob");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            StaffDAO staffDAO = new StaffDAO();
+            staffDAO.updateStaff(email, name, phone, address, Common.convertStringtoDate(dob), password, id);
+            response.sendRedirect("liststaff");
+        }
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

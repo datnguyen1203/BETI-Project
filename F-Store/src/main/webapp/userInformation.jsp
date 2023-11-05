@@ -100,7 +100,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store/Home">F-Store</a>
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store/">F-Store</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -109,12 +109,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!--Search-->
                         <form class="d-flex container" role="search" aria-label="Search">
-                            <input class="form-control me-2" type="hidden" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light" type="submit">Search</button>
                         </form>
                         <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row">
                             <!--Cart-->
                             <li class="nav-item col-sm-2">
-                                <a href="/F-Store/Cart/<%=session.getAttribute("id")%>" class="nav-link
+                                <a href="/F-Store/Cart" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"
@@ -138,7 +139,7 @@
                             </li>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
-                                <a href="/F-Store/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
+                                <a href="#" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
@@ -371,6 +372,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script src="/F-Store/validate.js"></script>
     </body>
 </html>

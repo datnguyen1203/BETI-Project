@@ -1,20 +1,13 @@
-<%-- 
+1<%-- 
     Document   : cart
     Created on : Oct 18, 2023, 2:43:41 PM
     Author     : admin
 --%>
 
-<%@page import="Modals.Product"%>
-<%@page import="Modals.Cart"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
-<%@page import="DAOs.ProductDAO"%>
 <%@page import="Modals.User"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DAOs.CartDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -58,53 +51,13 @@
                 color: white;
             }
 
-            #minus{
-                border-radius: 5px 0 0 5px;
-            }
-
-            #plus{
-                border-radius: 0 5px 5px 0;
-            }
-
         </style>
     </head><!-- comment -->
     <body>
-        <%
-            Cookie[] cookies = request.getCookies();
-            if (session.getAttribute("acc") == null) {
-                boolean flag = false;
-                if (cookies != null) {
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("user") && !cookie.getValue().equals("")) {
-                            session.setAttribute("id", cookie.getValue());
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-//                if (!flag) {
-//                    response.sendRedirect("/F-Store/Login");
-//                }
-            } else {
-                boolean flag = false;
-                if (cookies != null) {
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("user") && !cookie.getValue().equals("")) {
-                            session.setAttribute("id", cookie.getValue());
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-//                if (!flag) {
-//                    response.sendRedirect("/F-Store/Login");
-//                }
-            }
-        %>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/F-Store/Home">F-Store</a>
+                    <a class="navbar-brand text-white fw-bold" style="font-size: xx-large;" href="/Beti-shop">F-Store</a>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -114,13 +67,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!--Search-->
                         <form class="d-flex container " role="search" aria-label="Search">
-                            <input class="form-control me-2" type="hidden" placeholder="Search" aria-label="Search">
-                            
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light" type="submit">Search</button>
                         </form>
                         <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row">
                             <!--Cart-->
                             <li class="nav-item col-sm-2">
-                                <a href="/F-Store/Cart/<%=session.getAttribute("id")%>" class="nav-link
+                                <a href="cart.jsp" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"
@@ -144,7 +97,7 @@
                             </li>
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
-                                <a href="/F-Store/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
+                                <a href="/Beti-shop/User" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"
@@ -156,7 +109,7 @@
                             </li>
                             <!--Logout-->
                             <li class="nav-item col-sm-2">
-                                <a href="/F-Store/Logout" class="nav-link
+                                <a href="#" class="nav-link
                                    active
                                    text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"
@@ -171,7 +124,7 @@
                 </div>
             </nav>
 
-        </header>
+        </header>       
 
         <!--Body home page-->
         <div class="bg-body-secondary">
@@ -183,53 +136,44 @@
                         <!-- Cart items go here -->
                         <%
                             User u = (User) session.getAttribute("userIn4");
-                            ProductDAO pdao = new ProductDAO();
-                            List<Cart> cart = (List<Cart>) request.getAttribute("mycartlist");
-                            for (Cart i : cart) {
-                                Product pro = pdao.GetProductId(i.getProductID());
-
+                            CartDAO dao = new CartDAO();
+                            ResultSet rs = dao.getAll(u.getUserID());
+                            while (rs.next()) {
                         %>
                         <div class="col-12">
                             <div class="card mb-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="/F-Store/<%= pro.getProductImg()%>" alt="product" class="img-fluid">
+
+                                        <img src="/F-Store/" alt="" class="img-fluid">
+
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title"> <%= pro.getProductName()%> </h5>
-                                            <p class="card-text">Giá gốc: <fmt:formatNumber pattern="###,###" value="<%= pro.getProductPrice()%>"/> vnđ</p>
+                                            <h5 class="card-title"></h5>
                                             <p class="card-text"></p>
-                                            
-                                            <form action="Cart" method="post">
+                                            <p class="card-text"></p>
                                             <!-- Size selection -->
                                             <label for="size">Size:</label>
-                                            <select name="size">
-                                                <option value=" <%= i.getSize()%>"> <%= i.getSize()%></option>
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                            </select>
+                                            <label> 
+                                                <%= rs.getString("size")%>
+                                            </label>
                                             <br>
-                                                <!-- Quantity selection -->
-                                                <label for="quantity">Quantity:</label>
-                                                <div class="input-group" style="width: 100px ">
-                                                    <button class="btn btn-secondary" type="button" onclick="giam()" id="minus">-</button>
-                                                    <input type="text" class="form-control text-center" id="quantity" min="1" max="<%= pro.getProductQuantity() %>" name="quantity" value="<%= i.getQuantity()%>">
-                                                    <button class="btn btn-secondary" type="button" onclick="tang()" id="plus">+</button>
-                                                    <%
-                                                        double price = i.getQuantity() * pro.getProductPrice();
-                                                    %>
-                                                    <td class="align-middle"><fmt:formatNumber pattern="###,###" value="<%= price%>"/> vnđ</td>
-                                                    <input type="hidden" name="cartID" value="<%= i.getCartID()%>">
-                                                    <input type="hidden" name="userID" value="<%= i.getUserID()%>">
-                                                    <input type="hidden" name="productID" value="<%= i.getProductID()%>">
-                                                </div>
-                                                <button class="btn btn-danger">Thanh Toán</button>
-                                                <button class="btn btn-secondary ms-3" name="editCartbtn" value="edit">Chinh sua</button>
-                                                <button class="btn btn-secondary ms-3" name="deletebtn" value="delete" onclick="return confirm('Do you want to delete it?')">Xoa</button>
-                                            </form>
+                                            <!-- Quantity selection -->
+
+
+                                            <label for="quantity">Quantity:</label>
+
+                                            <div class="input-group"    style="width: 100px ">
+                                                <button class="btn btn-secondary" type="button" onclick="giam()" id="minus">-</button>
+                                                <input type="text" class="form-control text-center" id="quantity" value="<%= rs.getString("quantity")%>">
+                                                <button class="btn btn-secondary" type="button" onclick="tang()" id="plus">+</button>
+                                                <td class="align-middle"><fmt:formatNumber pattern="##.#" value=""/></td>
+
+
+                                            </div>
+
+                                            <button class="btn btn-danger">Thanh Toán</button>
                                         </div>
 
                                     </div>
@@ -239,7 +183,6 @@
                         <%
                             }
                         %>
-
                     </div>
                     <div class="row">
                         <!-- Cart items go here -->
@@ -252,16 +195,9 @@
                             </div>
                         </div>
                     </div>
-                    <%
-                        int totalall = 0;
-                        for (Cart j : cart) {
-                            Product pro = pdao.GetProductId(j.getProductID());
-                            totalall += j.getQuantity() * pro.getProductPrice();
-                        }
-                    %>
                     <div class="row">
                         <div class="col-12 text-end">
-                            <h4>Total: <fmt:formatNumber pattern="###,###" value="<%= totalall%>"/> vnđ </h4>
+                            <h4>Total: </h4>
                         </div>
                     </div>
                     <div class="row">
@@ -358,13 +294,13 @@
                             <h5 class="card-title">Phương thức thanh toán
                             </h5>
                             <div>
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/bank.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/bank.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/zalopay.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/zalopay.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/vnpay.png" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/vnpay.png" alt="img" width="50px">
 
-                                <img id="logoimg" class="rounded-3 m-sm-2" src="/F-Store/img/logo/money.jpg" alt="img" width="50px">
+                                <img id="logoimg" class="rounded-3 m-sm-2" src="img/logo/money.jpg" alt="img" width="50px">
 
                             </div>
                         </div>
@@ -373,40 +309,22 @@
                 </div>
             </div>
         </footer>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-
         <script src="validate.js"></script>
 
         <script>
-                                                        function tang() {
-
-                                                            let quantityInput = document.querySelector("#quantity")
-                                                            let quantity = Number.parseInt(quantityInput.value);
-                                                            quantityInput.value = quantity + 1;
-                                                        }
-                                                        function giam() {
-                                                            while (quantityInput.value > 0) {
-                                                                let quantityInput = document.querySelector("#quantity")
-                                                                let quantity = Number.parseInt(quantityInput.value);
-                                                                quantityInput.value = quantity - 1;
-
-                                                            }
-                                                        }
-                                                        for (let i = 0; i < quantities.length; i++) {
-                                                            const minusButton = quantities[i].previousElementSibling;
-                                                            const plusButton = quantities[i].nextElementSibling;
-
-                                                            minusButton.onclick = function () {
-                                                                giam(this);
-                                                            };
-
-                                                            plusButton.onclick = function () {
-                                                                tang(this);
-                                                            };
-                                                        }
+                                                    function tang() {
+                                                        let quantityInput = document.querySelector("#quantity")
+                                                        let quantity = Number.parseInt(quantityInput.value);
+                                                        quantityInput.value = quantity + 1;
+                                                    }
+                                                    function giam() {
+                                                        let quantityInput = document.querySelector("#quantity")
+                                                        let quantity = Number.parseInt(quantityInput.value);
+                                                        quantityInput.value = quantity - 1;
+                                                    }
         </script>
     </body>
 </html>

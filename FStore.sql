@@ -64,39 +64,6 @@ productID int foreign key references [Product](productID) not null
 );
 
 
--- Tạo trigger để chèn sản phẩm mới hoặc cộng dồn số lượng trong bảng Cart
-CREATE TRIGGER trg_InsertOrUpdateCart
-ON Cart
-INSTEAD OF INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE @ExistingCartID INT;
-
-    -- Kiểm tra xem sản phẩm có tồn tại không
-    SELECT @ExistingCartID = c.cartID
-    FROM Cart c
-    JOIN inserted i ON c.productID = i.productID AND c.userID = i.userID AND c.size = i.size;
-
-    IF @ExistingCartID IS NOT NULL
-    BEGIN
-        -- Sản phẩm đã tồn tại, cộng dồn số lượng
-        UPDATE c
-        SET c.quantity = c.quantity + i.quantity
-        FROM Cart c
-        JOIN inserted i ON c.productID = i.productID AND c.userID = i.userID AND c.size = i.size;
-    END
-    ELSE
-    BEGIN
-        -- Chèn sản phẩm mới vào bảng Cart
-        INSERT INTO Cart (userID, productID, size, quantity)
-        SELECT userID, productID, size, quantity
-        FROM inserted;
-    END
-END;
-GO
-
 
 INSERT INTO [FStore].[dbo].[User] ( userEmail, userPassword, userName, userDayOfBirth, userPhone, userAddress)
 VALUES ( 'user@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Dat Nguyen', '2003-03-12', '0312697274', 'An Giang');

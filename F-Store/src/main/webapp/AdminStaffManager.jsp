@@ -1,17 +1,17 @@
-<%-- 
+<%--
     Document   : managerProduct
     Created on : Oct 18, 2023, 11:07:25 PM
     Author     : admin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manage Product</title>
+        <title>Manage Staff</title>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -19,8 +19,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>  
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <style>
 
             body {
@@ -30,7 +30,7 @@
                 font-size: 13px;
             }
 
-            .main-title{
+            .main-title {
                 margin: 0;
                 padding: 0;
                 border: none;
@@ -38,17 +38,19 @@
                 box-sizing: border-box;
             }
 
-            #logo_img img{
+            #logo_img img {
                 width: 5px;
                 height: 5px;
             }
+
             .table-wrapper {
                 background: #fff;
                 padding: 20px 25px;
                 margin: 30px 0;
                 border-radius: 3px;
-                box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
             }
+
             .table-title {
                 position: fixed;
                 padding-bottom: 15px;
@@ -59,13 +61,16 @@
                 border-radius: 3px 3px 0 0;
 
             }
+
             .table-title h2 {
                 margin: 5px 0 0;
                 font-size: 24px;
             }
+
             .table-title .btn-group {
                 float: right;
             }
+
             .table-title .btn {
                 color: #fff;
                 float: right;
@@ -77,42 +82,52 @@
                 outline: none !important;
                 margin-left: 10px;
             }
+
             .table-title .btn i {
                 float: left;
                 font-size: 21px;
                 margin-right: 5px;
             }
+
             .table-title .btn span {
                 float: left;
                 margin-top: 2px;
             }
+
             table.table tr th, table.table tr td {
                 border-color: #e9e9e9;
                 padding: 12px 15px;
                 vertical-align: middle;
             }
+
             table.table tr th:first-child {
                 width: 60px;
             }
+
             table.table tr th:last-child {
                 width: 100px;
             }
+
             table.table-striped tbody tr:nth-of-type(odd) {
                 background-color: #fcfcfc;
             }
+
             table.table-striped.table-hover tbody tr:hover {
                 background: #f5f5f5;
             }
+
             table.table th i {
                 font-size: 13px;
                 margin: 0 5px;
                 cursor: pointer;
             }
+
             table.table td:last-child i {
                 opacity: 0.9;
                 font-size: 22px;
                 margin: 0 5px;
             }
+
             table.table td a {
                 font-weight: bold;
                 color: #566787;
@@ -120,27 +135,34 @@
                 text-decoration: none;
                 outline: none !important;
             }
+
             table.table td a:hover {
                 color: #2196F3;
             }
+
             table.table td a.edit {
                 color: #FFC107;
             }
+
             table.table td a.delete {
                 color: #F44336;
             }
+
             table.table td i {
                 font-size: 19px;
             }
+
             table.table .avatar {
                 border-radius: 50%;
                 vertical-align: middle;
                 margin-right: 10px;
             }
+
             .pagination {
                 float: right;
                 margin: 0 0 5px;
             }
+
             .pagination li a {
                 border: none;
                 font-size: 13px;
@@ -153,41 +175,51 @@
                 text-align: center;
                 padding: 0 6px;
             }
+
             .pagination li a:hover {
                 color: #666;
             }
+
             .pagination li.active a, .pagination li.active a.page-link {
                 background: #03A9F4;
             }
+
             .pagination li.active a:hover {
                 background: #0397d6;
             }
+
             .pagination li.disabled i {
                 color: #ccc;
             }
+
             .pagination li i {
                 font-size: 16px;
                 padding-top: 6px
             }
+
             .hint-text {
                 float: left;
                 margin-top: 10px;
                 font-size: 13px;
             }
+
             /* Custom checkbox */
             .custom-checkbox {
                 position: relative;
             }
+
             .custom-checkbox input[type="checkbox"] {
                 opacity: 0;
                 position: absolute;
                 margin: 5px 0 0 3px;
                 z-index: 9;
             }
-            .custom-checkbox label:before{
+
+            .custom-checkbox label:before {
                 width: 18px;
                 height: 18px;
             }
+
             .custom-checkbox label:before {
                 content: '';
                 margin-right: 10px;
@@ -199,6 +231,7 @@
                 box-sizing: border-box;
                 z-index: 2;
             }
+
             .custom-checkbox input[type="checkbox"]:checked + label:after {
                 content: '';
                 position: absolute;
@@ -212,52 +245,65 @@
                 z-index: 3;
                 transform: rotateZ(45deg);
             }
+
             .custom-checkbox input[type="checkbox"]:checked + label:before {
                 border-color: #03A9F4;
                 background: #03A9F4;
             }
+
             .custom-checkbox input[type="checkbox"]:checked + label:after {
                 border-color: #fff;
             }
+
             .custom-checkbox input[type="checkbox"]:disabled + label:before {
                 color: #b8b8b8;
                 cursor: auto;
                 box-shadow: none;
                 background: #ddd;
             }
+
             /* Modal styles */
             .modal .modal-dialog {
                 max-width: 400px;
             }
+
             .modal .modal-header, .modal .modal-body, .modal .modal-footer {
                 padding: 20px 30px;
             }
+
             .modal .modal-content {
                 border-radius: 3px;
             }
+
             .modal .modal-footer {
                 background: #ecf0f1;
                 border-radius: 0 0 3px 3px;
             }
+
             .modal .modal-title {
                 display: inline-block;
             }
+
             .modal .form-control {
                 border-radius: 2px;
                 box-shadow: none;
                 border-color: #dddddd;
             }
+
             .modal textarea.form-control {
                 resize: vertical;
             }
+
             .modal .btn {
                 border-radius: 2px;
                 min-width: 100px;
             }
+
             .modal form label {
                 font-weight: normal;
             }
-            img{
+
+            img {
                 width: 90px;
                 height: 90px;
             }
@@ -368,15 +414,15 @@
                 color: #19B3D3;
             }
 
-            #check:checked~.sidebar {
+            #check:checked ~ .sidebar {
                 left: -190px;
             }
 
-            #check:checked~.sidebar a span {
+            #check:checked ~ .sidebar a span {
                 display: none;
             }
 
-            #check:checked~.sidebar a {
+            #check:checked ~ .sidebar a {
                 font-size: 20px;
                 margin-left: 170px;
                 width: 80px;
@@ -391,7 +437,7 @@
                 transition: 0.5s;
             }
 
-            #check:checked~.content {
+            #check:checked ~ .content {
                 margin-left: 60px;
             }
 
@@ -416,7 +462,7 @@
                 color: #ccc;
             }
 
-            .bodymain{
+            .bodymain {
                 padding: 0;
                 margin: 0;
             }
@@ -425,148 +471,172 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     </head>
     <body>
-        <%
-            Cookie[] cookies = request.getCookies();
-            if (session.getAttribute("acc") == null) {
-                boolean flag = false;
-                if (cookies != null) {
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("staff") && !cookie.getValue().equals("")) {
-                            session.setAttribute("id", cookie.getValue());
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-                if (!flag) {
-                    response.sendRedirect("/F-Store/Login");
-                }
-            } else {
-                boolean flag = false;
-                if (cookies != null) {
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("staff") && !cookie.getValue().equals("")) {
-                            session.setAttribute("id", cookie.getValue());
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-                if (!flag) {
-                    response.sendRedirect("/F-Store/Login");
-                }
-            }
-        %>
         <div class="row bodymain">
             <!--Menu bar-->
-            <div class="sidebar">
-                <ul class="list-group category_block">
-                    <li class="list-group-item ${mana != null ? 'active' : 'inactive'} active">
-                        <a href="/F-Store/Manager/manageProduct" class="active">
-                            <i class="fab fa-product-hunt fa-lg" style="color: #ffffff;"></i>
-                            <span>Quản lý sản phẩm</span> 
-                        </a>
-                    </li>
-                    <li class="list-group-item  ${ord != null ? 'active' : 'inactive'}">
-                        <a href="/F-Store/Manager/ShowOrder">
-                            <i class="far fa-file-alt fa-lg"></i>
-                            <span>Quản lý hóa đơn</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item  ${mth != null ? 'active' : 'inactive'}">
-                        <a href="/F-Store/Manager/monthRevenue">
-                            <i class="far fa-file-alt fa-lg"></i>
-                            <span>Quản lý doanh thu </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item  ${logout != null ? 'active' : 'inactive'}">
-                        <a href="/F-Store/Logout">
-
-                            <i class="fas fa-sign-out-alt fa-lg" style="color: #ffffff;"></i>
-                            <span>Đăng xuất</span>
-                        </a>
-                    </li>
-                    <!--For admin-->
-                    <!-- <li class="list-group-item ${ac != null ? 'active' : 'inactive'}">
-                        <a href="">
-                            <i class="fas fa-table"></i>
-                            <span>Quan Ly Tai Khoan</span>
-                        </a>
-                    </li> -->
-                </ul>
-            </div>
+            <jsp:include page="Sidebar.jsp"/>
             <div>
                 <div class="content">
                     <div class="table-wrapper">
                         <div class="main-content">
-                            <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal">
-                                <i class="material-icons">&#xE147;</i> 
-                                <span >Add New Product</span>
+                            <a href="#addUser" class="btn btn-success" data-toggle="modal">
+                                <i class="material-icons">&#xE147;</i>
+                                <span>Add New Staff</span>
                             </a>
                             <table class="table table-striped table-hover">
-                                <span class="text-danger bg-danger fw-bold">${mes}</span>
                                 <thead>
                                     <tr>
-                                        <th>Product ID</th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Category</th>
-                                        <th>Description</th>
-                                        <th>Action</th>
-
+                                        <th>Staff ID</th>
+                                        <th>Staff Email</th>
+                                        <th>Staff Name</th>
+                                        <th>Staff Dob</th>
+                                        <th>Staff Phone</th>
+                                        <th>Staff Address</th>
+                                        <th colspan="2">Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody id="data">
-                                    <c:forEach items="${list}" var="c">
-                                        <c:set var="id" value="${c.productID}"/>
+                                    <c:forEach items="${requestScope.list}" var="c">
                                         <tr>
-                                            <td>${id}</td>
-                                            <td><img src='/F-Store/${c.productImg}' alt="" width="50" height="50"></td>
-                                            <td>${c.productName}</td>
-
+                                            <td>${c.getStaffID()}</td>
+                                            <td>${c.getStaffEmail()}</td>
+                                            <td>${c.getStaffName()}</td>
+                                            <td>${c.getStaffDOB()}</td>
+                                            <td>${c.getStaffPhone()}</td>
+                                            <td>${c.getStaffAddress()}</td>
                                             <td>
-                                                <fmt:formatNumber value="${c.getProductPrice()}" pattern="###,###,###" /> vnđ
-                                            </td>
-                                            <td>${c.productQuantity}</td>
-                                            <td>${c.getProductCategory()}</td>
-                                            <td>${c.productDis}</td>
-                                            <td>
-                                                <button class="btn btn-success" onclick="readInfo()" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>
-                                                <a href="manageProduct?type=update&pid=${c.productID}" class="btn btn-primary text-white" ><i class="bi bi-pencil-square text-white"></i></a>
-                                                <form action="deleteProduct">
-                                                    <input value="${c.productID}" name="id" hidden>
-                                                    <button type="button" class="btn btn-danger" onclick="confirmDelete(${c.productID})"><i class="bi bi-trash"></i></button>
-                                                </form>
-                                                <script>
-
-                                                    function confirmDelete(productId) {
-                                                        if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-                                                            window.location.href = "manageProduct?type=delete&pid=" + productId;
-                                                        } else {
-                                                        }
-                                                    }
-                                                </script>
+                                                <a data-toggle="modal" data-target="#delete${c.getStaffID()}" href="#">
+                                                    Delete
+                                                </a>
+                                                <a data-toggle="modal" data-target="#update${c.getStaffID()}" href="#">
+                                                    Update
+                                                </a>
                                             </td>
                                         </tr>
-                                    </c:forEach>
+                                    <div class="modal fade" id="delete${c.getStaffID()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Delete Staff</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Do you want to delete ${c.getStaffName()} ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" onclick="window.window.location.href = '${pageContext.request.contextPath}/deleteStaff?id=${c.getStaffID()}'" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="update${c.getStaffID()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Update Staff</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="${pageContext.request.contextPath}/admin/updateStaff" method="post">
+                                                        <input type="hidden" name="id" value="${c.getStaffID()}">
+                                                        <div class="form-group">
+                                                            <label for="recipient-code" class="col-form-label">Email</label>
+                                                            <input type="text" class="form-control" id="recipient-code" name="email" required="" value="${c.getStaffID()}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">User Name</label>
+                                                            <input type="text" class="form-control" id="recipient-name" name="name" required="" value="${c.getStaffName()}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-password" class="col-form-label">User Password</label>
+                                                            <input type="text" class="form-control" id="recipient-password" name="password" required="" value="${c.getStaffPassword()}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-dob" class="col-form-label">Date Of Birth</label>
+                                                            <input type="text" class="form-control" id="recipient-dob" name="dob" required="" value="${c.getStaffDOB()}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="subject" class="col-form-label">Phone</label>
+                                                            <input type="text" class="form-control" id="subject" name="phone" required="" value="${c.getStaffPhone()}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="address" class="col-form-label">Address</label>
+                                                            <input type="text" class="form-control" id="address" name="address" required="" value="${c.getStaffAddress()}">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
                                 </tbody>
                             </table>
                             <div class="clearfix">
-                                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                                 <ul class="pagination">
-                                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                    <c:if test="${requestScope.pagenum > 1}">
+                                        <li class="page-item"><a href="${pageContext.request.contextPath}/admin/liststaff?pagenum=${requestScope.pagenum - 1}">Previous</a></li>
+                                        </c:if>
+                                        <c:forEach begin="${requestScope.pagenum}" end="${requestScope.totalpage > requestScope.pagenum + 2 ? (requestScope.pagenum + 2) : requestScope.totalpage}" var="item">
+                                        <li class="page-item"><a href="${pageContext.request.contextPath}/admin/liststaff?pagenum=${item}" class="page-link">${item}</a></li>
+                                        </c:forEach>
+                                        <c:if test="${requestScope.pagenum <= requestScope.totalpage}">
+                                        <li class="page-item"><a href="${pageContext.request.contextPath}/admin/liststaff?pagenum=${requestScope.pagenum + 1}" class="page-link">Next</a></li>
+                                        </c:if>
                                 </ul>
                             </div>
+                            <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add Staff</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="${pageContext.request.contextPath}/admin/addStaff" method="post">
+                                                <div class="form-group">
+                                                    <label for="recipient-code" class="col-form-label">Email</label>
+                                                    <input type="text" class="form-control" id="recipient-code" name="email" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">User Name</label>
+                                                    <input type="text" class="form-control" id="recipient-name" name="name" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-password" class="col-form-label">User Password</label>
+                                                    <input type="text" class="form-control" id="recipient-password" name="password" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-dob" class="col-form-label">Date Of Birth</label>
+                                                    <input type="text" class="form-control" id="recipient-dob" name="dob" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="subject" class="col-form-label">Phone</label>
+                                                    <input type="text" class="form-control" id="subject" name="phone" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="address" class="col-form-label">Address</label>
+                                                    <input type="text" class="form-control" id="address" name="address" required="">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -576,20 +646,19 @@
                 <div id="addEmployeeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="manageProduct" method="post" enctype="multipart/form-data">
-                                <div class="modal-header">						
+                            <form action="addproduct" method="post">
+                                <div class="modal-header">
                                     <h4 class="modal-title">Add Product</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <input name="type" value="add" type="text" class="form-control hidden" required>
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input name="name" type="text" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input name="img" type="file" class="form-control" required>
+                                        <input name="img" type="text" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
@@ -602,18 +671,18 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Category</label>
-                                        <input name="category" class="form-control" type="text" required>
+                                        <label>Marterial</label>
+                                        <input name="marterial" class="form-control" type="text" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <input name="description" class="form-control" type="text" required>
+                                        <label>Type</label>
+                                        <input name="type" class="form-control" type="text" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                                     <input
-                                        type="submit" name="addNewProduct"
+                                        type="submit"
                                         value="Add"
                                         class="btn-primary btn w-100 mx-auto"
                                         />
@@ -627,31 +696,31 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form action="EditProduct" method="POST">
-                                <div class="modal-header">						
+                                <div class="modal-header">
                                     <h4 class="modal-title">Edit Product</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
-                                <div class="modal-body">					
+                                <div class="modal-body">
                                     <div class="form-group">
                                         <label for="pro_name">Product Name: </label>
-                                        <input type="text" class="form-control" name="pro_name" id="pro_name" />
+                                        <input type="text" class="form-control" name="pro_name" id="pro_name"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="pro_pic">Image: </label>
-                                        <input type="file"  name="pro_pic" class="form-control" id="pro_pic" />
+                                        <input type="file" name="pro_pic" class="form-control" id="pro_pic"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="pro_quan">Color: </label>
-                                        <input type="text" name="pro_color" class="form-control" id="pro_color" />
+                                        <input type="text" name="pro_color" class="form-control" id="pro_color"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="pro_price">Gia San Pham: </label>
-                                        <input type="number" name="pro_price" class="form-control" id="pro_price" />
-                                    </div>	
+                                        <input type="number" name="pro_price" class="form-control" id="pro_price"/>
+                                    </div>
                                     <div class="form-group">
                                         <label for="pro_quan">So Luong: </label>
-                                        <input type="number" name="pro_quan" class="form-control" id="pro_quan" />
-                                    </div>	
+                                        <input type="number" name="pro_quan" class="form-control" id="pro_quan"/>
+                                    </div>
                                     <div class="form-group">
                                         <label for="pro_des">Mo ta san pham: </label>
                                         <input type="text" name="pro_des" class="form-control" id="pro_des"/>
@@ -663,7 +732,7 @@
                                                 <option value="${o.category_id}">${o.category_name}</option>
                                             </c:forEach>
                                         </select>
-                                    </div>	
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -674,26 +743,7 @@
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form action="">
-                                <div class="modal-header">						
-                                    <h4 class="modal-title">Delete Product</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">					
-                                    <p>Are you sure you want to delete these Records?</p>
-                                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-danger" value="Delete">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </body>

@@ -66,7 +66,7 @@
                             <button class="btn btn-outline-light" type="submit">Search</button>
                         </form>
                         <ul class="navbar-nav d-sm-flex flex-sm-row justify-content-sm-center row me-5">
-                            <%
+                                <%
                                 if (session.getAttribute("id") != null) {
 
                             %>
@@ -94,7 +94,7 @@
                                     </svg>
                                 </a>
                             </li>
-
+                        
                             <!--User Information-->
                             <li class="nav-item col-sm-2">
                                 <a href="/F-Store/User/Edit/<%=session.getAttribute("id")%>" class="nav-link
@@ -221,8 +221,8 @@
                                             if (session.getAttribute("id") != null) {
 
                                         %>
-                                       <button type="submit" name="addNew" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ hàng</button>
-
+                                        <button type="submit" name="addNew" class="btn p-2" id="buttonThemvaogio">+ Thêm vào giỏ
+                                            hàng</button>
                                         <button type="button" class="btn p-2" id="buttonMuangay">Mua ngay</button>
                                         <%                                        } else {
                                         %>

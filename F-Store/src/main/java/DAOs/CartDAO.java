@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,6 +43,26 @@ public class CartDAO {
         return ketqua;
     }
 
+    public void delete(int productId) {
+        String sql = "delete from [Cart] where productId = ?";
+        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setInt(1, productId);
+
+            int rowsDeleted = preparedStatement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                System.out.println("Xóa gio hang thành công!");
+            } else {
+                System.out.println("Không có go hang nào bị xóa.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public int update(Cart cart) {
         String sql = "UPDATE Cart SET UserID = ?, ProductID = ?, Size = ?, Quantity = ? WHERE CartID = ?";
         int ketqua = 0;
@@ -64,79 +82,17 @@ public class CartDAO {
         return ketqua;
     }
 
-    public List<Cart> getAll(int userID) {
-        String sql = "SELECT * FROM Cart WHERE userID=?";
-        List<Cart> c = new ArrayList<>();
-//    //
-//  select c.productID, p.productName ,COUNT(c.productID), as soluongdat from Cart c join Product p on p.productID = c.productID
-//  whereuserID = 2
-//  group by c.productID, p.productName
-
+    public ResultSet getAll(int userID) {
+        String sql = "SELECT * FROM Cart WHERE UserID = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, userID);
             ResultSet rs = ps.executeQuery();
-            int cartID = rs.getInt("cartID");
-            int productID = rs.getInt("productID");
-            String size = rs.getString("size");
-            int quantity = rs.getInt("quantity");
-            Cart cart = new Cart(cartID, userID, productID, size, quantity);
-            c.add(cart);
+            return rs;
         } catch (SQLException ex) {
             Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return c;
-    }
-
-    public void delete(int productId) {
-        String sql = "delete from [Cart] where productId = ?";
-
-        try {
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
-            preparedStatement.setInt(1, productId);
-
-            int rowsDeleted = preparedStatement.executeUpdate();
-
-            if (rowsDeleted > 0) {
-                System.out.println("Xóa gio hang thành công!");
-            } else {
-                System.out.println("Không có go hang nào bị xóa.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public int Update(Cart c) {
-        String sql = "update [Cart] set size=?, quantity=? where cartID=?";
-        int ketqua = 0;
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, c.getSize());
-            ps.setInt(2, c.getQuantity());
-            ps.setInt(3, c.getCartID());
-            ketqua = ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return ketqua;
-    }
-
-    public List<Cart> ShowinCart(int userID) {
-        List<Cart> mycart = new ArrayList<>();
-        String sql = "SELECT * FROM Cart WHERE userID=?";
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, userID);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                mycart.add(new Cart(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return mycart;
+        return null;
     }
 
 }

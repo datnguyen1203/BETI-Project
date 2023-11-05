@@ -52,8 +52,7 @@ public class ManagerControl extends HttpServlet {
                         response.sendRedirect("manageProduct?type=view");
                         break;
                     case "update":
-                        //Product productUpdate = productDAO.getProductById(Integer.parseInt(request.getParameter("pid")));
-                                                Product productUpdate = productDAO.GetProductId(Integer.parseInt(request.getParameter("pid")));
+                        Product productUpdate = productDAO.getProductById(Integer.parseInt(request.getParameter("pid")));
                         request.setAttribute("data", productUpdate);
                         request.getRequestDispatcher("/updateProduct.jsp").forward(request, response);
                         break;
@@ -114,7 +113,7 @@ public class ManagerControl extends HttpServlet {
                         filePart.write(filePath);
                         String category = request.getParameter("category");
                         String description = request.getParameter("description");
-                        productDAO.addProduct(productName, productPrice, productQuantity, "./img/product/" + fileName, category, description);
+                        productDAO.addProduct(productName, productPrice, productQuantity, "./img/product/" + fileName, description, category);
                         response.sendRedirect("manageProduct?type=view");
                         break;
                     case "update":
